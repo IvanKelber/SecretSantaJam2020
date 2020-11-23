@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e77d88835918f4d2eba1f4e80e3223ac, type: 3}
-  m_Name: BulletBirth
+  m_Name: BulletCollision
   m_EditorClassIdentifier: 
-  Name: BulletBirth
-  clip: {fileID: 8300000, guid: 6684f66b4a60149fb9e1d8da848bd3db, type: 3}
-  minVolume: 0.589
+  Name: 
+  clip: {fileID: 0}
+  minVolume: 1
   maxVolume: 1
-  minPitch: 0.7
+  minPitch: 1
   maxPitch: 1

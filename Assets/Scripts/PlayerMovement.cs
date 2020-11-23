@@ -6,6 +6,9 @@ public class PlayerMovement : RaycastController
 {
 
     [SerializeField]
+    AudioManager audioManager;
+
+    [SerializeField]
     Camera cam;
 
     [SerializeField]
@@ -17,9 +20,15 @@ public class PlayerMovement : RaycastController
     [SerializeField]
     GameObject bulletPrefab;
 
+    AudioSource audioSource;
     float timeSinceLastShot = 0;
 
     Vector2 playerInput;
+
+    void Start() {
+        base.Start();
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -86,6 +95,7 @@ public class PlayerMovement : RaycastController
         Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
         Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>() as Bullet;
+        audioManager.Play("BulletBirth", audioSource);
 
         bullet.SetDirection((mousePosition - transform.position).normalized);
         timeSinceLastShot = 0;
