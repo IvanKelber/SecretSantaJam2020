@@ -376,7 +376,10 @@ MonoBehaviour:
   verticalRayCount: 0
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
+  cam: {fileID: 1206863043}
   playerSpeed: 10
+  shotRate: 1
+  bulletPrefab: {fileID: 7835573758944721104, guid: 0f925a859a68c484caf3ffa867d9f7ea, type: 3}
 --- !u!212 &1253124871
 SpriteRenderer:
   m_ObjectHideFlags: 0

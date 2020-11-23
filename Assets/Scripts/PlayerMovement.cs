@@ -6,15 +6,29 @@ public class PlayerMovement : RaycastController
 {
 
     [SerializeField]
+    Camera cam;
+
+    [SerializeField]
     float playerSpeed = 10;
 
+    [SerializeField]
+    float shotRate = .5f;
+    
+    [SerializeField]
+    GameObject bulletPrefab;
+
+    float timeSinceLastShot = 0;
+
     Vector2 playerInput;
-    BoxCollider2D collider;
 
     void Update()
     {
         UpdateRaycastOrigins();
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if(Input.GetMouseButton(0) && timeSinceLastShot > shotRate) {
+            Shoot();
+        }
+        timeSinceLastShot += Time.deltaTime;
         Move();
     }
 
@@ -31,12 +45,7 @@ public class PlayerMovement : RaycastController
      void HorizontalCollisions(ref Vector2 moveAmount)
     {
         float directionX = Mathf.Sign(moveAmount.x);
-        float rayLength = Mathf.Abs(moveAmount.x) + skinWidth;
-
-        // if (Mathf.Abs(moveAmount.x) < skinWidth)
-        {
-            rayLength = 2 * skinWidth;
-        }
+        float rayLength = 2 * skinWidth;
 
         for (int i = 0; i < horizontalRayCount; i++)
         {
@@ -48,7 +57,6 @@ public class PlayerMovement : RaycastController
 
             if (hit)
             {
-                Debug.Log("Hit Horizontally: " + hit.distance);
                 moveAmount.x = (hit.distance - skinWidth) * directionX;
                 rayLength = hit.distance;
             }
@@ -66,13 +74,20 @@ public class PlayerMovement : RaycastController
             rayOrigin += Vector2.right * (verticalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
-            Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
-
             if (hit)
             {
                 moveAmount.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
             }
         }
+    }
+
+    void Shoot() {
+        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = transform.position.z;
+        Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>() as Bullet;
+
+        bullet.SetDirection((mousePosition - transform.position).normalized);
+        timeSinceLastShot = 0;
     }
 }
