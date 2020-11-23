@@ -9,7 +9,9 @@ public class PlayerMovement : RaycastController
     AudioManager audioManager;
 
     [SerializeField]
-    List<Gun> guns = new List<Gun>();
+    List<GunConfig> gunConfigs = new List<GunConfig>();
+    [SerializeField]
+    Gun gun;
 
     [SerializeField]
     Camera cam;
@@ -31,28 +33,23 @@ public class PlayerMovement : RaycastController
     Vector3 mousePosition;
 
     int gunIndex = 0;
-    Gun CurrentGun {
-        get {
-            return guns[gunIndex];
-        }
-    }
+
+    List<GunPickup> nearbyGuns = new List<GunPickup>();
 
     void Start() {
         base.Start();
         audioSource = GetComponent<AudioSource>();
-        for(int i = 1; i < gunCapacity; i++) {
-            guns[i].gameObject.SetActive(false);
-        }
     }
 
     void Update()
     {
         UpdateRaycastOrigins();
         UpdateMousePosition();
+        PickupGun();
         EquipGun();
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - playerInput.x), transform.localScale.y, transform.localScale.z);
-        if(CurrentGun != null && Input.GetMouseButton(0) && timeSinceLastShot > CurrentGun.config.fireRate) {
+        if(Input.GetMouseButton(0) && timeSinceLastShot > gun.config.fireRate) {
             Shoot();
         }
         timeSinceLastShot += Time.deltaTime;
@@ -115,22 +112,45 @@ public class PlayerMovement : RaycastController
     }
 
     void EquipGun() {
-        for(int i = 1; i <= gunCapacity; i++) {
+        for(int i = 1; i <= gunConfigs.Count; i++) {
             if(Input.GetKeyDown("" + i)) {
-                CurrentGun.gameObject.SetActive(false);
                 gunIndex = i - 1;
-                Debug.Log("gunIndex: " + gunIndex);
-                CurrentGun.gameObject.SetActive(true);
+                gun.config = gunConfigs[gunIndex];
                 return;
             }
         }
     }
 
+    void PickupGun() {
+        if(Input.GetKeyDown(KeyCode.E)) {
+            if(nearbyGuns.Count > 0 && gunConfigs.Count < gunCapacity) {
+                GunPickup pickup = nearbyGuns[nearbyGuns.Count - 1 ];
+                gunConfigs.Add(pickup.config);
+                gunIndex = gunConfigs.Count - 1;
+                gun.config = gunConfigs[gunIndex];
+                RemoveNearbyGun(pickup);
+                pickup.Destroy();
+            }
+        }
+    }
+
+    public void AddNearbyGun(GunPickup pickup) {
+        nearbyGuns.Add(pickup);
+        Debug.Log("added gun to nearbyguns: " + nearbyGuns.Count);
+
+    }
+
+    public void RemoveNearbyGun(GunPickup pickup) {
+        nearbyGuns.Remove(pickup);
+        Debug.Log("removed gun from nearbyguns: " + nearbyGuns.Count);
+
+    }
+
     void Shoot() {
        
-        CurrentGun.Shoot(mousePosition);
+        gun.Shoot(mousePosition);
         Vector3 knockbackDirection = (transform.position - mousePosition).normalized;
-        Vector2 knockback = CurrentGun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
+        Vector2 knockback = gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
         HorizontalCollisions(ref knockback);
         VerticalCollisions(ref knockback);
         transform.position += new Vector3(knockback.x, knockback.y, 0);
