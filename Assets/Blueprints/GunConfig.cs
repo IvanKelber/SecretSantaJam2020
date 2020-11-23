@@ -16,8 +16,11 @@ public class GunConfig : ScriptableObject
     [Range(0,100)]
     public float knockback;
 
-    [Range(0,89)]
+    [Range(0,90)]
     public float spreadNoise;
+
+    [Range(0, 90)]
+    public float naturalSpread;
 
     [Range(1,15)]
     public int numberOfBullets;

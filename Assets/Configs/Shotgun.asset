@@ -45,6 +45,7 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   fireSound: BulletBirth
   knockback: 70
-  spreadNoise: 30
-  numberOfBullets: 3
+  spreadNoise: 5
+  naturalSpread: 10
+  numberOfBullets: 5
   bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
