@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 679a374be240547fc8d40e4ded58d077, type: 3}
-  m_Name: FirstGun
+  m_Name: AccurateGun
   m_EditorClassIdentifier: 
-  fireRate: 0.05
+  fireRate: 0.308
   fireImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 11400000, guid: 310b95a54384d450e9d4037fb30c71b1, type: 2}
-    m_AmplitudeGain: 0.1
+    m_AmplitudeGain: 0.01
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   fireSound: BulletBirth
-  knockback: 77.7
-  spreadNoise: 47.6
-  numberOfBullets: 13
+  knockback: 0
+  spreadNoise: 0
+  numberOfBullets: 1
   bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}

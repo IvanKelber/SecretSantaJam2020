@@ -9,16 +9,16 @@ public class PlayerMovement : RaycastController
     AudioManager audioManager;
 
     [SerializeField]
-    Gun gun;
+    List<Gun> guns = new List<Gun>();
 
     [SerializeField]
     Camera cam;
 
     [SerializeField]
     float playerSpeed = 10;
-
+    
     [SerializeField]
-    float shotRate = .5f;
+    int gunCapacity = 2;
     
     [SerializeField]
     GameObject bulletPrefab;
@@ -28,16 +28,31 @@ public class PlayerMovement : RaycastController
 
     Vector2 playerInput;
 
+    Vector3 mousePosition;
+
+    int gunIndex = 0;
+    Gun CurrentGun {
+        get {
+            return guns[gunIndex];
+        }
+    }
+
     void Start() {
         base.Start();
         audioSource = GetComponent<AudioSource>();
+        for(int i = 1; i < gunCapacity; i++) {
+            guns[i].gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
         UpdateRaycastOrigins();
+        UpdateMousePosition();
+        EquipGun();
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if(Input.GetMouseButton(0) && timeSinceLastShot > gun.config.fireRate) {
+        transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - playerInput.x), transform.localScale.y, transform.localScale.z);
+        if(CurrentGun != null && Input.GetMouseButton(0) && timeSinceLastShot > CurrentGun.config.fireRate) {
             Shoot();
         }
         timeSinceLastShot += Time.deltaTime;
@@ -94,12 +109,28 @@ public class PlayerMovement : RaycastController
         }
     }
 
-    void Shoot() {
-        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+    void UpdateMousePosition() {
+        mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
-        gun.Shoot(mousePosition);
+    }
+
+    void EquipGun() {
+        for(int i = 1; i <= gunCapacity; i++) {
+            if(Input.GetKeyDown("" + i)) {
+                CurrentGun.gameObject.SetActive(false);
+                gunIndex = i - 1;
+                Debug.Log("gunIndex: " + gunIndex);
+                CurrentGun.gameObject.SetActive(true);
+                return;
+            }
+        }
+    }
+
+    void Shoot() {
+       
+        CurrentGun.Shoot(mousePosition);
         Vector3 knockbackDirection = (transform.position - mousePosition).normalized;
-        Vector2 knockback = gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
+        Vector2 knockback = CurrentGun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
         HorizontalCollisions(ref knockback);
         VerticalCollisions(ref knockback);
         transform.position += new Vector3(knockback.x, knockback.y, 0);
