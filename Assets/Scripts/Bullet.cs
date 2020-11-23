@@ -6,40 +6,36 @@ using Cinemachine;
 public class Bullet : MonoBehaviour
 {
 
-    public float speed = 20f;
-
     [SerializeField]
     AudioManager audioManager;
 
     [SerializeField]
     LayerMask collisionMask;
 
-    [SerializeField]
-    float lifeTime = 3;
+    BulletConfig config;
 
     AudioSource audioSource;
     Vector3 direction;
     float birthTime;
-    CinemachineImpulseSource impulseSource;
-
     CircleCollider2D collider;
+    CinemachineImpulseSource impulseSource;
     bool destroying = false;
     void Start() {
         birthTime = Time.time;
         audioSource = gameObject.AddComponent<AudioSource>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
         collider = GetComponent<CircleCollider2D>();
-        impulseSource.GenerateImpulse(direction);
+        impulseSource.m_ImpulseDefinition = config.collisionImpulse;
     }
 
     void Update()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        transform.position += direction * config.bulletSpeed * Time.deltaTime;
         if(CheckCollision()) {
             if(!destroying)
                 StartCoroutine(Collision());
         }
-        if(Time.time - birthTime >= lifeTime) {
+        if(Time.time - birthTime >= config.lifetime) {
             Destroy(this.gameObject);
         }
     }
@@ -48,10 +44,13 @@ public class Bullet : MonoBehaviour
         this.direction = direction;
     }
 
+    public void SetConfig(BulletConfig config) {
+        this.config = config;
+    }
+
     public bool CheckCollision() {
         Collider2D[] collisions = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), collider.radius,
                                                             collisionMask);
-        Debug.Log(collisions.Length);
         return collisions.Length > 0;
     }
 
@@ -59,7 +58,9 @@ public class Bullet : MonoBehaviour
         destroying = true;
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         renderer.color = new Color(0,0,0,0);
-        yield return audioManager.PlayAndWait("BulletCollision", audioSource);
-        Destroy(this.gameObject);
+        impulseSource.GenerateImpulse(direction);
+
+        yield return audioManager.PlayAndWait(config.collisionSound, audioSource);
+        //Destroy(this.gameObject);
     }
 }

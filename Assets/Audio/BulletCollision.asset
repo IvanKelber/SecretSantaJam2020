@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77d88835918f4d2eba1f4e80e3223ac, type: 3}
   m_Name: BulletCollision
   m_EditorClassIdentifier: 
-  Name: 
-  clip: {fileID: 0}
-  minVolume: 1
-  maxVolume: 1
-  minPitch: 1
-  maxPitch: 1
+  Name: BulletCollision
+  clip: {fileID: 8300000, guid: 6684f66b4a60149fb9e1d8da848bd3db, type: 3}
+  minVolume: 0.05
+  maxVolume: 0.1
+  minPitch: 0.4
+  maxPitch: 0.5

@@ -9,6 +9,9 @@ public class PlayerMovement : RaycastController
     AudioManager audioManager;
 
     [SerializeField]
+    Gun gun;
+
+    [SerializeField]
     Camera cam;
 
     [SerializeField]
@@ -34,7 +37,7 @@ public class PlayerMovement : RaycastController
     {
         UpdateRaycastOrigins();
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if(Input.GetMouseButton(0) && timeSinceLastShot > shotRate) {
+        if(Input.GetMouseButton(0) && timeSinceLastShot > gun.config.fireRate) {
             Shoot();
         }
         timeSinceLastShot += Time.deltaTime;
@@ -94,10 +97,12 @@ public class PlayerMovement : RaycastController
     void Shoot() {
         Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
-        Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>() as Bullet;
-        audioManager.Play("BulletBirth", audioSource);
-
-        bullet.SetDirection((mousePosition - transform.position).normalized);
+        gun.Shoot(mousePosition);
+        Vector3 knockbackDirection = (transform.position - mousePosition).normalized;
+        Vector2 knockback = gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
+        HorizontalCollisions(ref knockback);
+        VerticalCollisions(ref knockback);
+        transform.position += new Vector3(knockback.x, knockback.y, 0);
         timeSinceLastShot = 0;
     }
 }
