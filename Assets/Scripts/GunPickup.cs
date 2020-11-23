@@ -13,8 +13,6 @@ public class GunPickup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) {
         if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
-            Debug.Log("Collision occured");
-
             nearbyPlayer = collision.gameObject.GetComponent<PlayerMovement>();
             nearbyPlayer.AddNearbyGun(this);
         }

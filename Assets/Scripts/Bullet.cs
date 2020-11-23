@@ -31,9 +31,10 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.position += direction * config.bulletSpeed * Time.deltaTime;
-        if(CheckCollision()) {
+        Collider2D[] collisions = CheckCollision();
+        if(collisions.Length > 0) {
             if(!destroying)
-                StartCoroutine(Collision());
+                StartCoroutine(Collision(collisions));
         }
         if(Time.time - birthTime >= config.lifetime) {
             Destroy(this.gameObject);
@@ -48,19 +49,24 @@ public class Bullet : MonoBehaviour
         this.config = config;
     }
 
-    public bool CheckCollision() {
+    public Collider2D[] CheckCollision() {
         Collider2D[] collisions = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), collider.radius,
                                                             collisionMask);
-        return collisions.Length > 0;
+        return collisions;
     }
 
-    IEnumerator Collision() {
+    IEnumerator Collision(Collider2D[] collisions) {
         destroying = true;
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         renderer.color = new Color(0,0,0,0);
         impulseSource.GenerateImpulse(direction);
-
+        foreach(Collider2D collider in collisions) {
+            Damageable damageable = collider.gameObject.GetComponent<Damageable>();
+            if(damageable != null) {
+                damageable.TakeDamage(config.bulletDamage);
+            }
+        }
         yield return audioManager.PlayAndWait(config.collisionSound, audioSource);
-        //Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 }

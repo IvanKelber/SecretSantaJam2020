@@ -8,12 +8,15 @@ using Cinemachine;
 public class BulletConfig : ScriptableObject
 {
     [Range(.5f,5)]
-    public float lifetime;
+    public float lifetime = 1;
+
+    [Range(1,100)]
+    public float bulletDamage = 5;
 
     public CinemachineImpulseDefinition collisionImpulse;
 
     public string collisionSound;
 
     [Range(1,100)]
-    public float bulletSpeed;
+    public float bulletSpeed = 20;
 }

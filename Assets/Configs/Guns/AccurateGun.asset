@@ -46,5 +46,6 @@ MonoBehaviour:
   fireSound: BulletBirth
   knockback: 0
   spreadNoise: 0
+  naturalSpread: 0
   numberOfBullets: 1
   bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}

@@ -136,14 +136,11 @@ public class PlayerMovement : RaycastController
 
     public void AddNearbyGun(GunPickup pickup) {
         nearbyGuns.Add(pickup);
-        Debug.Log("added gun to nearbyguns: " + nearbyGuns.Count);
 
     }
 
     public void RemoveNearbyGun(GunPickup pickup) {
         nearbyGuns.Remove(pickup);
-        Debug.Log("removed gun from nearbyguns: " + nearbyGuns.Count);
-
     }
 
     void Shoot() {
