@@ -8,13 +8,19 @@ public class Bullet : MonoBehaviour
     public float speed = 20f;
 
     [SerializeField]
+    AudioManager audioManager;
+
+    [SerializeField]
     float lifeTime = 3;
 
+    AudioSource audioSource;
     Vector3 direction;
     float birthTime;
 
     void Start() {
         birthTime = Time.time;
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioManager.Play("BulletBirth", audioSource);
     }
 
     void Update()

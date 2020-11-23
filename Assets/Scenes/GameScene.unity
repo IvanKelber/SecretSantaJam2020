@@ -278,7 +278,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206863041}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1206863043
 Camera:
   m_ObjectHideFlags: 0
@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 1253124871}
   - component: {fileID: 1253124870}
   - component: {fileID: 1253124873}
+  - component: {fileID: 1253124874}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -471,6 +472,14 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3349575, y: 1.8871999}
   m_EdgeRadius: 0
+--- !u!81 &1253124874
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253124869}
+  m_Enabled: 1
 --- !u!1 &1414556008
 GameObject:
   m_ObjectHideFlags: 0
