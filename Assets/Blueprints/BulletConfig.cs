@@ -19,4 +19,6 @@ public class BulletConfig : ScriptableObject
 
     [Range(1,100)]
     public float bulletSpeed = 20;
+
+    public LayerMask damagingLayer;
 }

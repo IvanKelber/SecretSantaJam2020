@@ -11,7 +11,7 @@ public class Damageable : MonoBehaviour
     private AudioManager audioManager;
     float currentHealth;
     AudioSource audioSource;
-    void Start()
+    public void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         currentHealth = config.maxHealth;

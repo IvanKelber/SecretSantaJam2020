@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
-  m_Name: FirstBullet
+  m_Script: {fileID: 11500000, guid: 679a374be240547fc8d40e4ded58d077, type: 3}
+  m_Name: ImpGun
   m_EditorClassIdentifier: 
-  lifetime: 1
-  bulletDamage: 5
-  collisionImpulse:
+  fireRate: 1
+  fireImpulse:
     m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 11400000, guid: 310b95a54384d450e9d4037fb30c71b1, type: 2}
-    m_AmplitudeGain: 0.05
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
@@ -44,8 +43,9 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
-  collisionSound: BulletCollision
-  bulletSpeed: 20
-  damagingLayer:
-    serializedVersion: 2
-    m_Bits: 2304
+  fireSound: 
+  knockback: 0
+  spreadNoise: 0
+  naturalSpread: 0
+  numberOfBullets: 1
+  bullet: {fileID: 11400000, guid: 44f101f60332e4fe5898e518da9a1347, type: 2}

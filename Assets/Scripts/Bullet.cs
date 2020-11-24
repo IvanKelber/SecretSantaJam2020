@@ -9,9 +9,6 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     AudioManager audioManager;
 
-    [SerializeField]
-    LayerMask collisionMask;
-
     BulletConfig config;
 
     AudioSource audioSource;
@@ -51,7 +48,7 @@ public class Bullet : MonoBehaviour
 
     public Collider2D[] CheckCollision() {
         Collider2D[] collisions = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), collider.radius,
-                                                            collisionMask);
+                                                            config.damagingLayer);
         return collisions;
     }
 
