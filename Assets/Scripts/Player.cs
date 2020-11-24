@@ -34,7 +34,12 @@ public class Player : Damageable
 
     void Update()
     {
-       
+        if(Input.GetKeyDown(KeyCode.G)) {
+            godModeEnabled = !godModeEnabled;
+        }
+        if(Input.GetKeyDown(KeyCode.P)) {
+            TakeDamage(Random.Range(1,15));
+        }
         PickupGun();
         EquipGun();
         
@@ -87,11 +92,10 @@ public class Player : Damageable
     }
 
     public override void TakeDamage(float damage) {
-        currentHealth -= damage;
-        playerHealth.currentHealth = currentHealth;
-        if(currentHealth <= 0) {
-            currentHealth = 0;
-            Die();
+        if(godModeEnabled) {
+            return;
         }
+        base.TakeDamage(damage);
+        playerHealth.currentHealth = currentHealth;
     }
 }
