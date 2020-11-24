@@ -7,7 +7,7 @@ public class Imp : AIEntity
     [SerializeField]
     Gun gun;
 
-    PlayerMovement nearbyPlayer;
+    Player nearbyPlayer;
     float timeSinceLastAttack = 0;
 
     public override void Start() {
@@ -18,7 +18,7 @@ public class Imp : AIEntity
     protected override bool DetectPlayer() {
         Collider2D player = Physics2D.OverlapCircle(transform.position, AIconfig.detectionRadius, playerMask);
         if(player != null) {
-            nearbyPlayer = player.gameObject.GetComponent<PlayerMovement>();
+            nearbyPlayer = player.gameObject.GetComponent<Player>();
             return true;
         }
         return false;
@@ -28,7 +28,7 @@ public class Imp : AIEntity
         Vector3 directionToPlayer = (nearbyPlayer.transform.position - transform.position).normalized;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, AIconfig.maxAttackDistance, collisionMask);
         if(hit) {
-            PlayerMovement player = hit.collider.gameObject.GetComponent<PlayerMovement>();
+            Player player = hit.collider.gameObject.GetComponent<Player>();
             if(player != null) {
                 currentState = AIState.Attacking;
             } else {

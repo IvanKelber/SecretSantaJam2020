@@ -9,11 +9,11 @@ public class GunPickup : MonoBehaviour
     [SerializeField]
     LayerMask playerMask;
 
-    PlayerMovement nearbyPlayer;
+    Player nearbyPlayer;
 
     void OnTriggerEnter2D(Collider2D collision) {
         if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
-            nearbyPlayer = collision.gameObject.GetComponent<PlayerMovement>();
+            nearbyPlayer = collision.gameObject.GetComponent<Player>();
             nearbyPlayer.AddNearbyGun(this);
         }
     }

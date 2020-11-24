@@ -49,3 +49,4 @@ MonoBehaviour:
   damagingLayer:
     serializedVersion: 2
     m_Bits: 1280
+  sprite: {fileID: 21300000, guid: b18a4d269c3564d6db7d8d214434fd81, type: 3}

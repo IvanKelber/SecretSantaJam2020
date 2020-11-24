@@ -233,6 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 524c9679942674e3da9fe52b067eec4b, type: 2}
   audioManager: {fileID: 0}
+  currentHealth: 0
+  audioSource: {fileID: 0}
   AIconfig: {fileID: 11400000, guid: b655e045e5ba64b53a8692bbdf403b05, type: 2}
   playerMask:
     serializedVersion: 2
@@ -1023,6 +1025,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1557869193, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1206863043}
     - target: {fileID: 2521559355725457411, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.59859157
@@ -1068,13 +1074,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2521559355725457421, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: cam
+      propertyPath: config
       value: 
-      objectReference: {fileID: 1206863043}
+      objectReference: {fileID: 11400000, guid: 10f8680488366469d993f8213020541e, type: 2}
     - target: {fileID: 2521559355725457422, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2521559356229769391, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: fa55dd36606a2465aafc3a6dccf0b70b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
 --- !u!1001 &4354786425378492891

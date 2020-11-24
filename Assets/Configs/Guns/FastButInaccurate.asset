@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 679a374be240547fc8d40e4ded58d077, type: 3}
-  m_Name: Shotgun
+  m_Name: FastButInaccurate
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 0.1
   fireImpulse:
     m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 11400000, guid: 310b95a54384d450e9d4037fb30c71b1, type: 2}
-    m_AmplitudeGain: 0.1
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
@@ -43,9 +43,9 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
-  fireSound: BulletBirth
-  knockback: 100
-  spreadNoise: 5
-  naturalSpread: 10
-  numberOfBullets: 4
+  fireSound: 
+  knockback: 66.4
+  spreadNoise: 13.8
+  naturalSpread: 0
+  numberOfBullets: 1
   bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}

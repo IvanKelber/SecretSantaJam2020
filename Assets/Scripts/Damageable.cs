@@ -7,10 +7,9 @@ public class Damageable : MonoBehaviour
 
     public DamageableConfig config;
 
-    [SerializeField]
-    private AudioManager audioManager;
-    float currentHealth;
-    AudioSource audioSource;
+    public AudioManager audioManager;
+    public float currentHealth;
+    public AudioSource audioSource;
     public void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();

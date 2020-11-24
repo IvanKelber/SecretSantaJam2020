@@ -16,13 +16,21 @@ public class Bullet : MonoBehaviour
     float birthTime;
     CircleCollider2D collider;
     CinemachineImpulseSource impulseSource;
+    SpriteRenderer renderer;
     bool destroying = false;
+
+
     void Start() {
         birthTime = Time.time;
         audioSource = gameObject.AddComponent<AudioSource>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
         collider = GetComponent<CircleCollider2D>();
+        renderer = GetComponent<SpriteRenderer>();
+
         impulseSource.m_ImpulseDefinition = config.collisionImpulse;
+        if(config.sprite != null) {
+            renderer.sprite = config.sprite;
+        }
     }
 
     void Update()
@@ -54,7 +62,6 @@ public class Bullet : MonoBehaviour
 
     IEnumerator Collision(Collider2D[] collisions) {
         destroying = true;
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         renderer.color = new Color(0,0,0,0);
         impulseSource.GenerateImpulse(direction);
         foreach(Collider2D collider in collisions) {

@@ -6,59 +6,35 @@ public class PlayerMovement : RaycastController
 {
 
     [SerializeField]
-    AudioManager audioManager;
-
-    [SerializeField]
-    List<GunConfig> gunConfigs = new List<GunConfig>();
-    [SerializeField]
-    Gun gun;
+    float playerSpeed = 10;
 
     [SerializeField]
     Camera cam;
 
-    [SerializeField]
-    float playerSpeed = 10;
-    
-    [SerializeField]
-    int gunCapacity = 2;
-    
-    [SerializeField]
-    GameObject bulletPrefab;
-
-    AudioSource audioSource;
-    float timeSinceLastShot = 0;
-
     Vector2 playerInput;
 
-    Vector3 mousePosition;
-
-    int gunIndex = 0;
-
-    List<GunPickup> nearbyGuns = new List<GunPickup>();
-
-    void Start() {
+    [HideInInspector]
+    public Vector3 mousePosition;
+    void Start()
+    {
         base.Start();
-        audioSource = GetComponent<AudioSource>();
+
     }
 
     void Update()
     {
         UpdateRaycastOrigins();
         UpdateMousePosition();
-        PickupGun();
-        EquipGun();
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - playerInput.x), transform.localScale.y, transform.localScale.z);
-        if(Input.GetMouseButton(0) && timeSinceLastShot > gun.config.fireRate) {
-            Shoot();
-        }
-        timeSinceLastShot += Time.deltaTime;
-        Move();
+        Vector2 displacement = playerInput.normalized * playerSpeed;
+
+        Move(displacement);
+
     }
 
-    void Move() {
+    public void Move(Vector2 displacement) {
 
-        Vector2 displacement = playerInput.normalized * playerSpeed;
     
         HorizontalCollisions(ref displacement);
         VerticalCollisions(ref displacement);
@@ -66,7 +42,7 @@ public class PlayerMovement : RaycastController
         transform.position += velocity;
     }
 
-     void HorizontalCollisions(ref Vector2 moveAmount)
+    public void HorizontalCollisions(ref Vector2 moveAmount)
     {
         float directionX = Mathf.Sign(moveAmount.x);
         float rayLength = 2 * skinWidth;
@@ -87,7 +63,7 @@ public class PlayerMovement : RaycastController
         }
     }
 
-    void VerticalCollisions(ref Vector2 moveAmount)
+    public void VerticalCollisions(ref Vector2 moveAmount)
     {
         float directionY = Mathf.Sign(moveAmount.y);
         float rayLength = 2 * skinWidth;
@@ -111,46 +87,4 @@ public class PlayerMovement : RaycastController
         mousePosition.z = transform.position.z;
     }
 
-    void EquipGun() {
-        for(int i = 1; i <= gunConfigs.Count; i++) {
-            if(Input.GetKeyDown("" + i)) {
-                gunIndex = i - 1;
-                gun.config = gunConfigs[gunIndex];
-                return;
-            }
-        }
-    }
-
-    void PickupGun() {
-        if(Input.GetKeyDown(KeyCode.E)) {
-            if(nearbyGuns.Count > 0 && gunConfigs.Count < gunCapacity) {
-                GunPickup pickup = nearbyGuns[nearbyGuns.Count - 1 ];
-                gunConfigs.Add(pickup.config);
-                gunIndex = gunConfigs.Count - 1;
-                gun.config = gunConfigs[gunIndex];
-                RemoveNearbyGun(pickup);
-                pickup.Destroy();
-            }
-        }
-    }
-
-    public void AddNearbyGun(GunPickup pickup) {
-        nearbyGuns.Add(pickup);
-
-    }
-
-    public void RemoveNearbyGun(GunPickup pickup) {
-        nearbyGuns.Remove(pickup);
-    }
-
-    void Shoot() {
-       
-        gun.Shoot(mousePosition);
-        Vector3 knockbackDirection = (transform.position - mousePosition).normalized;
-        Vector2 knockback = gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
-        HorizontalCollisions(ref knockback);
-        VerticalCollisions(ref knockback);
-        transform.position += new Vector3(knockback.x, knockback.y, 0);
-        timeSinceLastShot = 0;
-    }
 }

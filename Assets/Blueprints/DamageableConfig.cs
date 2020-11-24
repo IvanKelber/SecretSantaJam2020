@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="DamageableConfig")]
+[CreateAssetMenu(menuName="Configs/Damageable")]
 public class DamageableConfig : ScriptableObject
 {
 

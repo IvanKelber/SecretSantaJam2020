@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2521559355725457421}
   - component: {fileID: 2521559355725457410}
   - component: {fileID: 2521559355725457409}
+  - component: {fileID: 1557869193}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -111,10 +112,8 @@ MonoBehaviour:
   gunConfigs:
   - {fileID: 11400000, guid: fa55dd36606a2465aafc3a6dccf0b70b, type: 2}
   gun: {fileID: 2521559356229769391}
-  cam: {fileID: 0}
-  playerSpeed: 10
   gunCapacity: 2
-  bulletPrefab: {fileID: 7835573758944721104, guid: 0f925a859a68c484caf3ffa867d9f7ea, type: 3}
+  playerHealth: {fileID: 0}
 --- !u!61 &2521559355725457410
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -237,6 +236,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1557869193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2521559355725457422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6223a558e2f8e412eb2f8ed2a5d31517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 0}
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 2304
+  initialRaySpacing: 0.25
+  horizontalRayCount: 0
+  verticalRayCount: 0
+  horizontalRaySpacing: 0
+  verticalRaySpacing: 0
+  playerSpeed: 10
+  cam: {fileID: 0}
+  mousePosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &8353020124658736637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -288,6 +311,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -57.31
       objectReference: {fileID: 0}
+    - target: {fileID: 5842720488381105490, guid: 6bd57cb5878df4896a10a5f7e64db618, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 1109bf1685078462fb285f8fb3c5f2c2, type: 2}
     - target: {fileID: 5842720488381105493, guid: 6bd57cb5878df4896a10a5f7e64db618, type: 3}
       propertyPath: m_Name
       value: Gun

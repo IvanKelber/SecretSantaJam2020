@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 
 [System.Serializable]
-[CreateAssetMenu(menuName="BulletConfig")]
+[CreateAssetMenu(menuName="Configs/Bullet")]
 public class BulletConfig : ScriptableObject
 {
     [Range(.5f,5)]
@@ -21,4 +21,6 @@ public class BulletConfig : ScriptableObject
     public float bulletSpeed = 20;
 
     public LayerMask damagingLayer;
+
+    public Sprite sprite;
 }

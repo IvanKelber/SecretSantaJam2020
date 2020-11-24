@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="AIConfig")]
+[CreateAssetMenu(menuName="Configs/AI")]
 public class AIConfig : ScriptableObject
 {
     [Range(1, 11)]

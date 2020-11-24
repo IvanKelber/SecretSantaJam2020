@@ -98,9 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 11400000, guid: 75515b2d780e849468e7176a1be805dd, type: 2}
-  collisionMask:
-    serializedVersion: 2
-    m_Bits: 2304
 --- !u!114 &1505966367795444965
 MonoBehaviour:
   m_ObjectHideFlags: 0

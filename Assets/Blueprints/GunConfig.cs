@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 
 [System.Serializable]
-[CreateAssetMenu(menuName="GunConfig")]
+[CreateAssetMenu(menuName="Configs/Gun")]
 public class GunConfig : ScriptableObject
 {
     [Range(0.05f, 1.5f)]
