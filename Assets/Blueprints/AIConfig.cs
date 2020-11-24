@@ -14,6 +14,9 @@ public class AIConfig : ScriptableObject
     [Range(1, 15)]
     public float maxAttackDistance = 10;
 
+    [Range(.5f, 14)]
+    public float minAttackDistance = 5;
+
     public GunConfig gunConfig;
 
 

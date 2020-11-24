@@ -26,7 +26,7 @@ public class PlayerMovement : RaycastController
         UpdateRaycastOrigins();
         UpdateMousePosition();
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - playerInput.x), transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), transform.localScale.y, transform.localScale.z);
         Vector2 displacement = playerInput.normalized * playerSpeed;
 
         Move(displacement);

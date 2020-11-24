@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679a374be240547fc8d40e4ded58d077, type: 3}
-  m_Name: FastButInaccurate
+  m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
+  m_Name: FastButLowDamage
   m_EditorClassIdentifier: 
-  fireRate: 0.05
-  fireImpulse:
+  lifetime: 1
+  bulletDamage: 1
+  collisionImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
     m_AmplitudeGain: 1
@@ -43,9 +44,9 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
-  fireSound: BulletBirth
-  knockback: 29.2
-  spreadNoise: 20
-  naturalSpread: 0
-  numberOfBullets: 1
-  bullet: {fileID: 11400000, guid: 7aef6f943490d40629f3d72a852b27e7, type: 2}
+  collisionSound: BulletCollision
+  bulletSpeed: 30
+  damagingLayer:
+    serializedVersion: 2
+    m_Bits: 3328
+  sprite: {fileID: 21300000, guid: 80219b56ac0204685b3be9b93fdb0630, type: 3}

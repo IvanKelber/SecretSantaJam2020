@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ImpAI
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  detectionRadius: 15
+  detectionRadius: 30
   maxAttackDistance: 10
+  minAttackDistance: 3
   gunConfig: {fileID: 11400000, guid: 45e463574e1124fe2a6c138e768d5606, type: 2}
