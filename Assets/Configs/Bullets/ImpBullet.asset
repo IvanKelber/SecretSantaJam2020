@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ImpBullet
   m_EditorClassIdentifier: 
   lifetime: 5
-  bulletDamage: 3
+  bulletDamage: 5
   collisionImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   collisionSound: BulletCollision
-  bulletSpeed: 5
+  bulletSpeed: 10
   damagingLayer:
     serializedVersion: 2
     m_Bits: 1280

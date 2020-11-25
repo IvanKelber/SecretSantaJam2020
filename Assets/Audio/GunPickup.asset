@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77d88835918f4d2eba1f4e80e3223ac, type: 3}
+  m_Name: GunPickup
+  m_EditorClassIdentifier: 
+  Name: GunPickup
+  clips:
+  - {fileID: 8300000, guid: 428b1a4412393e6488799c436d4ba15c, type: 3}
+  - {fileID: 8300000, guid: 8843cd0afc399944c97715f1a4e15b28, type: 3}
+  - {fileID: 8300000, guid: 5ef1d9e05cd2d8f4796cda8554b6500c, type: 3}
+  minVolume: 1
+  maxVolume: 1
+  minPitch: -0.1
+  maxPitch: 0.1

@@ -43,7 +43,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
-  fireSound: BulletBirth
+  fireSound: Shotgun
   knockback: 100
   spreadNoise: 5
   naturalSpread: 10

@@ -28,6 +28,7 @@ public class Imp : AIEntity
         Collider2D player = Physics2D.OverlapCircle(transform.position, AIconfig.detectionRadius, playerMask);
         if(player != null) {
             nearbyPlayer = player.gameObject.GetComponent<Player>();
+            audioManager.Play("ZombieGrunt", audioSource);
             return true;
         }
         return false;
@@ -39,6 +40,7 @@ public class Imp : AIEntity
         if(hit) {
             Damageable damageable = hit.collider.gameObject.GetComponent<Damageable>();
             if(damageable != null) {
+                audioManager.Play("ZombieGrunt", audioSource);
                 currentState = AIState.Attacking;
             } else {
             }
@@ -46,6 +48,7 @@ public class Imp : AIEntity
             transform.position += AIconfig.movementSpeed * directionToPlayer * Time.deltaTime;
         }
         if(Vector3.Distance(nearbyPlayer.transform.position, transform.position) > AIconfig.detectionRadius) {
+            audioManager.Play("ZombieGrunt", audioSource);
             currentState = AIState.Wandering;
             nearbyPlayer = null;
         }

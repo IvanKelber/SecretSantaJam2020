@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BulletBirth
   m_EditorClassIdentifier: 
   Name: BulletBirth
-  clip: {fileID: 8300000, guid: 6684f66b4a60149fb9e1d8da848bd3db, type: 3}
-  minVolume: 0.3
-  maxVolume: 0.4
-  minPitch: 0.7
+  clips:
+  - {fileID: 8300000, guid: 6684f66b4a60149fb9e1d8da848bd3db, type: 3}
+  minVolume: 0.2
+  maxVolume: 0.3
+  minPitch: 0.505
   maxPitch: 1

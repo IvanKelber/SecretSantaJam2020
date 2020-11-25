@@ -8,8 +8,16 @@ public class GunPickup : MonoBehaviour
     public GunConfig config;
     [SerializeField]
     LayerMask playerMask;
+    [SerializeField]
+    AudioManager audioManager;
+
+    AudioSource audioSource;
 
     Player nearbyPlayer;
+
+    void Start() {
+        audioSource = gameObject.AddComponent<AudioSource>();
+    }
 
     void OnTriggerEnter2D(Collider2D collision) {
         if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
@@ -26,6 +34,7 @@ public class GunPickup : MonoBehaviour
     }
 
     public void Destroy() {
+        audioManager.Play("GunPickup", audioSource);
         Destroy(this.gameObject);
     }
 

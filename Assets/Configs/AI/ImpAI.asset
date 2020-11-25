@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26c65610c0f94d7b86fc874f3e19590, type: 3}
   m_Name: ImpAI
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 5
   detectionRadius: 30
   maxAttackDistance: 10
   minAttackDistance: 3

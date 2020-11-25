@@ -6,9 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Audio Events/SimpleRandom")]
 public class SimpleRandomAudioEvent : AudioEvent
 {
-    public AudioClip clip;
+    public List<AudioClip> clips;
 
-     
     [Range(0,1)]
     public float minVolume = 1;
 
@@ -30,15 +29,15 @@ public class SimpleRandomAudioEvent : AudioEvent
             Debug.LogWarning("Source is null");
             return;
         }
-        if(clip == null) {
+        if(clips.Count == 0) {
             Debug.LogWarning("AudioClip " + Name + " has no clip");
             return;
         }
-        pitch = Random.Range(minPitch, maxPitch);
+        pitch = 1 + Random.Range(minPitch, maxPitch);
         volume = Random.Range(minVolume, maxVolume) * masterVolume;
         source.volume = volume;
         source.pitch = pitch;
-        source.clip = clip;
+        source.clip = clips[Random.Range(0,clips.Count - 1)];
         source.Play();
     }
 }

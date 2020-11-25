@@ -147,3 +147,4 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
+  audioManager: {fileID: 11400000, guid: 75515b2d780e849468e7176a1be805dd, type: 2}

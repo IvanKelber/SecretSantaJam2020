@@ -25,7 +25,7 @@ public class Player : Damageable
     List<GunPickup> nearbyGuns = new List<GunPickup>();
 
     PlayerHealth playerHealth;
-
+    bool dying;
     void Start() {
         base.Start();
         playerMovement = GetComponent<PlayerMovement>();
@@ -34,6 +34,9 @@ public class Player : Damageable
 
     void Update()
     {
+        if(dying) {
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.G)) {
             godModeEnabled = !godModeEnabled;
         }
@@ -92,10 +95,18 @@ public class Player : Damageable
     }
 
     public override void TakeDamage(float damage) {
-        if(godModeEnabled) {
+        if(godModeEnabled || dying) {
             return;
         }
         base.TakeDamage(damage);
+        audioManager.Play("PlayerGrunt", audioSource);
         playerHealth.currentHealth = currentHealth;
     }
+
+    protected override void Die() {
+        dying = true;
+        audioManager.Play("PlayerDeath", audioSource);
+        Destroy(this.gameObject, 1.5f);
+    }
+
 }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77d88835918f4d2eba1f4e80e3223ac, type: 3}
+  m_Name: ZombieGrunt
+  m_EditorClassIdentifier: 
+  Name: ZombieGrunt
+  clips:
+  - {fileID: 8300000, guid: 3c05c8b02eab7f448806e2879a1f06d1, type: 3}
+  - {fileID: 8300000, guid: c9816e45851313a49b57563c56efd9ba, type: 3}
+  - {fileID: 8300000, guid: 1ab917311d59d5e4a99a7e95d03b47c9, type: 3}
+  - {fileID: 8300000, guid: a5b99a0a516161545b5c9c2f3c61ac52, type: 3}
+  - {fileID: 8300000, guid: e28fa2442340a404d8fa7494dc413dfb, type: 3}
+  minVolume: 0.421
+  maxVolume: 0.55
+  minPitch: 1
+  maxPitch: 1
