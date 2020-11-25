@@ -82,18 +82,44 @@ public class Dungeon : MonoBehaviour
                     Vector3 bottomWall = roomCenter + roomHeight/2 * Vector3.down;
 
                     //Right
-                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? wallPrefab : RandomOpening();
+                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? wallPrefab : null;
                     PlaceWall(rightWall, rightPrefab, true);
 
-                    GameObject leftPrefab = (i - 1 < 0 || !grid[i-1,j]) ? wallPrefab : RandomOpening();
+                    //Left
+                    GameObject leftPrefab = (i - 1 < 0 || !grid[i-1,j]) ? wallPrefab : null;
                     PlaceWall(leftWall, leftPrefab, true);
 
-                   
-                    GameObject topPrefab = (j + 1 >= maxRoomsY || !grid[i,j+1]) ? wallPrefab : RandomOpening();
+                    //Top
+                    GameObject topPrefab = (j + 1 >= maxRoomsY || !grid[i,j+1]) ? wallPrefab : null;
                     PlaceWall(topWall, topPrefab, false);
 
+                    //Bottom
+                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? wallPrefab : null;
+                    PlaceWall(bottomWall, bottomPrefab, false);
+
+ 
+                }
                 
-                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? wallPrefab : RandomOpening();
+            }
+        }
+
+        for(int i = 0; i < maxRoomsX; i++) {
+            for(int j = 0; j < maxRoomsY; j++) {
+                if(grid[i,j]) {
+                    Vector3 roomCenter = GetRoomCenter(i,j);
+                    Vector3 rightWall = roomCenter + roomWidth/2 * Vector3.right;
+                    Vector3 leftWall = roomCenter + roomWidth/2 * Vector3.left;
+                    Vector3 topWall = roomCenter + roomHeight/2 * Vector3.up;
+                    Vector3 bottomWall = roomCenter + roomHeight/2 * Vector3.down;
+
+                    //Right
+                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? null : RandomOpening();
+                    PlaceWall(rightWall, rightPrefab, true);
+
+
+
+                    //Bottom
+                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? null : RandomOpening();
                     PlaceWall(bottomWall, bottomPrefab, false);
 
  
@@ -111,6 +137,9 @@ public class Dungeon : MonoBehaviour
     }
 
     void PlaceWall(Vector3 wallCenter, GameObject prefab, bool vertical) {
+        if(prefab == null) {
+            return;
+        }
         GameObject wallObj = Instantiate(prefab, wallCenter, Quaternion.Euler(0,0,vertical ? 0 : 90));
         wallObj.transform.localScale = new Vector3(wallObj.transform.localScale.x, (vertical ? roomHeight : roomWidth) + 1, wallObj.transform.localScale.z);
         walls.Add(wallObj);

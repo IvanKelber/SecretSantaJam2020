@@ -46,9 +46,11 @@ MonoBehaviour:
   maxRoomsX: 10
   maxRoomsY: 10
   roomWidth: 30
-  roomHeight: 20
-  numberOfRooms: 20
-  originRoom: {x: 0, y: 0}
-  startRoom: {x: 0, y: 0}
-  endRoom: {x: 0, y: 0}
-  wallPrefab: {fileID: 0}
+  roomHeight: 18
+  numberOfRooms: 15
+  originRoom: {x: 5, y: 5}
+  wallPrefab: {fileID: 217915949065317498, guid: 16d8354c23ed24bfd9f9f4db143d7243, type: 3}
+  openingPrefabs:
+  - {fileID: 4354786425258689415, guid: 00b923663af7c4124b0d52c641390c94, type: 3}
+  - {fileID: 377997867025159591, guid: 4d661d8e066e84ec8b8ff1c0ce02f59a, type: 3}
+  - {fileID: 3434547592747049669, guid: 89716c4d5424f4d0fab641f4ad477547, type: 3}
