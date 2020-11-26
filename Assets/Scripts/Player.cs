@@ -89,7 +89,7 @@ public class Player : Damageable
        
         gun.Shoot(playerMovement.mousePosition);
         Vector3 knockbackDirection = (transform.position - playerMovement.mousePosition).normalized;
-        Vector2 knockback = gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y);
+        Vector2 knockback = gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
         playerMovement.Move(knockback);
         timeSinceLastShot = 0;
     }

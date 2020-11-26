@@ -27,7 +27,7 @@ public class PlayerMovement : RaycastController
         UpdateMousePosition();
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), transform.localScale.y, transform.localScale.z);
-        Vector2 displacement = playerInput.normalized * playerSpeed;
+        Vector2 displacement = playerInput.normalized * playerSpeed * Time.deltaTime;
 
         Move(displacement);
 
@@ -35,17 +35,21 @@ public class PlayerMovement : RaycastController
 
     public void Move(Vector2 displacement) {
 
-    
         HorizontalCollisions(ref displacement);
         VerticalCollisions(ref displacement);
-        Vector3 velocity = new Vector3(displacement.x, displacement.y, 0) * Time.deltaTime;
+        Vector3 velocity = new Vector3(displacement.x, displacement.y, 0);
         transform.position += velocity;
     }
 
     public void HorizontalCollisions(ref Vector2 moveAmount)
     {
         float directionX = Mathf.Sign(moveAmount.x);
-        float rayLength = 2 * skinWidth;
+        float rayLength = Mathf.Abs(moveAmount.x) + skinWidth;
+
+        if (Mathf.Abs(moveAmount.x) < skinWidth)
+        {
+            rayLength = 2 * skinWidth;
+        }
 
         for (int i = 0; i < horizontalRayCount; i++)
         {
@@ -66,8 +70,12 @@ public class PlayerMovement : RaycastController
     public void VerticalCollisions(ref Vector2 moveAmount)
     {
         float directionY = Mathf.Sign(moveAmount.y);
-        float rayLength = 2 * skinWidth;
+        float rayLength = Mathf.Abs(moveAmount.y) + skinWidth;
 
+        if (Mathf.Abs(moveAmount.y) < skinWidth)
+        {
+            rayLength = 2 * skinWidth;
+        }
         for (int i = 0; i < verticalRayCount; i++)
         {
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
