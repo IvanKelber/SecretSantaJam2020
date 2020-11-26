@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4354786425258689414}
   - component: {fileID: 4354786425258689466}
   - component: {fileID: 4354786425258689465}
+  - component: {fileID: 5568422421304535}
   m_Layer: 8
   m_Name: DestructableWall
   m_TagString: Untagged
@@ -30,9 +31,10 @@ Transform:
   m_GameObject: {fileID: 4354786425258689415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.41, y: -0.054, z: 0}
-  m_LocalScale: {x: 1, y: 9.90845, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3708746567066081763}
+  - {fileID: 7382940154089664366}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -149,6 +151,48 @@ MonoBehaviour:
   currentHealth: 0
   audioSource: {fileID: 0}
   healthBar: {fileID: 3708746567529669757}
+--- !u!114 &5568422421304535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4354786425258689415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4da66c14cd042f9b35bab3be3ded6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &9162486329898925371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7382940154089664366}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7382940154089664366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162486329898925371}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00000010058284, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4354786425258689467}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8220522062723294477
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -36,6 +36,11 @@ public class Dungeon : MonoBehaviour
     //     }
     // }
 
+    public void GenerateLevel(int level) {
+        //TODO update levelManifest (rooms, guns, enemies, tiles, etc.)
+        GenerateGrid();
+    }
+
     public void GenerateGrid() {
         grid = new bool[maxRoomsX, maxRoomsY];
         currentRooms = 0;

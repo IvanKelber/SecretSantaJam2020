@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897393201}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2131050077}
@@ -133,7 +133,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -239,8 +239,11 @@ MonoBehaviour:
   originRoom: {x: 5, y: 5}
   wallPrefab: {fileID: 217915949065317498, guid: 16d8354c23ed24bfd9f9f4db143d7243, type: 3}
   openingPrefabs:
-  - {fileID: 4354786425258689415, guid: 00b923663af7c4124b0d52c641390c94, type: 3}
+  - {fileID: 6555061776021148934, guid: 7e8264a99b2bf49aaadc7d92014d96bf, type: 3}
   - {fileID: 377997867025159591, guid: 4d661d8e066e84ec8b8ff1c0ce02f59a, type: 3}
   - {fileID: 3434547592747049669, guid: 89716c4d5424f4d0fab641f4ad477547, type: 3}
+  - {fileID: 5274187608294996626, guid: ddf8d32ae6bfa44cf8dc61208191753f, type: 3}
+  - {fileID: 7844180687194316622, guid: d1c92b00c00134e5aa2cb2bf18d6055e, type: 3}
+  roomManifest: {fileID: 11400000, guid: 212b3c97ff7584917bc6356a803a0fe0, type: 2}
   tileMap: {fileID: 1897393204}
   tileSet: {fileID: 11400000, guid: c9b9229bb9c9a4b7d9b66c5f3b86672e, type: 2}

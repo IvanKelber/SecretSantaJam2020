@@ -258,14 +258,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1897393202, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1897393203, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
-      propertyPath: m_SortingOrder
-      value: -2
-      objectReference: {fileID: 0}
     - target: {fileID: 4167866685595291175, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -311,21 +303,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
-      propertyPath: roomConfigs.Array.size
-      value: 2
+      propertyPath: roomWidth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
-      propertyPath: roomConfigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: ba7eced58e9cd43e19d4456744209d27, type: 2}
-    - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
-      propertyPath: roomConfigs.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: d996c0534a03049358ebdea89cdde1ec, type: 2}
-    - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
-      propertyPath: roomManifest
-      value: 
-      objectReference: {fileID: 11400000, guid: 212b3c97ff7584917bc6356a803a0fe0, type: 2}
+      propertyPath: roomHeight
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 4167866685595291177, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
       propertyPath: m_Name
       value: Dungeon
@@ -523,6 +507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2112408533}
   - component: {fileID: 2112408532}
+  - component: {fileID: 2112408534}
   m_Layer: 0
   m_Name: StartLevel
   m_TagString: Untagged
@@ -558,6 +543,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2112408534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112408531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 665b7600409d2403dbd4ad092d1f9aec, type: 2}
+  _event: {fileID: 11400000, guid: 665b7600409d2403dbd4ad092d1f9aec, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2112408532}
+        m_TargetAssemblyTypeName: StartLevel, Assembly-CSharp
+        m_MethodName: OnLevelComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2521559354493436683
 PrefabInstance:
   m_ObjectHideFlags: 0
