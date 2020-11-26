@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room
+public class Room : MonoBehaviour
 {
-    public float width;
-    public float height;
-
     public Vector2 index;
+    public Vector3 worldPosition;
 
-    public Room(Vector2 index) {
-        
-    }
+    public RoomConfig config;
 
+    
 }

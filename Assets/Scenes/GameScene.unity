@@ -310,6 +310,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
+      propertyPath: roomConfigs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
+      propertyPath: roomConfigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba7eced58e9cd43e19d4456744209d27, type: 2}
+    - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
+      propertyPath: roomConfigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d996c0534a03049358ebdea89cdde1ec, type: 2}
     - target: {fileID: 4167866685595291177, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
       propertyPath: m_Name
       value: Dungeon

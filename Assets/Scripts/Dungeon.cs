@@ -18,23 +18,24 @@ public class Dungeon : MonoBehaviour
     public GameObject wallPrefab;
     public List<GameObject> openingPrefabs = new List<GameObject>();
 
-    public Tilemap tileMap;
+    public List<RoomConfig> roomConfigs;
 
+    public Tilemap tileMap;
     public Tileset tileSet;
     Vector2 startRoom;
     Vector2 endRoom;
 
     int currentRooms = 0;
 
-    public void Start() {
-        GenerateGrid();
-    }
+    // public void Start() {
+    //     GenerateGrid();
+    // }
 
-    public void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            GenerateGrid();
-        }
-    }
+    // public void Update() {
+    //     if(Input.GetKeyDown(KeyCode.Space)) {
+    //         GenerateGrid();
+    //     }
+    // }
 
     public void GenerateGrid() {
         grid = new bool[maxRoomsX, maxRoomsY];
@@ -141,6 +142,14 @@ public class Dungeon : MonoBehaviour
                     1);
                 tileMap.SetTile(tileLocation, tileSet.Get("Snow"));
             }
+        }
+        GameObject interiorPrefab = roomConfigs[Random.Range(0, roomConfigs.Count)].interiorPrefab;
+        if(interiorPrefab != null) {
+            GameObject roomInterior = Instantiate(interiorPrefab, GetRoomCenter(room), Quaternion.identity);
+            Debug.Log("Instantiating roomInterior", roomInterior);
+
+            roomInterior.transform.localScale = new Vector3(roomWidth, roomHeight, 1);
+            // roomInterior.transform.parent = this.transform;
         }
     }
 
