@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc377915f07f1466bbb9d4b4d6fc68f3, type: 3}
-  m_Name: EmptyRoom
+  m_Name: StartRoom
   m_EditorClassIdentifier: 
-  name: EmptyRoom
-  isSpecific: 0
+  name: StartRoom
+  isSpecific: 1
   infinteEnemySpawn: 0
   numberOfEnemies: 0
   numberOfPickups: 0
-  interiorPrefab: {fileID: 1276074041414960877, guid: 7d14ab7befc464300b7e9190a3e91b17, type: 3}
+  interiorPrefab: {fileID: 1744554092597617226, guid: 5f5b934aa83794f5ab78961718861e69, type: 3}

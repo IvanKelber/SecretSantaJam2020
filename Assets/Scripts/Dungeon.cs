@@ -18,8 +18,7 @@ public class Dungeon : MonoBehaviour
     public GameObject wallPrefab;
     public List<GameObject> openingPrefabs = new List<GameObject>();
 
-    public List<RoomConfig> roomConfigs;
-
+    public RoomManifest roomManifest;
     public Tilemap tileMap;
     public Tileset tileSet;
     Vector2 startRoom;
@@ -52,14 +51,21 @@ public class Dungeon : MonoBehaviour
             grid[(int)room.x, (int)room.y] = true;
             currentRooms++;
             AddAdjacentRooms(ref availableRooms, room);
-            FillRoom(room);
         }
         foreach(Transform child in transform) {
             if(child.gameObject.tag != "Grid")
                 Destroy(child.gameObject);
         }
-        PlaceWalls();
         ChooseStartAndEnd();
+
+        for(int i = 0; i < maxRoomsX; i++) {
+            for(int j = 0; j < maxRoomsY; j++) {
+                if(grid[i,j]) {
+                    FillRoom(new Vector2(i,j));
+                }
+            }
+        }
+        PlaceWalls();
     }
 
 
@@ -143,13 +149,21 @@ public class Dungeon : MonoBehaviour
                 tileMap.SetTile(tileLocation, tileSet.Get("Snow"));
             }
         }
-        GameObject interiorPrefab = roomConfigs[Random.Range(0, roomConfigs.Count)].interiorPrefab;
-        if(interiorPrefab != null) {
-            GameObject roomInterior = Instantiate(interiorPrefab, GetRoomCenter(room), Quaternion.identity);
-            Debug.Log("Instantiating roomInterior", roomInterior);
+        RoomConfig roomConfig;
+        if(room == startRoom) {
+            Debug.Log("Found startRoom");
+            roomConfig = roomManifest.Get("StartRoom");
+        } else if (room == endRoom) {
+            Debug.Log("Found endRoom");
 
+            roomConfig = roomManifest.Get("EndRoom");
+        } else {
+            roomConfig = roomManifest.GetRandomNonSpecific();
+        }
+        if(roomConfig != null) {
+            GameObject roomInterior = Instantiate(roomConfig.interiorPrefab, GetRoomCenter(room), Quaternion.identity);
             roomInterior.transform.localScale = new Vector3(roomWidth, roomHeight, 1);
-            // roomInterior.transform.parent = this.transform;
+            roomInterior.transform.parent = this.transform;
         }
     }
 
@@ -184,7 +198,6 @@ public class Dungeon : MonoBehaviour
                     break;
                 }
             }
-
         }
     }
 

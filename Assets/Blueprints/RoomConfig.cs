@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName="Configs/Room")]
 public class RoomConfig : ScriptableObject
 {
+    public string name;
+    public bool isSpecific = false;
     public bool infinteEnemySpawn = false;
 
     [Range(0,20)]
@@ -14,5 +16,7 @@ public class RoomConfig : ScriptableObject
     public int numberOfPickups = 1;
 
     public GameObject interiorPrefab;
+
+
 
 }
