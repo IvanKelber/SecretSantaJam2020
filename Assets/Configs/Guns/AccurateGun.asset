@@ -48,4 +48,4 @@ MonoBehaviour:
   spreadNoise: 0
   naturalSpread: 0
   numberOfBullets: 1
-  bullet: {fileID: 11400000, guid: bb290adf0fe5645729d316fed4c9f496, type: 2}
+  bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}

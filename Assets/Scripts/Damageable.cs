@@ -23,11 +23,17 @@ public class Damageable : MonoBehaviour
 
     public virtual void TakeDamage(float damage) {
         currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth,0,config.maxHealth);
         healthBar.SetCurrentHealth(currentHealth);
-        if(currentHealth <= 0) {
-            currentHealth = 0;
+        if(currentHealth == 0) {
             Die();
         }
+    }
+
+    public virtual void Heal(float heal) {
+        currentHealth += heal;
+        currentHealth = Mathf.Clamp(currentHealth,0,config.maxHealth);
+        healthBar.SetCurrentHealth(currentHealth);
     }
 
     protected virtual void Die() {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class Player : Damageable
 {
@@ -14,7 +15,13 @@ public class Player : Damageable
     Gun gun;
 
     [SerializeField]
+    GunConfig defaultGun;
+
+    [SerializeField]
     int gunCapacity = 2;
+
+    [SerializeField]
+    GameEvent playerDeath;
 
     PlayerMovement playerMovement;
 
@@ -30,6 +37,8 @@ public class Player : Damageable
         base.Start();
         playerMovement = GetComponent<PlayerMovement>();
         playerHealth = config as PlayerHealth;
+        gunConfigs.Add(defaultGun);
+        gun.config = gunConfigs[gunIndex];
     }
 
     void Update()
@@ -85,8 +94,20 @@ public class Player : Damageable
         nearbyGuns.Remove(pickup);
     }
 
+    void Reset() {
+        gunConfigs = new List<GunConfig>();
+        gunConfigs.Add(defaultGun);
+        gunIndex = 0;
+        gun.config = gunConfigs[gunIndex];
+        FullHeal();
+    }
+
+    void FullHeal() {
+        playerHealth.currentHealth = playerHealth.maxHealth;
+        base.Heal(playerHealth.maxHealth);
+    }
+
     void Shoot() {
-       
         gun.Shoot(playerMovement.mousePosition);
         Vector3 knockbackDirection = (transform.position - playerMovement.mousePosition).normalized;
         Vector2 knockback = gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
@@ -106,7 +127,9 @@ public class Player : Damageable
     protected override void Die() {
         dying = true;
         audioManager.Play("PlayerDeath", audioSource);
-        Destroy(this.gameObject, 1.5f);
+        Reset();
+        playerDeath.Raise();
+        dying = false;
     }
 
 }

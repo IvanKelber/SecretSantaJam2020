@@ -41,12 +41,20 @@ public class Dungeon : MonoBehaviour
         GenerateGrid();
     }
 
-    public void GenerateGrid() {
+    public void DestroyCurrentLevel() {
         grid = new bool[maxRoomsX, maxRoomsY];
         currentRooms = 0;
+        tileMap.ClearAllTiles();
+        foreach(Transform child in transform) {
+            if(child.gameObject.tag != "Grid")
+                Destroy(child.gameObject);
+        }
+    }
+
+    public void GenerateGrid() {
+        DestroyCurrentLevel();
         List<Vector2> availableRooms = new List<Vector2>();
         availableRooms.Add(originRoom);
-        tileMap.ClearAllTiles();
 
         while(currentRooms < numberOfRooms) {
             // choose a random room that's available
@@ -57,10 +65,7 @@ public class Dungeon : MonoBehaviour
             currentRooms++;
             AddAdjacentRooms(ref availableRooms, room);
         }
-        foreach(Transform child in transform) {
-            if(child.gameObject.tag != "Grid")
-                Destroy(child.gameObject);
-        }
+        
         ChooseStartAndEnd();
 
         for(int i = 0; i < maxRoomsX; i++) {
@@ -156,11 +161,8 @@ public class Dungeon : MonoBehaviour
         }
         RoomConfig roomConfig;
         if(room == startRoom) {
-            Debug.Log("Found startRoom");
             roomConfig = roomManifest.Get("StartRoom");
         } else if (room == endRoom) {
-            Debug.Log("Found endRoom");
-
             roomConfig = roomManifest.Get("EndRoom");
         } else {
             roomConfig = roomManifest.GetRandomNonSpecific();

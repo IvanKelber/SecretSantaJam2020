@@ -8,6 +8,7 @@ public class StartLevel : MonoBehaviour
     public GameObject player;
     public Dungeon dungeon;
     public LayerMask playerMask;
+    public Transform playerDeathSpawn;
 
     private int currentLevel = 0;
     private bool playerPresent = false;
@@ -20,6 +21,11 @@ public class StartLevel : MonoBehaviour
 
     public void OnLevelComplete() {
         NextLevel(++currentLevel);
+    }
+
+    public void OnPlayerDeath() {
+        dungeon.DestroyCurrentLevel();
+        player.transform.position = playerDeathSpawn.position;
     }
 
     public void NextLevel(int level) {
