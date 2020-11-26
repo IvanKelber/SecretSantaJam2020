@@ -167,7 +167,6 @@ public class Dungeon : MonoBehaviour
         }
         if(roomConfig != null) {
             GameObject roomInterior = Instantiate(roomConfig.interiorPrefab, GetRoomCenter(room), Quaternion.identity);
-            roomInterior.transform.localScale = new Vector3(roomWidth, roomHeight, 1);
             roomInterior.transform.parent = this.transform;
         }
     }
