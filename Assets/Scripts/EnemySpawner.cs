@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     [Range(0,20)]
     public int maxEnemiesSpawned = 12;
 
+    public LayerMask playerMask;
+
     [SerializeField]
     float timeBetweenSpawns = 5;
 
@@ -23,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
     int enemiesToSpawn;
     int totalEnemiesSpawned = 0;
     float timeSinceLastSpawn = 0;
+    bool playerDetected = false;
+    
     void Start() {
         enemiesToSpawn = Random.Range(minEnemiesSpawned, maxEnemiesSpawned);
         timeSinceLastSpawn = timeBetweenSpawns;
@@ -35,8 +39,9 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        DetectPlayer();
         timeSinceLastSpawn += Time.deltaTime;
-        if(timeSinceLastSpawn >= timeBetweenSpawns && totalEnemiesSpawned < enemiesToSpawn) {
+        if(playerDetected && timeSinceLastSpawn >= timeBetweenSpawns && totalEnemiesSpawned < enemiesToSpawn) {
             timeSinceLastSpawn = 0;
             Spawn();
         }
@@ -56,6 +61,14 @@ public class EnemySpawner : MonoBehaviour
             Destroy(enemy);
         }
         Destroy(this.gameObject);
+    }
+
+    void DetectPlayer() {
+        if(playerDetected) {
+            return;
+        }
+        Collider2D player = Physics2D.OverlapCircle(transform.position, 40, playerMask);
+        playerDetected |= player != null; 
     }
 
     void OnDrawGizmos() {

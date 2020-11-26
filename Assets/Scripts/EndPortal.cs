@@ -7,10 +7,24 @@ public class EndPortal : MonoBehaviour
 {
     public GameEvent levelComplete;
     public LayerMask playerMask;
-    void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log("Trigger entered");
-        if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
+
+    bool playerPresent = false;
+
+    void Update() {
+        if(playerPresent && Input.GetKeyDown(KeyCode.E)) {
             levelComplete.Raise();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
+            playerPresent = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision) {
+        if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
+            playerPresent = false;
         }
     }
 }
