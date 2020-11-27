@@ -10,12 +10,17 @@ public class StartLevel : MonoBehaviour
     public LayerMask playerMask;
     public Transform playerDeathSpawn;
 
+    public GameObject interact;
+
     private int currentLevel = 0;
     private bool playerPresent = false;
+    private Transform playerTransform;
 
     void Update() {
-        if(playerPresent && Input.GetKeyDown(KeyCode.E)) {
-            NextLevel(currentLevel);
+        if(playerPresent) {
+            if(Input.GetKeyDown(KeyCode.E)) {
+                NextLevel(currentLevel);
+            }
         }
     }
 
@@ -36,12 +41,16 @@ public class StartLevel : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision) {
         if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
             playerPresent = true;
+            playerTransform= collision.transform;
+            interact.SetActive(true);
         }
     }
 
     void OnTriggerExit2D(Collider2D collision) {
         if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
             playerPresent = false;
+            playerTransform = null;
+            interact.SetActive(false);
         }
     }
 }
