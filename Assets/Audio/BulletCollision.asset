@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: BulletCollision
   clips:
-  - {fileID: 8300000, guid: 3cc2cb48cc025cf4b90c1ca166cd3106, type: 3}
-  minVolume: 0.15
-  maxVolume: 0.2
-  minPitch: -0.6
-  maxPitch: -0.5
+  - {fileID: 8300000, guid: 6684f66b4a60149fb9e1d8da848bd3db, type: 3}
+  minVolume: 0.078
+  maxVolume: 0.082
+  minPitch: -0.106
+  maxPitch: 0.086

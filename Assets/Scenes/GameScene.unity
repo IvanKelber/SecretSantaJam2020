@@ -2176,13 +2176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e8433a68bdb474b80bc8c7086064c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 29045563}
-  dungeon: {fileID: 1392413145}
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
+  interactPrompt: {fileID: 2092106896}
+  player: {fileID: 29045563}
+  dungeon: {fileID: 1392413145}
   playerDeathSpawn: {fileID: 759962161}
-  interact: {fileID: 2092106896}
 --- !u!4 &2112408533
 Transform:
   m_ObjectHideFlags: 0
@@ -2192,7 +2192,7 @@ Transform:
   m_GameObject: {fileID: 2112408531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.131948, y: 6.5407147, z: 2.447379}
+  m_LocalScale: {x: 8, y: 8, z: 2.447379}
   m_Children:
   - {fileID: 2092106897}
   m_Father: {fileID: 130190133}
@@ -2447,7 +2447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2484,26 +2484,6 @@ PrefabInstance:
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 851697489853290116, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 851697489853290116, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9395aca67c6e435592a3d3054692703, type: 3}

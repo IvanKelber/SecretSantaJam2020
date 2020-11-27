@@ -59,11 +59,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246bf75fcbd094d1d8e0c66369c6b507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelComplete: {fileID: 11400000, guid: 665b7600409d2403dbd4ad092d1f9aec, type: 2}
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
---- !u!1001 &379503788956081385
+  interactPrompt: {fileID: 4347629142145885188}
+  levelComplete: {fileID: 11400000, guid: 665b7600409d2403dbd4ad092d1f9aec, type: 2}
+--- !u!1001 &4000383878222660830
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -74,13 +75,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interact
       objectReference: {fileID: 0}
+    - target: {fileID: 851697489572831450, guid: a9395aca67c6e435592a3d3054692703, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalPosition.z
@@ -88,15 +93,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
       propertyPath: m_LocalRotation.w
@@ -118,24 +123,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 851697489572831451, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 851697489853290116, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 851697489853290116, guid: a9395aca67c6e435592a3d3054692703, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.29
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9395aca67c6e435592a3d3054692703, type: 3}
+--- !u!1 &4347629142145885188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 851697489572831450, guid: a9395aca67c6e435592a3d3054692703, type: 3}
+  m_PrefabInstance: {fileID: 4000383878222660830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6600703833765626709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,6 +137,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1744554092567639664, guid: 5f5b934aa83794f5ab78961718861e69, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744554092567639664, guid: 5f5b934aa83794f5ab78961718861e69, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1744554092567639667, guid: 5f5b934aa83794f5ab78961718861e69, type: 3}
       propertyPath: m_Color.r
       value: 1
