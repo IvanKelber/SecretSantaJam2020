@@ -25,8 +25,11 @@ public class GunConfig : ScriptableObject
     [Range(0, 359)]
     public float centerAngle = 0;
 
-    [Range(1,15)]
+    [Range(1,100)]
     public int numberOfBullets = 1;
 
     public BulletConfig bullet;
+
+    [Range(0, 2)]
+    public float timeBetweenShots = 0;
 }

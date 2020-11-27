@@ -11,6 +11,9 @@ public class PlayerMovement : Controller2D
     [SerializeField]
     Camera cam;
 
+    public GameObject playerCursor;
+    public GameObject cameraFocus;
+
     Vector2 playerInput;
 
     [HideInInspector]
@@ -36,6 +39,8 @@ public class PlayerMovement : Controller2D
     void UpdateMousePosition() {
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
+        playerCursor.transform.position = mousePosition;
+        cameraFocus.transform.position = (transform.position +(mousePosition - transform.position)/2);
     }
 
 }

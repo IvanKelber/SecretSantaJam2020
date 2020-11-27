@@ -12,6 +12,8 @@ public class Gun : MonoBehaviour
     AudioSource audioSource;
     CinemachineImpulseSource impulseSource;
 
+    bool shooting = false;
+
     void Start() {
         audioSource = GetComponent<AudioSource>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
@@ -27,8 +29,18 @@ public class Gun : MonoBehaviour
     }
 
     public void Shoot(Vector3 direction) {
+        if(!shooting) {
+            StartCoroutine(DoShoot(direction));
+        }
+        
+    }
+
+    IEnumerator DoShoot(Vector3 direction) {
+        shooting = true;
         float angleStep = config.angleBetweenBullets * 2;
         for(int i = 0; i < config.numberOfBullets; i++) {
+            ShotFX();
+
             Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
             bullet.SetConfig(config.bullet);
             Vector3 noisyDirection = GetCenter(direction);
@@ -37,10 +49,16 @@ public class Gun : MonoBehaviour
             Debug.Log("Direction: " + noisyDirection);
             noisyDirection = Quaternion.Euler(0,0, Random.Range(-config.spreadNoise, config.spreadNoise)) * noisyDirection;
             bullet.SetDirection(noisyDirection);
+            if(config.timeBetweenShots > 0) {
+                yield return new WaitForSeconds(config.timeBetweenShots);
+            }
         }
+        shooting = false;
+    }
+
+    public void ShotFX() {
         impulseSource.GenerateImpulse();
         audioManager.Play(config.fireSound, audioSource);
-    
     }
 
     void OnDrawGizmos() {
