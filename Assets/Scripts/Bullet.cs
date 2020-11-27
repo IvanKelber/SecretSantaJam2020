@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour
     SpriteRenderer renderer;
     bool destroying = false;
 
+    Vector2 velocity;
+    Vector2 gravity;
 
     void Start() {
         birthTime = Time.time;
@@ -31,11 +33,14 @@ public class Bullet : MonoBehaviour
         if(config.sprite != null) {
             renderer.sprite = config.sprite;
         }
+        velocity = direction.normalized * config.bulletSpeed;
+        gravity = (Vector2)(Quaternion.Euler(0,0,config.gravityDirection) * Vector3.right).normalized * config.gravityMagnitude;
     }
 
     void Update()
     {
-        transform.position += direction * config.bulletSpeed * Time.deltaTime;
+        velocity += gravity * Time.deltaTime;
+        transform.position += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime;
         Collider2D[] collisions = CheckCollision();
         if(collisions.Length > 0) {
             if(!destroying)

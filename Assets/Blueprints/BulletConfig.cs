@@ -23,4 +23,12 @@ public class BulletConfig : ScriptableObject
     public LayerMask damagingLayer;
 
     public Sprite sprite;
+
+    [Range(-180,180)]
+    public float gravityDirection = -90; //initially straight down
+
+    public float gravityMagnitude = 0;
+    
+    public bool independentOfAim = false;
+
 }

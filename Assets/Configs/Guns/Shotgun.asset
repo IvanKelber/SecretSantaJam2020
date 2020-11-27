@@ -46,6 +46,7 @@ MonoBehaviour:
   fireSound: Shotgun
   knockback: 100
   spreadNoise: 5
-  naturalSpread: 10
+  angleBetweenBullets: 2
+  centerAngle: 0
   numberOfBullets: 4
   bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}

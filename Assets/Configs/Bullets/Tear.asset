@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679a374be240547fc8d40e4ded58d077, type: 3}
-  m_Name: AccurateGun
+  m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
+  m_Name: Tear
   m_EditorClassIdentifier: 
-  fireRate: 0.308
-  fireImpulse:
+  lifetime: 1
+  bulletDamage: 5
+  collisionImpulse:
     m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 11400000, guid: 310b95a54384d450e9d4037fb30c71b1, type: 2}
-    m_AmplitudeGain: 0.01
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
@@ -43,9 +44,12 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
-  fireSound: BulletBirth
-  knockback: 0
-  spreadNoise: 0
-  angleBetweenBullets: 0
-  numberOfBullets: 1
-  bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
+  collisionSound: 
+  bulletSpeed: 20.5
+  damagingLayer:
+    serializedVersion: 2
+    m_Bits: 2304
+  sprite: {fileID: 0}
+  gravityDirection: -90
+  gravityMagnitude: 30
+  independentOfAim: 1

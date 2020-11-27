@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
   m_Name: FirstBullet
   m_EditorClassIdentifier: 
-  lifetime: 1
+  lifetime: 1.83
   bulletDamage: 5
   collisionImpulse:
     m_ImpulseChannel: 1
@@ -49,3 +49,7 @@ MonoBehaviour:
   damagingLayer:
     serializedVersion: 2
     m_Bits: 2304
+  sprite: {fileID: 0}
+  gravityDirection: -90
+  gravityMagnitude: 0
+  independentOfAim: 0
