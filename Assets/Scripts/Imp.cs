@@ -16,10 +16,12 @@ public class Imp : AIEntity
     int currentWaypoint = 0;
     Seeker seeker;
     Path path;
+    AIMovement movement;
 
     public override void Start() {
         base.Start();
         seeker = GetComponent<Seeker>();
+        movement = GetComponent<AIMovement>();
         gun.config = AIconfig.gunConfig;
     }
 
@@ -72,8 +74,8 @@ public class Imp : AIEntity
         Vector3 direction = (path.vectorPath[currentWaypoint + 1] - transform.position).normalized;
         Vector3 velocity = direction * AIconfig.movementSpeed;
 
-
-        transform.position += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime;
+        movement.Move(new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime);
+        // transform.position += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime;
 
         if(Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) <= nextWaypointDst) {
             currentWaypoint++;

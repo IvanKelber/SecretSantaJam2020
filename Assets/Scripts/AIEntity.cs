@@ -10,17 +10,14 @@ public class AIEntity : Damageable
         Searching,
         Attacking 
     }
+    public AIConfig AIconfig;
     
-    protected AIState currentState = AIState.Wandering;
-
-    [SerializeField]
-    protected AIConfig AIconfig;
-
     [SerializeField]
     protected LayerMask playerMask, wallMask;
 
     protected LayerMask collisionMask;
     
+    protected AIState currentState = AIState.Wandering;
 
     public virtual void Start()
     {
