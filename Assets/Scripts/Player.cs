@@ -127,8 +127,8 @@ public class Player : Damageable
     protected override void Die() {
         dying = true;
         audioManager.Play("PlayerDeath", audioSource);
-        Reset();
         playerDeath.Raise();
+        Reset();
         dying = false;
     }
 

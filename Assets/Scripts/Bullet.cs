@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
             if(!destroying)
                 StartCoroutine(Collision(collisions));
         }
-        if(Time.time - birthTime >= config.lifetime) {
+        if(!destroying && Time.time - birthTime >= config.lifetime) {
             Destroy(this.gameObject);
         }
     }

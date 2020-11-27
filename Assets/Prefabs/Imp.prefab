@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 15768144417791389}
   - component: {fileID: 15768144417791388}
   - component: {fileID: 15768144417791387}
+  - component: {fileID: 8008997900219964974}
   m_Layer: 11
   m_Name: Imp
   m_TagString: Untagged
@@ -110,6 +111,7 @@ MonoBehaviour:
   wallMask:
     serializedVersion: 2
     m_Bits: 256
+  nextWaypointDst: 1
   gun: {fileID: 5849479206479779298}
 --- !u!61 &15768144417791387
 BoxCollider2D:
@@ -137,6 +139,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.92, y: 2.56}
   m_EdgeRadius: 0
+--- !u!114 &8008997900219964974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15768144417791391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1001 &15768144850751664
 PrefabInstance:
   m_ObjectHideFlags: 0

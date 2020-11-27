@@ -75,10 +75,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minEnemiesSpawned: 2
-  maxEnemiesSpawned: 18
+  maxEnemiesSpawned: 5
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
-  timeBetweenSpawns: 3
+  detectionRadius: 20
+  timeBetweenSpawns: 5
   enemyPrefabs:
   - {fileID: 15768144417791391, guid: fb06aa45d3af842c1a205c5fcede043a, type: 3}

@@ -24,6 +24,7 @@ public class Gun : MonoBehaviour
         for(int i = 0; i < config.numberOfBullets; i++) {
             Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
             bullet.SetConfig(config.bullet);
+            bullet.transform.parent = this.transform;
             Vector3 noisyDirection = (direction - transform.position).normalized;
             noisyDirection = Quaternion.Euler(0,0, -config.naturalSpread + (angleStep * i)) * noisyDirection;
             noisyDirection = Quaternion.Euler(0,0, Random.Range(-config.spreadNoise, config.spreadNoise)) * noisyDirection;

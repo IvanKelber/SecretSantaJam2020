@@ -12,6 +12,9 @@ public class EnemySpawner : MonoBehaviour
 
     public LayerMask playerMask;
 
+    [Range(0,100)]
+    public float detectionRadius = 40;
+
     [SerializeField]
     float timeBetweenSpawns = 5;
 
@@ -67,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
         if(playerDetected) {
             return;
         }
-        Collider2D player = Physics2D.OverlapCircle(transform.position, 40, playerMask);
+        Collider2D player = Physics2D.OverlapCircle(transform.position, detectionRadius, playerMask);
         playerDetected |= player != null; 
     }
 
@@ -78,6 +81,8 @@ public class EnemySpawner : MonoBehaviour
                 Gizmos.DrawWireSphere(spawnPoint.position, 1f);
             }
         }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 
 }
