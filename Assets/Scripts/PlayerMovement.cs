@@ -13,6 +13,8 @@ public class PlayerMovement : Controller2D
 
     public GameObject playerCursor;
     public GameObject cameraFocus;
+    [Range(0,1)]
+    public float cameraFocusScale = .5f;
 
     Vector2 playerInput;
 
@@ -40,7 +42,8 @@ public class PlayerMovement : Controller2D
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
         playerCursor.transform.position = mousePosition;
-        cameraFocus.transform.position = (transform.position +(mousePosition - transform.position)/2);
+        // cameraFocus.transform.position = (transform.position +(mousePosition - transform.position)/2);
+        cameraFocus.transform.position = Vector3.Lerp(transform.position, mousePosition, cameraFocusScale);
     }
 
 }
