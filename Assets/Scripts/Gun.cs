@@ -13,7 +13,6 @@ public class Gun : MonoBehaviour
     CinemachineImpulseSource impulseSource;
 
     bool shooting = false;
-
     void Start() {
         audioSource = GetComponent<AudioSource>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
@@ -46,7 +45,6 @@ public class Gun : MonoBehaviour
             Vector3 noisyDirection = GetCenter(direction);
 
             noisyDirection = Quaternion.Euler(0,0, - config.angleBetweenBullets + (angleStep * i)) * noisyDirection;
-            Debug.Log("Direction: " + noisyDirection);
             noisyDirection = Quaternion.Euler(0,0, Random.Range(-config.spreadNoise, config.spreadNoise)) * noisyDirection;
             bullet.SetDirection(noisyDirection);
             if(config.timeBetweenShots > 0) {
@@ -70,5 +68,4 @@ public class Gun : MonoBehaviour
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0,0,config.angleBetweenBullets) *center * 2);
     }
     
-
 }

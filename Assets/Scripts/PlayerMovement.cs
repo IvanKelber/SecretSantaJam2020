@@ -28,8 +28,12 @@ public class PlayerMovement : Controller2D
 
     void Update()
     {
+  
         UpdateRaycastOrigins();
         UpdateMousePosition();
+        if(StaticUserControls.paused) {
+            return;
+        }
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), transform.localScale.y, transform.localScale.z);
         Vector2 displacement = playerInput.normalized * playerSpeed * Time.deltaTime;
@@ -42,8 +46,16 @@ public class PlayerMovement : Controller2D
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
         playerCursor.transform.position = mousePosition;
-        // cameraFocus.transform.position = (transform.position +(mousePosition - transform.position)/2);
         cameraFocus.transform.position = Vector3.Lerp(transform.position, mousePosition, cameraFocusScale);
+    }
+
+    public bool GetInteractKey() {
+        
+        return !StaticUserControls.paused && Input.GetKeyDown(KeyCode.E);
+    }
+
+    public bool GetShootKey() {
+        return !StaticUserControls.paused && Input.GetMouseButton(0);
     }
 
 }

@@ -18,7 +18,6 @@ public class Bullet : MonoBehaviour
     CinemachineImpulseSource impulseSource;
     SpriteRenderer renderer;
     bool destroying = false;
-
     Vector2 velocity;
     Vector2 gravity;
 
@@ -39,6 +38,10 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+        if(StaticUserControls.paused) {
+            birthTime += Time.deltaTime;
+            return;
+        }
         velocity += gravity * Time.deltaTime;
         transform.position += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime;
         Collider2D[] collisions = CheckCollision();
@@ -78,4 +81,6 @@ public class Bullet : MonoBehaviour
         yield return audioManager.PlayAndWait(config.collisionSound, audioSource);
         Destroy(this.gameObject);
     }
+
+
 }

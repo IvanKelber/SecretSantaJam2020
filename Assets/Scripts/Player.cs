@@ -29,6 +29,8 @@ public class Player : Damageable
 
     int gunIndex = 0;
 
+    bool waitingToRespawn = false;
+
     List<GunPickup> nearbyGuns = new List<GunPickup>();
 
     PlayerHealth playerHealth;
@@ -55,7 +57,7 @@ public class Player : Damageable
         PickupGun();
         EquipGun();
         
-        if(Input.GetMouseButton(0) && timeSinceLastShot > gun.config.fireRate) {
+        if(playerMovement.GetShootKey() && timeSinceLastShot > gun.config.fireRate) {
             Shoot();
         }
         timeSinceLastShot += Time.deltaTime;
@@ -73,7 +75,7 @@ public class Player : Damageable
     }
 
     void PickupGun() {
-        if(Input.GetKeyDown(KeyCode.E)) {
+        if(playerMovement.GetInteractKey()) {
             if(nearbyGuns.Count > 0 && gunConfigs.Count < gunCapacity) {
                 GunPickup pickup = nearbyGuns[nearbyGuns.Count - 1 ];
                 gunConfigs.Add(pickup.config);
@@ -94,12 +96,15 @@ public class Player : Damageable
         nearbyGuns.Remove(pickup);
     }
 
-    void Reset() {
-        gunConfigs = new List<GunConfig>();
-        gunConfigs.Add(defaultGun);
-        gunIndex = 0;
-        gun.config = gunConfigs[gunIndex];
-        FullHeal();
+    public void Reset() {
+        if(waitingToRespawn) {
+            gunConfigs = new List<GunConfig>();
+            gunConfigs.Add(defaultGun);
+            gunIndex = 0;
+            gun.config = gunConfigs[gunIndex];
+            FullHeal();
+            waitingToRespawn = false;
+        }
     }
 
     void FullHeal() {
@@ -128,7 +133,7 @@ public class Player : Damageable
         dying = true;
         audioManager.Play("PlayerDeath", audioSource);
         playerDeath.Raise();
-        Reset();
+        waitingToRespawn = true;
         dying = false;
     }
 

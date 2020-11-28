@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller2D : RaycastController
 {
+
     void Start()
     {
         base.Start();
@@ -11,7 +12,9 @@ public class Controller2D : RaycastController
     }
 
     public void Move(Vector2 displacement) {
-
+        if(StaticUserControls.paused) {
+            return;
+        }
         HorizontalCollisions(ref displacement);
         VerticalCollisions(ref displacement);
         Vector3 velocity = new Vector3(displacement.x, displacement.y, 0);
@@ -66,4 +69,5 @@ public class Controller2D : RaycastController
             }
         }
     }
+
 }

@@ -42,6 +42,9 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        if(StaticUserControls.paused) {
+            return;
+        }
         DetectPlayer();
         timeSinceLastSpawn += Time.deltaTime;
         if(playerDetected && timeSinceLastSpawn >= timeBetweenSpawns && totalEnemiesSpawned < enemiesToSpawn) {
