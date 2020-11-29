@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
+using Cinemachine;
 
 public class StartLevel : Interactable
 {
@@ -9,6 +10,7 @@ public class StartLevel : Interactable
     public GameObject player;
     public Dungeon dungeon;
     public Transform playerDeathSpawn;
+    public CinemachineVirtualCamera vcam;
     public Camera camera;
     public GameEvent levelComplete;
 
@@ -23,7 +25,7 @@ public class StartLevel : Interactable
         if(playerDead) {
             dungeon.DestroyCurrentLevel();
             player.transform.position = playerDeathSpawn.position;
-            UpdateCamera(player.transform.position);
+            UpdateCamera(player.transform);
             playerDead = false;
         }
     }
@@ -31,16 +33,24 @@ public class StartLevel : Interactable
     public void NextLevel(int level) {
         dungeon.GenerateLevel(level);
         player.transform.position = dungeon.GetStartRoom();
-        UpdateCamera(player.transform.position);
+        UpdateCamera(player.transform);
     }
 
     public override void OnInteract() {
         levelComplete.Raise();
     }
 
-    void UpdateCamera(Vector3 destination) {
-        camera.transform.position = new Vector3(destination.x, destination.y, camera.transform.position.z);
+    void UpdateCamera(Transform pt) {
+        vcam.gameObject.SetActive(false);
+        camera.transform.position = new Vector3(pt.position.x, pt.position.y, camera.transform.position.z);
+        StartCoroutine(ReactivateCamera());
+        // vcam.gameObject.SetActive(true);
 
+    }
+
+    public IEnumerator ReactivateCamera() {
+        yield return new WaitForSeconds(.1f);
+        vcam.gameObject.SetActive(true);
     }
 
     public void SetPlayerDead() {

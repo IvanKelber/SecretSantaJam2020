@@ -12,6 +12,7 @@ public class Fade : MonoBehaviour
     private ScreenTransitionImageEffect imageEffect;
 
     bool waitingForUserInput = false;
+    bool fading = false;
     void Start()
     {
         imageEffect = GetComponent<ScreenTransitionImageEffect>() as ScreenTransitionImageEffect;
@@ -33,37 +34,45 @@ public class Fade : MonoBehaviour
     }
 
     IEnumerator FadeToBlack() {
-        float start = Time.time;
-        float end = start + fadeDuration;
-        imageEffect.Enable();
-        imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, 0);
-        // Fade Out
-        while(Time.time < end) {
-            float percentage = 1 - (end - Time.time)/fadeDuration;
-            imageEffect.maskValue = Mathf.Lerp(0,1, percentage);
-            imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, Mathf.Lerp(0,1,percentage));
-            yield return null;
+        if(!fading) {
+            fading = true;
+            float start = Time.time;
+            float end = start + fadeDuration;
+            imageEffect.Enable();
+            imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, 0);
+            // Fade Out
+            while(Time.time < end) {
+                float percentage = 1 - (end - Time.time)/fadeDuration;
+                imageEffect.maskValue = Mathf.Lerp(0,1, percentage);
+                imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, Mathf.Lerp(0,1,percentage));
+                yield return null;
+            }
+            imageEffect.maskValue = 1;
+            fadeOutComplete.Raise();
+            waitingForUserInput = true;
+            fading = false;
         }
-        imageEffect.maskValue = 1;
-        fadeOutComplete.Raise();
-        waitingForUserInput = true;
     }
 
 
     IEnumerator FadeIn() {
-        float start = Time.time;
-        float end = start + fadeDuration;
-        imageEffect.Enable();
-        imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, 0);
-        // Fade Out
-        while(Time.time < end) {
-            float percentage = (end - Time.time)/fadeDuration;
-            imageEffect.maskValue = Mathf.Lerp(0,1, percentage);
-            imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, Mathf.Lerp(0,1,percentage));
-            yield return null;
+        if(!fading) {
+            fading = true;
+            float start = Time.time;
+            float end = start + fadeDuration;
+            imageEffect.Enable();
+            imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, 0);
+            // Fade Out
+            while(Time.time < end) {
+                float percentage = (end - Time.time)/fadeDuration;
+                imageEffect.maskValue = Mathf.Lerp(0,1, percentage);
+                imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, Mathf.Lerp(0,1,percentage));
+                yield return null;
+            }
+            imageEffect.maskValue = 0;
+            fadeInComplete.Raise();
+            fading = false;
         }
-        imageEffect.maskValue = 0;
-        fadeInComplete.Raise();
     }
 
 }
