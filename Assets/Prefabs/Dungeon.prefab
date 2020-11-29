@@ -234,16 +234,16 @@ MonoBehaviour:
   maxRoomsY: 10
   roomWidth: 30
   roomHeight: 18
-  roomPadding: 0
+  wallWidth: 1
   numberOfRooms: 15
   originRoom: {x: 5, y: 5}
-  wallPrefab: {fileID: 217915949065317498, guid: 16d8354c23ed24bfd9f9f4db143d7243, type: 3}
-  openingPrefabs:
-  - {fileID: 6555061776021148934, guid: 7e8264a99b2bf49aaadc7d92014d96bf, type: 3}
-  - {fileID: 377997867025159591, guid: 4d661d8e066e84ec8b8ff1c0ce02f59a, type: 3}
-  - {fileID: 3434547592747049669, guid: 89716c4d5424f4d0fab641f4ad477547, type: 3}
-  - {fileID: 5274187608294996626, guid: ddf8d32ae6bfa44cf8dc61208191753f, type: 3}
-  - {fileID: 7844180687194316622, guid: d1c92b00c00134e5aa2cb2bf18d6055e, type: 3}
+  verticalWallPrefab: {fileID: 2629930123034669790, guid: 2970a93cf9ba8437da9e068892929fd4, type: 3}
+  horizontalWallPrefab: {fileID: 6146805497023647858, guid: 5300434deeaab432db6fd9b92f62599e, type: 3}
+  horizontalOpeningPrefabs:
+  - {fileID: 6721463194263725236, guid: d6b6068bc91124d9cafaf36526b8396a, type: 3}
+  verticalOpeningPrefabs:
+  - {fileID: 2851138772046949556, guid: d7c5b09adc203440caf1468fae2c816f, type: 3}
   roomManifest: {fileID: 11400000, guid: 212b3c97ff7584917bc6356a803a0fe0, type: 2}
   tileMap: {fileID: 1897393204}
   tileSet: {fileID: 11400000, guid: c9b9229bb9c9a4b7d9b66c5f3b86672e, type: 2}
+  testDungeon: 0

@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 52432dbdae239614b9d5d23b382317be, type: 3}
   maskValue: 0
-  maskColor: {r: 0, g: 0, b: 0, a: 0.007919312}
+  maskColor: {r: 0, g: 0, b: 0, a: 0.01712704}
   maskTexture: {fileID: 2800000, guid: 45ebb0bdc0ecfe44dbd034ee7370d465, type: 3}
   maskInvert: 0
 --- !u!114 &1206863048
@@ -1416,14 +1416,6 @@ PrefabInstance:
     - target: {fileID: 4167866685595291175, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
-      propertyPath: roomWidth
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
-      propertyPath: roomHeight
-      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4167866685595291177, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
       propertyPath: m_Name
@@ -2663,6 +2655,14 @@ PrefabInstance:
     - target: {fileID: 2521559355725457411, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521559355725457420, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2020643465
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521559355725457420, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2521559355725457422, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_Name

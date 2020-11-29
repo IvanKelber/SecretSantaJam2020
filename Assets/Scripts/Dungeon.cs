@@ -15,8 +15,10 @@ public class Dungeon : MonoBehaviour
     public int numberOfRooms = 10;
 
     public Vector2 originRoom;
-    public GameObject wallPrefab;
-    public List<GameObject> openingPrefabs = new List<GameObject>();
+    public GameObject verticalWallPrefab;
+    public GameObject horizontalWallPrefab;
+    public List<GameObject> horizontalOpeningPrefabs = new List<GameObject>();
+    public List<GameObject> verticalOpeningPrefabs = new List<GameObject>();
 
     public RoomManifest roomManifest;
     public Tilemap tileMap;
@@ -120,6 +122,7 @@ public class Dungeon : MonoBehaviour
     }
 
     void PlaceWalls() {
+        // Spawn exterior walls (i.e. level boundaries)
         for(int i = 0; i < maxRoomsX; i++) {
             for(int j = 0; j < maxRoomsY; j++) {
                 if(grid[i,j]) {
@@ -130,25 +133,26 @@ public class Dungeon : MonoBehaviour
                     Vector3 bottomWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.down;
 
                     //Right
-                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? wallPrefab : null;
-                    PlaceWall(rightWall, rightPrefab, true);
+                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? verticalWallPrefab : null;
+                    PlaceWall(rightWall, rightPrefab);
 
                     //Left
-                    GameObject leftPrefab = (i - 1 < 0 || !grid[i-1,j]) ? wallPrefab : null;
-                    PlaceWall(leftWall, leftPrefab, true);
+                    GameObject leftPrefab = (i - 1 < 0 || !grid[i-1,j]) ? verticalWallPrefab : null;
+                    PlaceWall(leftWall, leftPrefab);
 
                     //Top
-                    GameObject topPrefab = (j + 1 >= maxRoomsY || !grid[i,j+1]) ? wallPrefab : null;
-                    PlaceWall(topWall, topPrefab, false);
+                    GameObject topPrefab = (j + 1 >= maxRoomsY || !grid[i,j+1]) ? horizontalWallPrefab : null;
+                    PlaceWall(topWall, topPrefab);
 
                     //Bottom
-                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? wallPrefab : null;
-                    PlaceWall(bottomWall, bottomPrefab, false);
+                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? horizontalWallPrefab : null;
+                    PlaceWall(bottomWall, bottomPrefab);
                 }
                 
             }
         }
 
+        // Spawn interior wall openings
         for(int i = 0; i < maxRoomsX; i++) {
             for(int j = 0; j < maxRoomsY; j++) {
                 if(grid[i,j]) {
@@ -159,12 +163,12 @@ public class Dungeon : MonoBehaviour
                     Vector3 bottomWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.down;
 
                     //Right
-                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? null : RandomOpening();
-                    PlaceWall(rightWall, rightPrefab, true);
+                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? null : RandomOpening(false);
+                    PlaceWall(rightWall, rightPrefab);
 
                     //Bottom
-                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? null : RandomOpening();
-                    PlaceWall(bottomWall, bottomPrefab, false);
+                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? null : RandomOpening(true);
+                    PlaceWall(bottomWall, bottomPrefab);
                 }
                 
             }
@@ -186,21 +190,23 @@ public class Dungeon : MonoBehaviour
         }
     }
 
-    GameObject RandomOpening() {
-        int index = Random.Range(0, openingPrefabs.Count);
-        if(index == openingPrefabs.Count) {
-            return null;
+    GameObject RandomOpening(bool horizontal) {
+        if(horizontal) {
+            int index = Random.Range(0, horizontalOpeningPrefabs.Count);
+
+            return horizontalOpeningPrefabs[index]; 
+        } else {
+            int index = Random.Range(0, verticalOpeningPrefabs.Count);
+
+            return verticalOpeningPrefabs[index];  
         }
-        return openingPrefabs[index];
     }
 
-    void PlaceWall(Vector3 wallCenter, GameObject prefab, bool vertical) {
+    void PlaceWall(Vector3 wallCenter, GameObject prefab) {
         if(prefab == null) {
             return;
         }
-        // wallCenter.z -= 1;
-        GameObject wallObj = Instantiate(prefab, wallCenter, Quaternion.Euler(0,0,vertical ? 0 : 90));
-        wallObj.transform.localScale = new Vector3(wallObj.transform.localScale.x, (vertical ? roomHeight : roomWidth) + 1, wallObj.transform.localScale.z);
+        GameObject wallObj = Instantiate(prefab, wallCenter, Quaternion.identity);
         wallObj.transform.parent = this.transform;
     }
 
