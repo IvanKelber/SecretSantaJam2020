@@ -33,6 +33,6 @@ public class RoomManifest : ScriptableObject
                 nonSpecificRooms.Add(room);
             }
         }
-        return nonSpecificRooms[Random.Range(0, nonSpecificRooms.Count -1)];
+        return nonSpecificRooms[Random.Range(0, nonSpecificRooms.Count)];
     }
 }

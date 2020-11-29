@@ -51,9 +51,6 @@ public class Player : Damageable
         if(Input.GetKeyDown(KeyCode.G)) {
             godModeEnabled = !godModeEnabled;
         }
-        if(Input.GetKeyDown(KeyCode.P)) {
-            TakeDamage(Random.Range(1,15));
-        }
         PickupGun();
         EquipGun();
         
@@ -121,7 +118,7 @@ public class Player : Damageable
     }
 
     public override void TakeDamage(float damage) {
-        if(godModeEnabled || dying) {
+        if(godModeEnabled || playerHealth.currentHealth <= 0) {
             return;
         }
         base.TakeDamage(damage);

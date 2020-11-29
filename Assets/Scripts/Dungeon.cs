@@ -10,7 +10,7 @@ public class Dungeon : MonoBehaviour
 
     public float roomWidth = 10;
     public float roomHeight = 10;
-    public int roomPadding = 1;
+    public int wallWidth = 1;
 
     public int numberOfRooms = 10;
 
@@ -26,15 +26,19 @@ public class Dungeon : MonoBehaviour
 
     int currentRooms = 0;
 
-    // public void Start() {
-    //     GenerateGrid();
-    // }
+    [SerializeField]
+    private bool testDungeon = false;
 
-    // public void Update() {
-    //     if(Input.GetKeyDown(KeyCode.Space)) {
-    //         GenerateGrid();
-    //     }
-    // }
+    public void Start() {
+        if(testDungeon)
+            GenerateLevel(0);
+    }
+
+    public void Update() {
+        if(testDungeon && Input.GetKeyDown(KeyCode.Space)) {
+            GenerateLevel(0);
+        }
+    }
 
     public void GenerateLevel(int level) {
         //TODO update levelManifest (rooms, guns, enemies, tiles, etc.)
@@ -67,7 +71,7 @@ public class Dungeon : MonoBehaviour
         }
         
         ChooseStartAndEnd();
-
+        FillAbyss();
         for(int i = 0; i < maxRoomsX; i++) {
             for(int j = 0; j < maxRoomsY; j++) {
                 if(grid[i,j]) {
@@ -78,6 +82,24 @@ public class Dungeon : MonoBehaviour
         PlaceWalls();
     }
 
+    void FillAbyss() {
+        for(int x = 0; x < maxRoomsX; x++) {
+            for(int y = 0; y < maxRoomsY; y++) {
+                if(!grid[x,y]) {
+                    
+                    for(int i = 0; i < roomWidth + wallWidth; i++) {
+                        for(int j = 0; j < roomHeight + wallWidth; j++) {
+                            Vector3Int tileLocation = new Vector3Int(
+                                (int)(x * (roomWidth + wallWidth) + i - roomWidth/2),
+                                (int)(y * (roomHeight + wallWidth) + j - roomHeight/2),
+                                1);
+                            tileMap.SetTile(tileLocation, tileSet.Get("Snow"));
+                        }
+                    } 
+                }
+            }
+        }
+    }
 
     void AddAdjacentRooms(ref List<Vector2> availableRooms, Vector2 room) {
         for(int i = -1; i <= 1; i++) {
@@ -102,10 +124,10 @@ public class Dungeon : MonoBehaviour
             for(int j = 0; j < maxRoomsY; j++) {
                 if(grid[i,j]) {
                     Vector3 roomCenter = GetRoomCenter(i,j);
-                    Vector3 rightWall = roomCenter + roomWidth/2 * Vector3.right;
-                    Vector3 leftWall = roomCenter + roomWidth/2 * Vector3.left;
-                    Vector3 topWall = roomCenter + roomHeight/2 * Vector3.up;
-                    Vector3 bottomWall = roomCenter + roomHeight/2 * Vector3.down;
+                    Vector3 rightWall = roomCenter + (roomWidth + wallWidth)/2 * Vector3.right;
+                    Vector3 leftWall = roomCenter + (roomWidth + wallWidth)/2 * Vector3.left;
+                    Vector3 topWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.up;
+                    Vector3 bottomWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.down;
 
                     //Right
                     GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? wallPrefab : null;
@@ -131,10 +153,10 @@ public class Dungeon : MonoBehaviour
             for(int j = 0; j < maxRoomsY; j++) {
                 if(grid[i,j]) {
                     Vector3 roomCenter = GetRoomCenter(i,j);
-                    Vector3 rightWall = roomCenter + roomWidth/2 * Vector3.right;
-                    Vector3 leftWall = roomCenter + roomWidth/2 * Vector3.left;
-                    Vector3 topWall = roomCenter + roomHeight/2 * Vector3.up;
-                    Vector3 bottomWall = roomCenter + roomHeight/2 * Vector3.down;
+                    Vector3 rightWall = roomCenter + (roomWidth + wallWidth)/2 * Vector3.right;
+                    Vector3 leftWall = roomCenter + (roomWidth + wallWidth)/2 * Vector3.left;
+                    Vector3 topWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.up;
+                    Vector3 bottomWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.down;
 
                     //Right
                     GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? null : RandomOpening();
@@ -150,15 +172,6 @@ public class Dungeon : MonoBehaviour
     }
 
     public void FillRoom(Vector2 room) {
-        for(int i = 0; i < roomWidth; i++) {
-            for(int j = 0; j < roomHeight; j++) {
-                Vector3Int tileLocation = new Vector3Int(
-                    (int)(room.x * roomWidth) - (int)roomWidth/2 + i,
-                    (int)(room.y * roomHeight) -(int) roomHeight/2+ j,
-                    1);
-                tileMap.SetTile(tileLocation, tileSet.Get("Snow"));
-            }
-        }
         RoomConfig roomConfig;
         if(room == startRoom) {
             roomConfig = roomManifest.Get("StartRoom");
@@ -212,8 +225,7 @@ public class Dungeon : MonoBehaviour
     }
 
     public Vector3 GetRoomCenter(int i, int j) {
-        return transform.position + ((i * roomWidth + roomPadding)* Vector3.right) + 
-                                    ((j * roomHeight + roomPadding) * Vector3.up );
+        return transform.position + (i * (roomWidth + wallWidth) * Vector3.right) + (j * (roomHeight + wallWidth) * Vector3.up);
     }
 
     public Vector3 GetStartRoom() {
@@ -239,7 +251,7 @@ public class Dungeon : MonoBehaviour
                     Gizmos.color = new Color(0,0,1,.1f);
                 }
                 Gizmos.DrawCube(roomCenter,new Vector3(roomWidth, roomHeight, 1));
-                Gizmos.color = Color.black;
+                Gizmos.color = Color.yellow;
                 Gizmos.DrawWireCube(roomCenter, new Vector3(roomWidth, roomHeight, 1));
             }
         }

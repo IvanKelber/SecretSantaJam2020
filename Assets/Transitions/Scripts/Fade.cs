@@ -16,6 +16,7 @@ public class Fade : MonoBehaviour
     void Start()
     {
         imageEffect = GetComponent<ScreenTransitionImageEffect>() as ScreenTransitionImageEffect;
+        StartCoroutine(FadeIn());
     }
 
     // Update is called once per frame
