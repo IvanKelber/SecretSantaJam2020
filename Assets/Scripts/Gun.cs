@@ -12,12 +12,22 @@ public class Gun : MonoBehaviour
     AudioSource audioSource;
     CinemachineImpulseSource impulseSource;
 
+    SpriteRenderer spriteRenderer;
+
     bool shooting = false;
     void Start() {
         audioSource = GetComponent<AudioSource>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = config.gunSprite;
+        
         impulseSource.m_ImpulseDefinition = config.fireImpulse;
 
+    }
+
+    public void SetConfig(GunConfig config) {
+        this.config = config;
+        spriteRenderer.sprite = config.gunSprite;
     }
 
     public Vector3 GetCenter(Vector3 direction) {
@@ -35,6 +45,7 @@ public class Gun : MonoBehaviour
     }
 
     IEnumerator DoShoot(Vector3 direction) {
+        Debug.Log("Shot direction: " + GetCenter(direction));
         shooting = true;
         float angleStep = config.angleBetweenBullets * 2;
         for(int i = 0; i < config.numberOfBullets; i++) {

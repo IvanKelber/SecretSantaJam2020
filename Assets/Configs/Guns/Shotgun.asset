@@ -50,3 +50,5 @@ MonoBehaviour:
   centerAngle: 0
   numberOfBullets: 4
   bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
+  timeBetweenShots: 0
+  gunSprite: {fileID: 21300000, guid: 837bde0e349efa24fa4fd77808011006, type: 3}

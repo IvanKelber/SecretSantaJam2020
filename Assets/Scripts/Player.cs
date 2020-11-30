@@ -15,6 +15,12 @@ public class Player : Damageable
     Gun gun;
 
     [SerializeField]
+    GameObject hand;
+
+    [SerializeField]
+    float handDistance;
+
+    [SerializeField]
     GunConfig defaultGun;
 
     [SerializeField]
@@ -33,6 +39,8 @@ public class Player : Damageable
 
     List<GunPickup> nearbyGuns = new List<GunPickup>();
 
+
+
     PlayerHealth playerHealth;
     bool dying;
     void Start() {
@@ -40,7 +48,7 @@ public class Player : Damageable
         playerMovement = GetComponent<PlayerMovement>();
         playerHealth = config as PlayerHealth;
         gunConfigs.Add(defaultGun);
-        gun.config = gunConfigs[gunIndex];
+        gun.SetConfig(gunConfigs[gunIndex]);
     }
 
     void Update()
@@ -48,6 +56,7 @@ public class Player : Damageable
         if(dying) {
             return;
         }
+        UpdateHand();
         if(Input.GetKeyDown(KeyCode.G)) {
             godModeEnabled = !godModeEnabled;
         }
@@ -60,12 +69,22 @@ public class Player : Damageable
         timeSinceLastShot += Time.deltaTime;
     }
 
+    void UpdateHand() {
+        if(StaticUserControls.paused) {
+            return;
+        }
+        Vector3 direction = (playerMovement.mousePosition - transform.position).normalized;
+        float distance = Mathf.Min(handDistance, Vector3.Distance(transform.position, playerMovement.mousePosition)/2);
+        Vector3 handPosition = transform.position + direction * distance;
+        hand.transform.position = handPosition;
+        hand.transform.rotation = Quaternion.Euler(0,0, Vector3.SignedAngle(playerMovement.flipped ? Vector3.left : Vector3.right, direction, Vector3.forward));
+    }
 
     void EquipGun() {
         for(int i = 1; i <= gunConfigs.Count; i++) {
             if(Input.GetKeyDown("" + i)) {
                 gunIndex = i - 1;
-                gun.config = gunConfigs[gunIndex];
+                gun.SetConfig(gunConfigs[gunIndex]);
                 return;
             }
         }
@@ -77,7 +96,7 @@ public class Player : Damageable
                 GunPickup pickup = nearbyGuns[nearbyGuns.Count - 1 ];
                 gunConfigs.Add(pickup.config);
                 gunIndex = gunConfigs.Count - 1;
-                gun.config = gunConfigs[gunIndex];
+                gun.SetConfig(gunConfigs[gunIndex]);
                 RemoveNearbyGun(pickup);
                 pickup.Destroy();
             }

@@ -32,4 +32,6 @@ public class GunConfig : ScriptableObject
 
     [Range(0, 2)]
     public float timeBetweenShots = 0;
+
+    public Sprite gunSprite;
 }

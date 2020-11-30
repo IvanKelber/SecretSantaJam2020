@@ -15,8 +15,13 @@ public class GunPickup : MonoBehaviour
 
     Player nearbyPlayer;
 
+    SpriteRenderer spriteRenderer;
+
+    [ExecuteInEditMode]
     void Start() {
         audioSource = gameObject.AddComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = config.gunSprite;
     }
 
     void OnTriggerEnter2D(Collider2D collision) {

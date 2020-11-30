@@ -20,6 +20,9 @@ public class PlayerMovement : Controller2D
 
     [HideInInspector]
     public Vector3 mousePosition;
+
+    [HideInInspector]
+    public bool flipped = false;
     void Start()
     {
         base.Start();
@@ -35,6 +38,8 @@ public class PlayerMovement : Controller2D
             return;
         }
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        flipped = Mathf.Sign(mousePosition.x - transform.position.x) < 0;
+
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), transform.localScale.y, transform.localScale.z);
         Vector2 displacement = playerInput.normalized * playerSpeed * Time.deltaTime;
 
