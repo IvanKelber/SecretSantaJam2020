@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunPickup : MonoBehaviour
+public class GunPickup : Interactable
 {
 
     public GunConfig config;
-    [SerializeField]
-    LayerMask playerMask;
+
     [SerializeField]
     AudioManager audioManager;
 
@@ -15,32 +14,54 @@ public class GunPickup : MonoBehaviour
 
     Player nearbyPlayer;
 
+    [SerializeField]
     SpriteRenderer spriteRenderer;
+
+    [SerializeField]
+    [Range(.5f, 5)]
+    float promptDistance = 1;
 
     [ExecuteInEditMode]
     void Start() {
         audioSource = gameObject.AddComponent<AudioSource>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = config.gunSprite;
     }
-
-    void OnTriggerEnter2D(Collider2D collision) {
-        if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
-            nearbyPlayer = collision.gameObject.GetComponent<Player>();
-            nearbyPlayer.AddNearbyGun(this);
-        }
+  
+    void Update() {
+        base.Update();
+        UpdateInteractPrompt();
     }
-    
-    void OnTriggerExit2D() {
-        if(nearbyPlayer != null) { 
+
+    public override void OnEnterTrigger(Collider2D collision) {
+        nearbyPlayer = collision.gameObject.GetComponent<Player>();
+        nearbyPlayer.AddNearbyGun(this);
+    }
+
+
+    public override void OnExitTrigger(Collider2D collider)
+    {
+        if(nearbyPlayer != null) {
             nearbyPlayer.RemoveNearbyGun(this);
             nearbyPlayer = null;
-        }
+        }        
+    }
+
+    public override void OnInteract()
+    {
+        base.OnInteract();
+        nearbyPlayer.PickupGun();
     }
 
     public void Destroy() {
         audioManager.Play("GunPickup", audioSource);
         Destroy(this.gameObject);
+    }
+
+    public void UpdateInteractPrompt() {
+        if(nearbyPlayer != null) {
+            Vector3 promptPosition = transform.position + (transform.position - nearbyPlayer.transform.position).normalized * promptDistance;
+            interactPrompt.transform.position = promptPosition;
+        }
     }
 
 }
