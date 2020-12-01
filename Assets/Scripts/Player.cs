@@ -10,35 +10,23 @@ public class Player : Damageable
     bool godModeEnabled = false;
 
     [SerializeField]
-    List<GunConfig> gunConfigs = new List<GunConfig>();
-    [SerializeField]
-    Gun gun;
-
-    [SerializeField]
     GameObject hand;
 
     [SerializeField]
     float handDistance;
 
-    [SerializeField]
-    GunConfig defaultGun;
-
-    [SerializeField]
-    int gunCapacity = 2;
 
     [SerializeField]
     GameEvent playerDeath;
+
+    WeaponInventory weaponInventory;
 
     PlayerMovement playerMovement;
 
     float timeSinceLastShot = 0;
 
-    int gunIndex = 0;
 
     bool waitingToRespawn = false;
-
-    List<GunPickup> nearbyGuns = new List<GunPickup>();
-
 
 
     PlayerHealth playerHealth;
@@ -46,10 +34,9 @@ public class Player : Damageable
 
     void Start() {
         base.Start();
+        weaponInventory = GetComponent<WeaponInventory>();
         playerMovement = GetComponent<PlayerMovement>();
         playerHealth = config as PlayerHealth;
-        gunConfigs.Add(defaultGun);
-        EquipGun(0);
     }
 
     void Update()
@@ -61,9 +48,8 @@ public class Player : Damageable
             godModeEnabled = !godModeEnabled;
         }
         UpdateHand();
-        GetEquipGun();
         
-        if(playerMovement.GetShootKey() && timeSinceLastShot > gun.config.fireRate) {
+        if(playerMovement.GetShootKey() && timeSinceLastShot > weaponInventory.Gun.config.fireRate) {
             Shoot();
         }
         timeSinceLastShot += Time.deltaTime;
@@ -80,45 +66,14 @@ public class Player : Damageable
         hand.transform.rotation = Quaternion.Euler(0,0, Vector3.SignedAngle(playerMovement.flipped ? Vector3.left : Vector3.right, direction, Vector3.forward));
     }
 
-    void GetEquipGun() {
-        for(int i = 1; i <= gunConfigs.Count; i++) {
-            if(Input.GetKeyDown("" + i)) {
-                EquipGun(i - 1);
-                return;
-            }
-        }
-    }
 
-    public void PickupGun() {
-        if(nearbyGuns.Count > 0 && gunConfigs.Count < gunCapacity) {
-            GunPickup pickup = nearbyGuns[nearbyGuns.Count - 1 ];
-            gunConfigs.Add(pickup.config);
-            EquipGun(gunConfigs.Count - 1);
-            RemoveNearbyGun(pickup);
-            pickup.Destroy();
-        }
-    }
-
-    void EquipGun(int index) {
-        gunIndex = index;
-        gun.SetConfig(gunConfigs[gunIndex]);
-    }
-
-    public void AddNearbyGun(GunPickup pickup) {
-        nearbyGuns.Add(pickup);
-
-    }
-
-    public void RemoveNearbyGun(GunPickup pickup) {
-        nearbyGuns.Remove(pickup);
+    public void PickupGun(GunConfig config) {
+        weaponInventory.Pickup(config);
     }
 
     public void Reset() {
         if(waitingToRespawn) {
-            gunConfigs = new List<GunConfig>();
-            gunConfigs.Add(defaultGun);
-            gunIndex = 0;
-            gun.config = gunConfigs[gunIndex];
+            weaponInventory.Reset();
             FullHeal();
             waitingToRespawn = false;
         }
@@ -130,9 +85,9 @@ public class Player : Damageable
     }
 
     void Shoot() {
-        gun.Shoot(playerMovement.mousePosition);
+        weaponInventory.Gun.Shoot(playerMovement.mousePosition);
         Vector3 knockbackDirection = (transform.position - playerMovement.mousePosition).normalized;
-        Vector2 knockback = gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
+        Vector2 knockback = weaponInventory.Gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
         playerMovement.Move(knockback);
         timeSinceLastShot = 0;
     }

@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 52432dbdae239614b9d5d23b382317be, type: 3}
   maskValue: 0
-  maskColor: {r: 0, g: 0, b: 0, a: 0.02978754}
+  maskColor: {r: 0, g: 0, b: 0, a: 0.01817703}
   maskTexture: {fileID: 2800000, guid: 45ebb0bdc0ecfe44dbd034ee7370d465, type: 3}
   maskInvert: 0
 --- !u!114 &1206863048
@@ -1916,11 +1916,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &1894347658 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7932818662937997608, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-  m_PrefabInstance: {fileID: 2521559354493436683}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1902271527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2670,14 +2665,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1132650421, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -2020643465
-      objectReference: {fileID: 0}
-    - target: {fileID: 1132650421, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1557869193, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: cam
       value: 
@@ -2726,69 +2713,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2521559355725457420, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -2020643465
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559355725457420, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559355725457421, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: hand
-      value: 
-      objectReference: {fileID: 1894347658}
-    - target: {fileID: 2521559355725457421, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: handDistance
-      value: 1.25
-      objectReference: {fileID: 0}
     - target: {fileID: 2521559355725457422, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769389, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769389, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769389, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769389, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769389, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769389, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769389, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769390, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -2020643465
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769390, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769390, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521559356229769390, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3623601480926881419, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2802,18 +2729,5 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1206863043}
-    - target: {fileID: 3623601480954344836, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7604070264735398902, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7604070264735398902, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5374068127499445350, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}

@@ -15,11 +15,13 @@ public class Gun : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     bool shooting = false;
-    void Start() {
+    void Awake() {
         audioSource = GetComponent<AudioSource>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = config.gunSprite;
+        if(config != null) {
+            spriteRenderer.sprite = config.gunSprite;
+        }
         
         impulseSource.m_ImpulseDefinition = config.fireImpulse;
 
@@ -27,6 +29,7 @@ public class Gun : MonoBehaviour
 
     public void SetConfig(GunConfig config) {
         this.config = config;
+        Debug.Log("Config: " + config);
         spriteRenderer.sprite = config.gunSprite;
     }
 
@@ -71,12 +74,14 @@ public class Gun : MonoBehaviour
     }
 
     void OnDrawGizmos() {
-        Gizmos.color = Color.white;
-        Vector3 center = Quaternion.Euler(0,0,config.centerAngle) * Vector3.right;
-        Gizmos.DrawRay(transform.position, center * 2);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(transform.position, Quaternion.Euler(0,0,-config.angleBetweenBullets) *center * 2);
-        Gizmos.DrawRay(transform.position, Quaternion.Euler(0,0,config.angleBetweenBullets) *center * 2);
+        if(config != null) {
+            Gizmos.color = Color.white;
+            Vector3 center = Quaternion.Euler(0,0,config.centerAngle) * Vector3.right;
+            Gizmos.DrawRay(transform.position, center * 2);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(transform.position, Quaternion.Euler(0,0,-config.angleBetweenBullets) *center * 2);
+            Gizmos.DrawRay(transform.position, Quaternion.Euler(0,0,config.angleBetweenBullets) *center * 2);
+        }
     }
     
 }

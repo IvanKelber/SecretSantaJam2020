@@ -34,14 +34,12 @@ public class GunPickup : Interactable
 
     public override void OnEnterTrigger(Collider2D collision) {
         nearbyPlayer = collision.gameObject.GetComponent<Player>();
-        nearbyPlayer.AddNearbyGun(this);
     }
 
 
     public override void OnExitTrigger(Collider2D collider)
     {
         if(nearbyPlayer != null) {
-            nearbyPlayer.RemoveNearbyGun(this);
             nearbyPlayer = null;
         }        
     }
@@ -49,7 +47,8 @@ public class GunPickup : Interactable
     public override void OnInteract()
     {
         base.OnInteract();
-        nearbyPlayer.PickupGun();
+        nearbyPlayer.PickupGun(config);
+        Destroy();
     }
 
     public void Destroy() {
