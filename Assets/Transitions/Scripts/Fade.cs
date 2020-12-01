@@ -37,13 +37,13 @@ public class Fade : MonoBehaviour
     IEnumerator FadeToBlack() {
         if(!fading) {
             fading = true;
-            float start = Time.time;
+            float start = Time.realtimeSinceStartup;
             float end = start + fadeDuration;
             imageEffect.Enable();
             imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, 0);
             // Fade Out
-            while(Time.time < end) {
-                float percentage = 1 - (end - Time.time)/fadeDuration;
+            while(Time.realtimeSinceStartup < end) {
+                float percentage = 1 - (end - Time.realtimeSinceStartup)/fadeDuration;
                 imageEffect.maskValue = Mathf.Lerp(0,1, percentage);
                 imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, Mathf.Lerp(0,1,percentage));
                 yield return null;
@@ -59,13 +59,13 @@ public class Fade : MonoBehaviour
     IEnumerator FadeIn() {
         if(!fading) {
             fading = true;
-            float start = Time.time;
+            float start = Time.realtimeSinceStartup;
             float end = start + fadeDuration;
             imageEffect.Enable();
             imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, 0);
             // Fade Out
-            while(Time.time < end) {
-                float percentage = (end - Time.time)/fadeDuration;
+            while(Time.realtimeSinceStartup < end) {
+                float percentage = (end - Time.realtimeSinceStartup)/fadeDuration;
                 imageEffect.maskValue = Mathf.Lerp(0,1, percentage);
                 imageEffect.maskColor = new Color(imageEffect.maskColor.r, imageEffect.maskColor.g, imageEffect.maskColor.b, Mathf.Lerp(0,1,percentage));
                 yield return null;

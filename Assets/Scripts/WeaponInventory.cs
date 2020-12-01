@@ -73,7 +73,7 @@ public class WeaponInventory : MonoBehaviour
 
     public void Equip(int index) {
 
-        hudGunImages[gunIndex].transform.parent.GetComponent<Image>().color = Color.white;
+        hudGunImages[gunIndex].transform.parent.GetComponent<Image>().color = Color.white * new Color(1,1,1,.3f);
         hudGunImages[index].transform.parent.GetComponent<Image>().color = Color.yellow;
         gun.SetConfig(gunConfigs[index]);
         gunIndex = index;

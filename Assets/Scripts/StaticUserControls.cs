@@ -15,7 +15,7 @@ public class StaticUserControls : MonoBehaviour
         }
     }
 
-    void Pause(bool toPause) {
+    public void Pause(bool toPause) {
         paused = toPause;
         Time.timeScale = paused ? 0 : 1;
         AudioListener.pause = paused; 
