@@ -46,6 +46,9 @@ public class GunPickup : Interactable
 
     public override void OnInteract()
     {
+        if(StaticUserControls.paused) {
+            return;
+        }
         base.OnInteract();
         nearbyPlayer.PickupGun(config);
         Destroy();

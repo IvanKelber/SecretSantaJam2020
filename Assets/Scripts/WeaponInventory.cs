@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class WeaponInventory : MonoBehaviour
 {
 
-    public List<Image> hudGunImages = new List<Image>();
+    public RectTransform inventoryDisplay;
+    List<Image> hudGunImages = new List<Image>();
 
     [SerializeField]
     Gun gun;
@@ -28,6 +29,7 @@ public class WeaponInventory : MonoBehaviour
     int gunIndex = 0;
 
     void Start() {
+        GetSlotImages();
         Reset();
     }
 
@@ -56,24 +58,44 @@ public class WeaponInventory : MonoBehaviour
         if(gunConfigs.Contains(config)) {
             return;
         }
+        int newIndex = gunIndex;
         if(HasRoom()) {
             gunConfigs.Add(config);
-            gunIndex = Count - 1;
+            newIndex = Count - 1;
         } else {
             GunConfig droppedConfig = gunConfigs[gunIndex];
             gunConfigs[gunIndex] = config;
         }
-        Equip(gunIndex);
+        hudGunImages[newIndex].sprite = config.gunSprite;
+        hudGunImages[newIndex].color = Color.white;
+        Equip(newIndex);
     }
 
     public void Equip(int index) {
+
+        hudGunImages[gunIndex].transform.parent.GetComponent<Image>().color = Color.white;
+        hudGunImages[index].transform.parent.GetComponent<Image>().color = Color.yellow;
         gun.SetConfig(gunConfigs[index]);
         gunIndex = index;
     }
 
     public void Reset() {
         gunConfigs.Clear();
+        ClearImages();
         Pickup(defaultConfig);
+    }
+
+    void GetSlotImages() {
+        foreach(Transform slot in inventoryDisplay) {
+            hudGunImages.Add(slot.GetChild(0).GetComponent<Image>());
+        }
+    }
+
+    void ClearImages() {
+        foreach(Image image in hudGunImages) {
+            image.sprite = null;
+            image.color = Color.clear;
+        }
     }
 
 }

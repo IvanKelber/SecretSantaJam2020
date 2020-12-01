@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 2120966450199448742}
   - component: {fileID: 2969543157572980875}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Slot0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 2521559355725457409}
   - component: {fileID: 1557869193}
   - component: {fileID: 29045564}
+  - component: {fileID: 973951345}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -297,12 +298,8 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   healthBar: {fileID: 3623601480482588700}
   godModeEnabled: 0
-  gunConfigs: []
-  gun: {fileID: 2521559356229769391}
   hand: {fileID: 7932818662937997608}
   handDistance: 1.25
-  defaultGun: {fileID: 11400000, guid: fa55dd36606a2465aafc3a6dccf0b70b, type: 2}
-  gunCapacity: 4
   playerDeath: {fileID: 11400000, guid: 1aa39f4b8f23f490f8dbf0980a27c8df, type: 2}
 --- !u!61 &2521559355725457410
 BoxCollider2D:
@@ -486,6 +483,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &973951345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2521559355725457422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0337b36402e46a884d7774e2fac569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryDisplay: {fileID: 6310691232316166870}
+  gun: {fileID: 2521559356229769391}
+  gunConfigs:
+  - {fileID: 0}
+  defaultConfig: {fileID: 11400000, guid: fa55dd36606a2465aafc3a6dccf0b70b, type: 2}
 --- !u!1 &4645821545504037766
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +512,7 @@ GameObject:
   - component: {fileID: 5441536380910213535}
   - component: {fileID: 5070171325840766889}
   m_Layer: 5
-  m_Name: Panel (3)
+  m_Name: Slot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0000019073486, y: -0.0000019073486}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8684311487546917850
@@ -834,7 +848,7 @@ GameObject:
   - component: {fileID: 7591124910142457062}
   - component: {fileID: 5365224304880052664}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: Slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,7 +999,7 @@ GameObject:
   - component: {fileID: 1631846244978446294}
   - component: {fileID: 8761580411703165169}
   m_Layer: 5
-  m_Name: Panel (2)
+  m_Name: Slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1367,7 +1381,7 @@ PrefabInstance:
     - target: {fileID: 5842720488381105490, guid: 6bd57cb5878df4896a10a5f7e64db618, type: 3}
       propertyPath: config
       value: 
-      objectReference: {fileID: 11400000, guid: fa55dd36606a2465aafc3a6dccf0b70b, type: 2}
+      objectReference: {fileID: 11400000, guid: 1109bf1685078462fb285f8fb3c5f2c2, type: 2}
     - target: {fileID: 5842720488381105491, guid: 6bd57cb5878df4896a10a5f7e64db618, type: 3}
       propertyPath: m_Sprite
       value: 
