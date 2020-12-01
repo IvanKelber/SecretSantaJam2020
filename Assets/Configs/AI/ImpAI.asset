@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   detectionRadius: 20
-  maxAttackDistance: 10
+  maxAttackDistance: 15
   minAttackDistance: 3
   gunConfig: {fileID: 11400000, guid: 45e463574e1124fe2a6c138e768d5606, type: 2}
+  spawnIndicator: {fileID: 4563912903957744767, guid: ff239d8b7492248a78794c6f869384a9, type: 3}

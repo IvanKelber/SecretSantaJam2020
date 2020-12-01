@@ -241,8 +241,12 @@ MonoBehaviour:
   horizontalWallPrefab: {fileID: 6146805497023647858, guid: 5300434deeaab432db6fd9b92f62599e, type: 3}
   horizontalOpeningPrefabs:
   - {fileID: 6721463194263725236, guid: d6b6068bc91124d9cafaf36526b8396a, type: 3}
+  - {fileID: 142304439328016054, guid: d7c903d9757564dc4bfea56de9ee0857, type: 3}
+  - {fileID: 5201207261207899624, guid: 5bac136587eca4a5da210d5d9c47baf8, type: 3}
   verticalOpeningPrefabs:
   - {fileID: 2851138772046949556, guid: d7c5b09adc203440caf1468fae2c816f, type: 3}
+  - {fileID: 5362268212674627504, guid: a50fdb44833b64e39b8d193e49b07b03, type: 3}
+  - {fileID: 3708450097682395691, guid: b96e0d5d1f822416c9aa0d7efff8077a, type: 3}
   roomManifest: {fileID: 11400000, guid: 212b3c97ff7584917bc6356a803a0fe0, type: 2}
   tileMap: {fileID: 1897393204}
   tileSet: {fileID: 11400000, guid: c9b9229bb9c9a4b7d9b66c5f3b86672e, type: 2}

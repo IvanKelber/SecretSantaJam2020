@@ -15,6 +15,9 @@ MonoBehaviour:
   name: EmptyRoom
   isSpecific: 0
   infinteEnemySpawn: 0
-  numberOfEnemies: 0
-  numberOfPickups: 0
-  interiorPrefab: {fileID: 1276074041414960877, guid: 7d14ab7befc464300b7e9190a3e91b17, type: 3}
+  minNumberOfEnemies: 0
+  maxNumberOfEnemies: 0
+  maxEnemiesInRoomAtOnce: 1
+  spawnRate: 5
+  interiorPrefab: {fileID: 4898152667182802056, guid: 628929a79acba4d6d8f606a31314bd7b, type: 3}
+  enemiesToSpawn: []

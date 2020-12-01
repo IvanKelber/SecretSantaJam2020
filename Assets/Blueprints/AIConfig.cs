@@ -19,6 +19,8 @@ public class AIConfig : ScriptableObject
 
     public GunConfig gunConfig;
 
+    public GameObject spawnIndicator;
+
 
 
 }

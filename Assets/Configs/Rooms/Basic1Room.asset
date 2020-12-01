@@ -15,6 +15,10 @@ MonoBehaviour:
   name: Basic1
   isSpecific: 0
   infinteEnemySpawn: 0
-  numberOfEnemies: 2
-  numberOfPickups: 0
+  minNumberOfEnemies: 3
+  maxNumberOfEnemies: 7
+  maxEnemiesInRoomAtOnce: 1
+  spawnRate: 5
   interiorPrefab: {fileID: 5698244638658834036, guid: 5de581258245a42529b3d4f471987fd7, type: 3}
+  enemiesToSpawn:
+  - {fileID: 15768144417791391, guid: fb06aa45d3af842c1a205c5fcede043a, type: 3}

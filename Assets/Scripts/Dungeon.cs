@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+
 public class Dungeon : MonoBehaviour
 {
     public int maxRoomsX = 5;
     public int maxRoomsY = 5;
-    public bool[,] grid;
+    public Room[,] grid;
 
     public float roomWidth = 10;
     public float roomHeight = 10;
@@ -48,7 +49,7 @@ public class Dungeon : MonoBehaviour
     }
 
     public void DestroyCurrentLevel() {
-        grid = new bool[maxRoomsX, maxRoomsY];
+        grid = new Room[maxRoomsX, maxRoomsY];
         currentRooms = 0;
         tileMap.ClearAllTiles();
         foreach(Transform child in transform) {
@@ -67,21 +68,33 @@ public class Dungeon : MonoBehaviour
             int roomIndex = Random.Range(0, availableRooms.Count);
             Vector2 room = availableRooms[roomIndex];
             availableRooms.RemoveAt(roomIndex);
-            grid[(int)room.x, (int)room.y] = true;
+            grid[(int)room.x, (int)room.y] = new Room(roomManifest.GetRandomNonSpecific());
             currentRooms++;
             AddAdjacentRooms(ref availableRooms, room);
         }
-        
-        ChooseStartAndEnd();
+        FillRooms();
         FillAbyss();
+
+        PlaceWalls();
+    }
+     
+    void FillRooms() {
+        int roomCount = 0;
         for(int i = 0; i < maxRoomsX; i++) {
             for(int j = 0; j < maxRoomsY; j++) {
                 if(grid[i,j]) {
-                    FillRoom(new Vector2(i,j));
+                    if(roomCount == 0) {
+                        grid[i,j].SetConfig(roomManifest.Get("StartRoom"));
+                        startRoom = new Vector2(i,j);
+                    } else if(roomCount == numberOfRooms - 1) {
+                        grid[i,j].SetConfig(roomManifest.Get("EndRoom"));
+                        endRoom = new Vector2(i,j);
+                    }
+                    grid[i,j].Instantiate(this.transform, GetRoomCenter(i,j));
+                    roomCount++;
                 }
             }
         }
-        PlaceWalls();
     }
 
     void FillAbyss() {
@@ -175,21 +188,6 @@ public class Dungeon : MonoBehaviour
         }
     }
 
-    public void FillRoom(Vector2 room) {
-        RoomConfig roomConfig;
-        if(room == startRoom) {
-            roomConfig = roomManifest.Get("StartRoom");
-        } else if (room == endRoom) {
-            roomConfig = roomManifest.Get("EndRoom");
-        } else {
-            roomConfig = roomManifest.GetRandomNonSpecific();
-        }
-        if(roomConfig != null) {
-            GameObject roomInterior = Instantiate(roomConfig.interiorPrefab, GetRoomCenter(room), Quaternion.identity);
-            roomInterior.transform.parent = this.transform;
-        }
-    }
-
     GameObject RandomOpening(bool horizontal) {
         if(horizontal) {
             int index = Random.Range(0, horizontalOpeningPrefabs.Count);
@@ -210,21 +208,6 @@ public class Dungeon : MonoBehaviour
         wallObj.transform.parent = this.transform;
     }
 
-    void ChooseStartAndEnd() {
-        bool startRoomChosen = false;
-        for(int i = 0; i < maxRoomsX; i++) {
-            for(int j = 0; j < maxRoomsY; j++) {
-                if(grid[i,j]) {
-                    if(!startRoomChosen) {
-                        startRoom = new Vector2(i,j);
-                        startRoomChosen = true;
-                    }
-                    endRoom = new Vector2(i,j);
-                    break;
-                }
-            }
-        }
-    }
 
     public Vector3 GetRoomCenter(Vector2 room) {
         return GetRoomCenter((int)room.x, (int)room.y);

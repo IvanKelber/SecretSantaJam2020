@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 52432dbdae239614b9d5d23b382317be, type: 3}
   maskValue: 0
-  maskColor: {r: 0, g: 0, b: 0, a: 0.007957458}
+  maskColor: {r: 0, g: 0, b: 0, a: 0.01881504}
   maskTexture: {fileID: 2800000, guid: 45ebb0bdc0ecfe44dbd034ee7370d465, type: 3}
   maskInvert: 0
 --- !u!114 &1206863048
@@ -1461,6 +1461,10 @@ PrefabInstance:
     - target: {fileID: 4167866685595291175, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167866685595291176, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
+      propertyPath: numberOfRooms
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4167866685595291177, guid: 87f82b9edacfe4980a832036c8868086, type: 3}
       propertyPath: m_Name
@@ -2774,9 +2778,5 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1206863043}
-    - target: {fileID: 6310691232316166870, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -178.18018
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}

@@ -184,7 +184,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 1280
-  initialRaySpacing: 0.25
+  initialRaySpacing: 0.15
   horizontalRayCount: 0
   verticalRayCount: 0
   horizontalRaySpacing: 0

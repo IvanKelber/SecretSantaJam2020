@@ -45,7 +45,10 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   fireSound: 
   knockback: 0
-  spreadNoise: 0
+  spreadNoise: 2
   angleBetweenBullets: 0
+  centerAngle: 0
   numberOfBullets: 1
   bullet: {fileID: 11400000, guid: 44f101f60332e4fe5898e518da9a1347, type: 2}
+  timeBetweenShots: 0
+  gunSprite: {fileID: 0}

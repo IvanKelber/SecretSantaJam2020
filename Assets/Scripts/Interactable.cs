@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public virtual void Start() {
         GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     public virtual void Update() {
@@ -24,7 +25,8 @@ public class Interactable : MonoBehaviour, IInteractable
     void OnTriggerEnter2D(Collider2D collision) {
         if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
             playerPresent = true;
-            interactPrompt.SetActive(true);
+            if(interactPrompt != null)
+                interactPrompt.SetActive(true);
             OnEnterTrigger(collision);
         }
     }
@@ -32,7 +34,8 @@ public class Interactable : MonoBehaviour, IInteractable
     void OnTriggerExit2D(Collider2D collision) {
         if((playerMask.value & 1 << collision.gameObject.layer) != 0) {
             playerPresent = false;
-            interactPrompt.SetActive(false);
+            if(interactPrompt != null)
+                interactPrompt.SetActive(false);
             OnExitTrigger(collision);
         }
     }
