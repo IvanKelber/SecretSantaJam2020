@@ -45,11 +45,11 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   collisionSound: 
-  bulletSpeed: 20.5
+  bulletSpeed: 10
   damagingLayer:
     serializedVersion: 2
     m_Bits: 2304
   sprite: {fileID: 0}
   gravityDirection: -90
-  gravityMagnitude: 30
+  gravityMagnitude: 15
   independentOfAim: 1

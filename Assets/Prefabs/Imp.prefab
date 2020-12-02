@@ -183,7 +183,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   collisionMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 3328
   initialRaySpacing: 0.15
   horizontalRayCount: 0
   verticalRayCount: 0

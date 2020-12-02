@@ -48,7 +48,6 @@ public class Gun : MonoBehaviour
     }
 
     IEnumerator DoShoot(Vector3 direction) {
-        Debug.Log("Shot direction: " + GetCenter(direction));
         shooting = true;
         float angleStep = config.angleBetweenBullets * 2;
         for(int i = 0; i < config.numberOfBullets; i++) {

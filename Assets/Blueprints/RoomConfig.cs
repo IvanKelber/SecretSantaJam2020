@@ -24,6 +24,7 @@ public class RoomConfig : ScriptableObject
 
     public List<GameObject> enemiesToSpawn;
 
+    public int numberOfWaves = 2;
 
 
 }

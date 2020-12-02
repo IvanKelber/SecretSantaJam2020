@@ -15,10 +15,11 @@ MonoBehaviour:
   name: Basic2
   isSpecific: 0
   infinteEnemySpawn: 0
-  minNumberOfEnemies: 7
-  maxNumberOfEnemies: 10
+  minNumberOfEnemies: 3
+  maxNumberOfEnemies: 3
   maxEnemiesInRoomAtOnce: 1
   spawnRate: 3
   interiorPrefab: {fileID: 7794801190495503695, guid: 899b7f9d2a1684246a4d65bbb0128527, type: 3}
   enemiesToSpawn:
   - {fileID: 15768144417791391, guid: fb06aa45d3af842c1a205c5fcede043a, type: 3}
+  numberOfWaves: 10

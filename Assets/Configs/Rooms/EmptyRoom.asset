@@ -21,3 +21,4 @@ MonoBehaviour:
   spawnRate: 5
   interiorPrefab: {fileID: 4898152667182802056, guid: 628929a79acba4d6d8f606a31314bd7b, type: 3}
   enemiesToSpawn: []
+  numberOfWaves: 0

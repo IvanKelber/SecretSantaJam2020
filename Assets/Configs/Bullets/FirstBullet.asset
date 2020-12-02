@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
   m_Name: FirstBullet
   m_EditorClassIdentifier: 
-  lifetime: 1.83
+  lifetime: 2
   bulletDamage: 5
   collisionImpulse:
     m_ImpulseChannel: 1
