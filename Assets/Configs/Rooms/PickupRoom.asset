@@ -15,6 +15,12 @@ MonoBehaviour:
   name: PickupRoom
   isSpecific: 0
   infinteEnemySpawn: 0
-  numberOfEnemies: 0
-  numberOfPickups: 1
-  interiorPrefab: {fileID: 7794801190495503695, guid: 899b7f9d2a1684246a4d65bbb0128527, type: 3}
+  spawnEnemies: 0
+  minNumberOfEnemies: 0
+  maxNumberOfEnemies: 0
+  maxEnemiesInRoomAtOnce: 0
+  spawnRate: 5
+  interiorPrefab: {fileID: 4898152667182802056, guid: 628929a79acba4d6d8f606a31314bd7b, type: 3}
+  enemiesToSpawn: []
+  numberOfWaves: 0
+  lockDoors: {fileID: 11400000, guid: 3cc137532380446e687a1865c8191bef, type: 2}

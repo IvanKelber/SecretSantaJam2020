@@ -68,7 +68,7 @@ public class Dungeon : MonoBehaviour
             int roomIndex = Random.Range(0, availableRooms.Count);
             Vector2 room = availableRooms[roomIndex];
             availableRooms.RemoveAt(roomIndex);
-            grid[(int)room.x, (int)room.y] = new Room(roomManifest.GetRandomNonSpecific());
+            grid[(int)room.x, (int)room.y] = new Room(roomManifest.GetRandomNonSpecific(), room);
             currentRooms++;
             AddAdjacentRooms(ref availableRooms, room);
         }
@@ -171,17 +171,17 @@ public class Dungeon : MonoBehaviour
                 if(grid[i,j]) {
                     Vector3 roomCenter = GetRoomCenter(i,j);
                     Vector3 rightWall = roomCenter + (roomWidth + wallWidth)/2 * Vector3.right;
-                    Vector3 leftWall = roomCenter + (roomWidth + wallWidth)/2 * Vector3.left;
-                    Vector3 topWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.up;
                     Vector3 bottomWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.down;
 
                     //Right
-                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? null : RandomOpening(false);
-                    PlaceWall(rightWall, rightPrefab);
+                    if(i + 1 < maxRoomsX && grid[i + 1, j]) {
+                        GameObject opening = PlaceWall(rightWall, RandomOpening(false));
+                    }
 
                     //Bottom
-                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? null : RandomOpening(true);
-                    PlaceWall(bottomWall, bottomPrefab);
+                    if(j - 1 >= 0 && grid[i, j - 1]) {
+                        GameObject opening = PlaceWall(bottomWall, RandomOpening(true));
+                    }
                 }
                 
             }
@@ -200,12 +200,13 @@ public class Dungeon : MonoBehaviour
         }
     }
 
-    void PlaceWall(Vector3 wallCenter, GameObject prefab) {
+    GameObject PlaceWall(Vector3 wallCenter, GameObject prefab) {
         if(prefab == null) {
-            return;
+            return null;
         }
         GameObject wallObj = Instantiate(prefab, wallCenter, Quaternion.identity);
         wallObj.transform.parent = this.transform;
+        return wallObj;
     }
 
 

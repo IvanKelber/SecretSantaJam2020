@@ -15,6 +15,11 @@ MonoBehaviour:
   name: StartRoom
   isSpecific: 1
   infinteEnemySpawn: 0
-  numberOfEnemies: 0
-  numberOfPickups: 0
+  minNumberOfEnemies: 1
+  maxNumberOfEnemies: 1
+  maxEnemiesInRoomAtOnce: 1
+  spawnRate: 5
   interiorPrefab: {fileID: 1744554092597617226, guid: 5f5b934aa83794f5ab78961718861e69, type: 3}
+  enemiesToSpawn: []
+  numberOfWaves: 2
+  lockDoors: {fileID: 11400000, guid: 3cc137532380446e687a1865c8191bef, type: 2}

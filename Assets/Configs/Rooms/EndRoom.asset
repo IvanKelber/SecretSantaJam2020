@@ -15,6 +15,11 @@ MonoBehaviour:
   name: EndRoom
   isSpecific: 1
   infinteEnemySpawn: 0
-  numberOfEnemies: 1
-  numberOfPickups: 1
+  minNumberOfEnemies: 1
+  maxNumberOfEnemies: 1
+  maxEnemiesInRoomAtOnce: 1
+  spawnRate: 5
   interiorPrefab: {fileID: 4877274832038060319, guid: d1e2ce7830a484b56bf645a1e8afe6b8, type: 3}
+  enemiesToSpawn: []
+  numberOfWaves: 2
+  lockDoors: {fileID: 11400000, guid: 3cc137532380446e687a1865c8191bef, type: 2}

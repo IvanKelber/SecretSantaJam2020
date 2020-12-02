@@ -1,16 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class EnemySpawner : MonoBehaviour
 {
 
-
     public LayerMask playerMask;
     public float spawnDuration = 1;
     
-
-
     List<GameObject> spawnedEnemies = new List<GameObject>();
 
     List<Transform> spawnPoints = new List<Transform>();
@@ -19,6 +17,10 @@ public class EnemySpawner : MonoBehaviour
     private float timeSinceLastSpawn = 0;
     private bool playerEnteredRoom = false;
     private int enemiesToSpawn;
+    private bool doneSpawning = false;
+    private int aliveEnemies;
+    private bool roomComplete = false;
+    private bool spawning = false;
 
     //Config
     private int totalWaves;
@@ -27,11 +29,13 @@ public class EnemySpawner : MonoBehaviour
     private float timeBetweenSpawns;
     private List<GameObject> enemyPrefabs = new List<GameObject>();
     private int wavesSpawned = 0;
+    private BoolGameEvent lockDoors;
+
 
     void Start() {
         timeSinceLastSpawn = timeBetweenSpawns;
         foreach(Transform child in transform) {
-            if(child.gameObject.tag == "SpawnPoint") {
+            if(child.gameObject.activeSelf && child.gameObject.tag == "SpawnPoint") {
                 spawnPoints.Add(child);
             }
         }
@@ -39,16 +43,24 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if(StaticUserControls.paused || !playerEnteredRoom) {
+        if(StaticUserControls.paused || !playerEnteredRoom || roomComplete) {
             return;
         }
-        if(timeSinceLastSpawn >= timeBetweenSpawns && wavesSpawned < totalWaves) {
+        CountAliveEnemies();
+
+        if(doneSpawning) {
+            if(aliveEnemies == 0 && !spawning) {
+                lockDoors.Raise(false);
+                roomComplete = true;
+            }
+        } else if(timeSinceLastSpawn >= timeBetweenSpawns || (!spawning && aliveEnemies == 0) ) {
             timeSinceLastSpawn = 0;
+            spawning = true;
             StartCoroutine(PrepareSpawn());
             wavesSpawned++;
-            Debug.Log("Spawning wave: " + wavesSpawned);
         } else if(wavesSpawned == totalWaves) {
             //The room has been completed
+            doneSpawning = true;
         }
         timeSinceLastSpawn += Time.deltaTime;
     }
@@ -59,6 +71,7 @@ public class EnemySpawner : MonoBehaviour
         timeBetweenSpawns = config.spawnRate;
         enemyPrefabs = config.enemiesToSpawn;
         totalWaves = config.numberOfWaves;
+        lockDoors = config.lockDoors;
         if(enemyPrefabs.Count == 0 || maxEnemiesSpawned == 0) {
             Destroy(this);
         }
@@ -72,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemyPrefab = enemyPrefabs[index];
             StartCoroutine(Spawn(enemyPrefab, spawnPoint));
             yield return new WaitForSeconds(Random.Range(0,.1f));
-        }       
+        }
         yield return null;
     }
 
@@ -85,8 +98,10 @@ public class EnemySpawner : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         enemy.transform.parent = spawnPoint;
         enemy.transform.localScale = Vector3.one;
+        spawnedEnemies.Add(enemy);
         totalEnemiesSpawned++;
         yield return null;
+        spawning = false;
     }
 
 
@@ -97,10 +112,17 @@ public class EnemySpawner : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+
+    void CountAliveEnemies() {
+        spawnedEnemies.RemoveAll(enemy => enemy == null);
+        aliveEnemies = spawnedEnemies.Count;
+        Debug.Log("Alive enemies: " + aliveEnemies);
+    }
+
     public void StartSpawning() {
-        if(playerEnteredRoom) {
-            return;
-        }
+        // if(playerEnteredRoom) {
+        //     return;
+        // }
         playerEnteredRoom = true;
         enemiesToSpawn = Random.Range(minEnemiesSpawned, maxEnemiesSpawned);
         timeSinceLastSpawn = timeBetweenSpawns;
@@ -120,39 +142,19 @@ public class EnemySpawner : MonoBehaviour
         if(sizeOfWave >= spawnPoints.Count) {
             return spawnPoints;
         }
-        // for (int i = 0; i < spawnPoints.Count; i++) {
-        //     Transform temp = spawnPoints[i];
-        //     int randomIndex = Random.Range(i, spawnPoints.Count);
-        //     spawnPoints[i] = spawnPoints[randomIndex];
-        //     spawnPoints[randomIndex] = temp;
-        // }
+
+        for (int i = 0; i < spawnPoints.Count; i++) {
+            Transform temp = spawnPoints[i];
+            int randomIndex = Random.Range(i, spawnPoints.Count);
+            spawnPoints[i] = spawnPoints[randomIndex];
+            spawnPoints[randomIndex] = temp;
+        }
         List<Transform> chosenPoints = new List<Transform>();
-        // for(int i = 0; i < sizeOfWave; i++) {
-        //     chosenPoints.Add(spawnPoints[i]);
-        // }
-        // return chosenPoints;
-
-        int pointsLeftToPick = sizeOfWave;
-        int pointCount = spawnPoints.Count;
-        Debug.Log("Selecting spawn points for wave");
-
-        foreach(Transform spawnPoint in spawnPoints) {
-            Debug.Log("probability: " + pointsLeftToPick + "/" + pointCount);
-            if(Random.Range(0,pointCount - 1) < pointsLeftToPick) {
-                // Choose the element with probablility pointsLeftToPick/pointCount
-                chosenPoints.Add(spawnPoint);
-                pointsLeftToPick--;
-            }
-            pointCount--;
-            if(pointsLeftToPick == 0) {
-                break;
-            }
-            if(pointCount == 0) {
-                Debug.LogError("Failed to choose " + sizeOfWave + " spawn points");
-                break;
-            }
+        for(int i = 0; i < sizeOfWave; i++) {
+            chosenPoints.Add(spawnPoints[i]);
         }
         return chosenPoints;
+
     }
 
 }

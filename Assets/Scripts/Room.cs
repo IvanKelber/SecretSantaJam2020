@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class Room
 {
+
+
     private RoomConfig config;
     private GameObject room;
     
-    public Room(RoomConfig config) {
+    private Vector2Int roomIndex;
+
+    private List<GameObject> openings = new List<GameObject>();
+
+    public Room(RoomConfig config, int i, int j) {
         this.config = config;
+        roomIndex = new Vector2Int(i,j);
+    }
+
+    public Room(RoomConfig config, Vector2 room) : this(config, (int) room.x, (int) room.y){
     }
 
     public void SetConfig(RoomConfig config) {
@@ -21,7 +31,8 @@ public class Room
         }
         room = GameObject.Instantiate(config.interiorPrefab, center, Quaternion.identity);
         room.transform.parent = parent;
-        room.GetComponent<RoomBehavior>().SetConfig(config);
+        RoomBehavior rb = room.GetComponent<RoomBehavior>();
+        rb.SetConfig(config);
     }
 
     public static implicit operator bool(Room room) {
