@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public LayerMask playerMask;
     public GameObject interactPrompt;
-    bool playerPresent = false;
+    protected bool playerPresent = false;
 
     public virtual void Start() {
         GetComponent<Rigidbody2D>().isKinematic = true;

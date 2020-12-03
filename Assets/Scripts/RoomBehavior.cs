@@ -39,9 +39,11 @@ public class RoomBehavior : Interactable
 
     public void OnRoomComplete() {
         //spawn rewards
-        if(!roomComplete) {
+        if(playerPresent) {
             roomComplete = true;
             Instantiate(rewardCollectionPrefab, transform.position + Vector3.down * 5, Quaternion.identity);
         }
+
+        
     }
 }

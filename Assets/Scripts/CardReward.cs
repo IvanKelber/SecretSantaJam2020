@@ -21,4 +21,12 @@ public class CardReward : Reward
         cardTitle.text = config.name;
         cardDescription.text = config.description;
     }
+
+    public override void OnEnterTrigger(Collider2D collider) {
+        transform.localScale *= 2;
+    }
+
+    public override void OnExitTrigger(Collider2D collider) {
+        transform.localScale /= 2;
+    }
 }
