@@ -35,6 +35,10 @@ public class Reward : Interactable
         this.config = config;
     }
 
+    public void ApplyEffect() {
+        config.ApplyEffect(playerValues);
+    }
+
     void OnDrawGizmos() {
         Gizmos.DrawSphere(transform.position, 1);
     }

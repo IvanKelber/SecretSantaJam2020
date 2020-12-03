@@ -13,6 +13,12 @@ public class RewardConfig : ScriptableObject
 
     public Sprite rewardSprite;
 
+    public List<RewardEffect> effects;
 
+    public void ApplyEffect(PlayerValues values) {
+        foreach(RewardEffect effect in effects) {
+            effect.Apply(values);
+        }
+    }
 
 }

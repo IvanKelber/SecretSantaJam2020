@@ -27,9 +27,9 @@ public class RewardCollection : MonoBehaviour
 
 
     public void OnRewardChosen(GameObject reward) {
-        string n = reward.GetComponent<Reward>().config.name;
+        Reward r = reward.GetComponent<Reward>();
+        r.ApplyEffect();
         lockDoors.Raise(false);
-        Debug.Log(n + " HAS BEEN CHOSEN");
         Destroy(this.gameObject);
         
     }
