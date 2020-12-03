@@ -29,7 +29,6 @@ public class Gun : MonoBehaviour
 
     public void SetConfig(GunConfig config) {
         this.config = config;
-        Debug.Log("Config: " + config);
         spriteRenderer.sprite = config.gunSprite;
     }
 

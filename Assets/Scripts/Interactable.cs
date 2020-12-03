@@ -42,6 +42,7 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public virtual void OnInteract() {
         //nothing
+        Destroy(interactPrompt);
     }
 
     public virtual void OnEnterTrigger(Collider2D collider) {}

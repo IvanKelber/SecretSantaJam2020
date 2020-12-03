@@ -111,4 +111,9 @@ public class Player : Damageable
         dying = false;
     }
 
+    public void OnRewardChosen(GameObject reward) {
+        RewardConfig rewardConfig = reward.GetComponent<Reward>().config;
+        Debug.Log("Player received config: " + rewardConfig.name);
+    }
+
 }

@@ -10,5 +10,5 @@ public class PlayerValues : DamageableConfig
     public float currentHealth = 100;
 
     [Min(0)]
-    public float goldCount = 0;
+    public int goldCount = 0;
 }

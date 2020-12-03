@@ -25,7 +25,7 @@ public class WeaponInventory : MonoBehaviour
         get {return gun;}
     }
 
-    int capacity = 2;
+    public int capacity = 4;
     int gunIndex = 0;
 
     void Start() {
@@ -75,6 +75,7 @@ public class WeaponInventory : MonoBehaviour
 
         hudGunImages[gunIndex].transform.parent.GetComponent<Image>().color = Color.white * new Color(1,1,1,.3f);
         hudGunImages[index].transform.parent.GetComponent<Image>().color = Color.yellow;
+        hudGunImages[index].preserveAspect = true;
         gun.SetConfig(gunConfigs[index]);
         gunIndex = index;
     }

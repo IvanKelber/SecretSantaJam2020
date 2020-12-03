@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5102c35563674d8790ef29c40cb77a8, type: 3}
-  m_Name: PlayerValues
+  m_Script: {fileID: 11500000, guid: 8272117a407b741b082d2cb7bac96a13, type: 3}
+  m_Name: 1ProjectileSpeed
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  goldCount: 0
+  name: 1ProjectileSpeed

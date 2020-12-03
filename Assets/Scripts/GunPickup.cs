@@ -8,9 +8,9 @@ public class GunPickup : Interactable
     public GunConfig config;
 
     [SerializeField]
-    AudioManager audioManager;
+    protected AudioManager audioManager;
 
-    AudioSource audioSource;
+    protected AudioSource audioSource;
 
     Player nearbyPlayer;
 
@@ -21,13 +21,12 @@ public class GunPickup : Interactable
     [Range(.5f, 5)]
     float promptDistance = 1;
 
-    [ExecuteInEditMode]
-    void Start() {
+    public void Start() {
         audioSource = gameObject.AddComponent<AudioSource>();
         spriteRenderer.sprite = config.gunSprite;
     }
   
-    void Update() {
+    public void Update() {
         base.Update();
         UpdateInteractPrompt();
     }
@@ -51,16 +50,17 @@ public class GunPickup : Interactable
         }
         base.OnInteract();
         nearbyPlayer.PickupGun(config);
-        Destroy();
+        StartCoroutine(Destroy());
     }
 
-    public void Destroy() {
-        audioManager.Play("GunPickup", audioSource);
+    public IEnumerator Destroy() {
+        spriteRenderer.color = Color.clear;
+        yield return StartCoroutine(audioManager.PlayAndWait("GunPickup", audioSource));
         Destroy(this.gameObject);
     }
 
     public void UpdateInteractPrompt() {
-        if(nearbyPlayer != null) {
+        if(nearbyPlayer != null && interactPrompt != null) {
             Vector3 promptPosition = transform.position + (transform.position - nearbyPlayer.transform.position).normalized * promptDistance;
             interactPrompt.transform.position = promptPosition;
         }

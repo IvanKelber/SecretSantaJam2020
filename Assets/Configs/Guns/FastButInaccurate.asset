@@ -47,5 +47,8 @@ MonoBehaviour:
   knockback: 29.2
   spreadNoise: 20
   angleBetweenBullets: 0
+  centerAngle: 0
   numberOfBullets: 1
   bullet: {fileID: 11400000, guid: 7aef6f943490d40629f3d72a852b27e7, type: 2}
+  timeBetweenShots: 0
+  gunSprite: {fileID: 4985848542442974150, guid: 2262f408278271248889a3ea3c7e75bf, type: 3}

@@ -8,7 +8,8 @@ public class EnemySpawner : MonoBehaviour
 
     public LayerMask playerMask;
     public float spawnDuration = 1;
-    
+    public GameEvent roomCompleteEvent;
+
     List<GameObject> spawnedEnemies = new List<GameObject>();
 
     List<Transform> spawnPoints = new List<Transform>();
@@ -29,7 +30,6 @@ public class EnemySpawner : MonoBehaviour
     private float timeBetweenSpawns;
     private List<GameObject> enemyPrefabs = new List<GameObject>();
     private int wavesSpawned = 0;
-    private BoolGameEvent lockDoors;
 
 
     void Start() {
@@ -50,8 +50,9 @@ public class EnemySpawner : MonoBehaviour
 
         if(doneSpawning) {
             if(aliveEnemies == 0 && !spawning) {
-                lockDoors.Raise(false);
                 roomComplete = true;
+                roomCompleteEvent.Raise();
+                Destroy(this.gameObject);
             }
         } else if(timeSinceLastSpawn >= timeBetweenSpawns || (!spawning && aliveEnemies == 0) ) {
             timeSinceLastSpawn = 0;
@@ -71,9 +72,9 @@ public class EnemySpawner : MonoBehaviour
         timeBetweenSpawns = config.spawnRate;
         enemyPrefabs = config.enemiesToSpawn;
         totalWaves = config.numberOfWaves;
-        lockDoors = config.lockDoors;
         if(enemyPrefabs.Count == 0 || maxEnemiesSpawned == 0) {
-            Destroy(this);
+            Debug.LogWarning("EnemySpawner is present but shouldn't be");
+            Destroy(this.gameObject);
         }
     }
 
@@ -103,15 +104,6 @@ public class EnemySpawner : MonoBehaviour
         yield return null;
         spawning = false;
     }
-
-
-    public void ClearEnemies() {
-        foreach(GameObject enemy in spawnedEnemies) {
-            Destroy(enemy);
-        }
-        Destroy(this.gameObject);
-    }
-
 
     void CountAliveEnemies() {
         spawnedEnemies.RemoveAll(enemy => enemy == null);

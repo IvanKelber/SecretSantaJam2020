@@ -74,12 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758142c018c964adf825e7adc02ca7e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minEnemiesSpawned: 2
-  maxEnemiesSpawned: 5
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectionRadius: 20
-  timeBetweenSpawns: 5
-  enemyPrefabs:
-  - {fileID: 15768144417791391, guid: fb06aa45d3af842c1a205c5fcede043a, type: 3}
+  spawnDuration: 1
+  roomCompleteEvent: {fileID: 11400000, guid: 8fcde4bb96a9240d5a51d6b6e2843f6c, type: 2}
