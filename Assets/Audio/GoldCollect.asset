@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77d88835918f4d2eba1f4e80e3223ac, type: 3}
+  m_Name: GoldCollect
+  m_EditorClassIdentifier: 
+  Name: GoldCollect
+  clips:
+  - {fileID: 8300000, guid: 16f6ba62752f6f340a663ecd14475490, type: 3}
+  - {fileID: 8300000, guid: 52633201299171d4990bacf1afbf5e85, type: 3}
+  - {fileID: 8300000, guid: a932d32fca391cd48b4a00bba29315cd, type: 3}
+  - {fileID: 8300000, guid: 9db635cdbb2ea884c802d8c0e4eed6dc, type: 3}
+  - {fileID: 8300000, guid: 96e9ec9e60ae06346a728b988b5c9b1e, type: 3}
+  - {fileID: 8300000, guid: 6a8c60075137cfd4399c724d469adb9f, type: 3}
+  minVolume: 1
+  maxVolume: 1
+  minPitch: -0.1
+  maxPitch: 0.1

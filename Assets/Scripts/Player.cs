@@ -26,17 +26,18 @@ public class Player : Damageable
     float timeSinceLastShot = 0;
 
 
-    bool waitingToRespawn = false;
+    bool waitingToRespawn = true;
 
 
-    PlayerHealth playerHealth;
+    PlayerValues playerValues;
     bool dying;
 
     void Start() {
         base.Start();
         weaponInventory = GetComponent<WeaponInventory>();
         playerMovement = GetComponent<PlayerMovement>();
-        playerHealth = config as PlayerHealth;
+        playerValues = config as PlayerValues;
+        Reset();
     }
 
     void Update()
@@ -74,14 +75,15 @@ public class Player : Damageable
     public void Reset() {
         if(waitingToRespawn) {
             weaponInventory.Reset();
+            playerValues.goldCount = 0;
             FullHeal();
             waitingToRespawn = false;
         }
     }
 
     void FullHeal() {
-        playerHealth.currentHealth = playerHealth.maxHealth;
-        base.Heal(playerHealth.maxHealth);
+        playerValues.currentHealth = playerValues.maxHealth;
+        base.Heal(playerValues.maxHealth);
     }
 
     void Shoot() {
@@ -93,12 +95,12 @@ public class Player : Damageable
     }
 
     public override void TakeDamage(float damage) {
-        if(godModeEnabled || playerHealth.currentHealth <= 0) {
+        if(godModeEnabled || playerValues.currentHealth <= 0) {
             return;
         }
         base.TakeDamage(damage);
         audioManager.Play("PlayerGrunt", audioSource);
-        playerHealth.currentHealth = currentHealth;
+        playerValues.currentHealth = currentHealth;
     }
 
     protected override void Die() {

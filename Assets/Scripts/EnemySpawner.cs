@@ -116,7 +116,6 @@ public class EnemySpawner : MonoBehaviour
     void CountAliveEnemies() {
         spawnedEnemies.RemoveAll(enemy => enemy == null);
         aliveEnemies = spawnedEnemies.Count;
-        Debug.Log("Alive enemies: " + aliveEnemies);
     }
 
     public void StartSpawning() {

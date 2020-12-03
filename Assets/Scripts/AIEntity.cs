@@ -12,6 +12,8 @@ public class AIEntity : Damageable
     }
     public AIConfig AIconfig;
     
+    public GameObject goldPrefab;
+
     [SerializeField]
     protected LayerMask playerMask, wallMask;
 
@@ -56,5 +58,14 @@ public class AIEntity : Damageable
 
     protected virtual void Attack() {
 
+    }
+
+    protected override void Die() {
+        DropGold();
+        base.Die();
+    }
+
+    void DropGold() {
+        Instantiate(goldPrefab, transform.position, Quaternion.identity);
     }
 }
