@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8272117a407b741b082d2cb7bac96a13, type: 3}
   m_Name: 1ProjectileSpeed
   m_EditorClassIdentifier: 
-  name: 1ProjectileSpeed
+  type: {fileID: 11400000, guid: 7b0ce137750b04d35bef3ba276a9b328, type: 2}
+  name: ProjectileSpeed+
+  description: Increases the speed your projectiles travel by 1
+  rewardPrefab: {fileID: 3207492534920678942, guid: 56abe77af1f51416c91b002be0bb67a1, type: 3}
+  rewardSprite: {fileID: -8563076810403071349, guid: d372586842399439ba8c0383c22a3a8f, type: 3}

@@ -31,7 +31,7 @@ public class Reward : Interactable
         }
     }
 
-    public void SetConfig(RewardConfig config) {
+    public virtual void Init(RewardConfig config) {
         this.config = config;
     }
 
