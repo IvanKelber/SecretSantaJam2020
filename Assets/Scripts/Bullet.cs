@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     AudioSource audioSource;
     Vector3 direction;
     float birthTime;
+    float speed;
     CircleCollider2D collider;
     CinemachineImpulseSource impulseSource;
     SpriteRenderer renderer;
@@ -57,6 +58,9 @@ public class Bullet : MonoBehaviour
     public void SetDirection(Vector3 direction) {
         this.direction = direction;
     }
+    public void SetSpeed(float speed) {
+        config.bulletSpeed = speed;
+    }
 
     public void SetConfig(BulletConfig config) {
         this.config = config;
@@ -73,7 +77,7 @@ public class Bullet : MonoBehaviour
         renderer.color = new Color(0,0,0,0);
         impulseSource.GenerateImpulse(direction);
         foreach(Collider2D collider in collisions) {
-            Damageable damageable = collider.gameObject.GetComponent<Damageable>();
+            IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
             if(damageable != null) {
                 damageable.TakeDamage(config.bulletDamage);
             }

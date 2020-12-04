@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
-public class Player : Damageable
+public class Player : MonoBehaviour, IDamageable
 {
 
     [SerializeField]
@@ -15,11 +15,14 @@ public class Player : Damageable
     [SerializeField]
     float handDistance;
 
-
     [SerializeField]
     GameEvent playerDeath;
 
-    WeaponInventory weaponInventory;
+    [SerializeField]
+    AudioManager audioManager;
+
+    [SerializeField]
+    PlayerGun playerGun;
 
     PlayerMovement playerMovement;
 
@@ -28,15 +31,21 @@ public class Player : Damageable
 
     bool waitingToRespawn = true;
 
+    AudioSource audioSource;
 
+    [SerializeField]
     PlayerValues playerValues;
+    [SerializeField]
+    PlayerValues defaultPlayerValues;
+
     bool dying;
 
     void Start() {
-        base.Start();
-        weaponInventory = GetComponent<WeaponInventory>();
+        audioSource = GetComponent<AudioSource>();
+        if(audioSource == null) {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         playerMovement = GetComponent<PlayerMovement>();
-        playerValues = config as PlayerValues;
         Reset();
     }
 
@@ -50,7 +59,7 @@ public class Player : Damageable
         }
         UpdateHand();
         
-        if(playerMovement.GetShootKey() && timeSinceLastShot > weaponInventory.Gun.config.fireRate) {
+        if(playerMovement.GetShootKey() && timeSinceLastShot > playerValues.fireRate) {
             Shoot();
         }
         timeSinceLastShot += Time.deltaTime;
@@ -67,45 +76,34 @@ public class Player : Damageable
         hand.transform.rotation = Quaternion.Euler(0,0, Vector3.SignedAngle(playerMovement.flipped ? Vector3.left : Vector3.right, direction, Vector3.forward));
     }
 
-
-    public void PickupGun(GunConfig config) {
-        weaponInventory.Pickup(config);
-    }
-
     public void Reset() {
         if(waitingToRespawn) {
-            weaponInventory.Reset();
-            playerValues.goldCount = 0;
-            FullHeal();
+            playerValues.Reset(defaultPlayerValues);
             waitingToRespawn = false;
         }
     }
 
-    void FullHeal() {
-        playerValues.currentHealth = playerValues.maxHealth;
-        base.Heal(playerValues.maxHealth);
-    }
 
     void Shoot() {
-        weaponInventory.Gun.Shoot(playerMovement.mousePosition);
+        playerGun.Shoot(playerMovement.mousePosition);
         Vector3 knockbackDirection = (transform.position - playerMovement.mousePosition).normalized;
-        Vector2 knockback = weaponInventory.Gun.config.knockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
+        Vector2 knockback = playerValues.onFireKnockback * new Vector2(knockbackDirection.x, knockbackDirection.y) * Time.deltaTime;
         playerMovement.Move(knockback);
         timeSinceLastShot = 0;
     }
 
-    public override void TakeDamage(float damage) {
+    public void TakeDamage(float damage) {
         if(godModeEnabled || playerValues.currentHealth <= 0) {
             return;
         }
-        base.TakeDamage(damage);
+        playerValues.currentHealth -= damage;
+        playerValues.currentHealth = Mathf.Clamp(playerValues.currentHealth, 0, playerValues.maxHealth);
         audioManager.Play("PlayerGrunt", audioSource);
-        playerValues.currentHealth = currentHealth;
     }
 
-    protected override void Die() {
+    protected void Die() {
         dying = true;
-        audioManager.Play("PlayerDeath", audioSource);
+        StartCoroutine(audioManager.PlayAndWait("PlayerDeath", audioSource));
         playerDeath.Raise();
         waitingToRespawn = true;
         dying = false;

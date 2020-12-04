@@ -75,7 +75,6 @@ public class Imp : AIEntity
         Vector3 velocity = direction * AIconfig.movementSpeed;
 
         movement.Move(new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime);
-        // transform.position += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime;
 
         if(Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) <= nextWaypointDst) {
             currentWaypoint++;

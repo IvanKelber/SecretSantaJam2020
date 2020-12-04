@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5102c35563674d8790ef29c40cb77a8, type: 3}
-  m_Name: PlayerValues
+  m_Name: DefaultPlayerValues
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
   goldCount: 0
   projectileDamage: 5
-  projectileSpeed: 30
+  projectileSpeed: 10
   projectileSpread: 0
-  numberOfProjectilesPerShot: 5
-  projectileSpreadNoise: 5
+  numberOfProjectilesPerShot: 1
+  projectileSpreadNoise: 10
   projectileLifetime: 2
-  subsequentProjectileDelay: 0.05
-  fireRate: 0.52
-  playerMovementSpeed: 20.03
+  subsequentProjectileDelay: 0
+  fireRate: 1
+  playerMovementSpeed: 10
   gunSprite: {fileID: 576788955910145305, guid: 2262f408278271248889a3ea3c7e75bf, type: 3}
   fireImpulse:
     m_ImpulseChannel: 1
@@ -56,4 +56,3 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   projectile: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
-  onFireKnockback: 178.72

@@ -7,7 +7,6 @@ public class Damageable : MonoBehaviour
 
     public DamageableConfig config;
 
-    public AudioManager audioManager;
     public float currentHealth;
     public AudioSource audioSource;
 

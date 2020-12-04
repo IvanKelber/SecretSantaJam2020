@@ -128,50 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2521559355725457422, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
   m_PrefabInstance: {fileID: 2521559354493436683}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &29045564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29045563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6781b467167175a45a272c3787c44109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showDebugFields: 0
-  _enableGizmoDebugging: 1
-  _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: d6c60e0717c2e4455a2c01d00fbd1114, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 29045569}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnRewardChosen
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _debugValue: {fileID: 0}
---- !u!114 &29045569 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2521559355725457421, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-  m_PrefabInstance: {fileID: 2521559354493436683}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29045563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a42684eac9f497bab2355e9edfc392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &113360684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1166,7 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 52432dbdae239614b9d5d23b382317be, type: 3}
   maskValue: 0
-  maskColor: {r: 0, g: 0, b: 0, a: 0.000336647}
+  maskColor: {r: 0, g: 0, b: 0, a: 0.001834631}
   maskTexture: {fileID: 2800000, guid: 45ebb0bdc0ecfe44dbd034ee7370d465, type: 3}
   maskInvert: 0
 --- !u!114 &1206863048
@@ -2813,6 +2769,14 @@ PrefabInstance:
     - target: {fileID: 2521559355725457422, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623601480482588700, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
+      propertyPath: playerValues
+      value: 
+      objectReference: {fileID: 11400000, guid: 10f8680488366469d993f8213020541e, type: 2}
+    - target: {fileID: 3623601480482588701, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3623601480926881419, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_AnchorMax.x

@@ -16,9 +16,21 @@ public class HealthBar : MonoBehaviour
     [Range(.5f, 5)]
     public float fullVisibility = 1;
 
+    public PlayerValues playerValues;
+    bool isPlayerHealth = false;
+
     public void Start() {
         if(!alwaysVisible) {
             healthBarGroup.alpha = 0;
+        }
+        isPlayerHealth = playerValues != null;
+    }
+
+    public void Update() {
+        if(isPlayerHealth) {
+            slider.maxValue = playerValues.maxHealth;
+            slider.value = playerValues.currentHealth;
+            fill.color = gradient.Evaluate(slider.normalizedValue);
         }
     }
 

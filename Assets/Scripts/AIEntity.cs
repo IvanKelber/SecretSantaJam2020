@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIEntity : Damageable
+public class AIEntity : MonoBehaviour, IDamageable
 {
 
     public enum AIState {
@@ -13,9 +13,15 @@ public class AIEntity : Damageable
     public AIConfig AIconfig;
     
     public GameObject goldPrefab;
+    public float currentHealth;
+    public AudioManager audioManager;
+    public AudioSource audioSource;
+
 
     [SerializeField]
     protected LayerMask playerMask, wallMask;
+    [SerializeField]
+    protected HealthBar healthBar;
 
     protected LayerMask collisionMask;
     
@@ -23,7 +29,10 @@ public class AIEntity : Damageable
 
     public virtual void Start()
     {
-        base.Start();
+        audioSource = gameObject.AddComponent<AudioSource>();
+        currentHealth = AIconfig.maxHealth;
+        healthBar.SetMaxHealth(AIconfig.maxHealth);
+
         collisionMask = playerMask | wallMask;
     }
 
@@ -60,10 +69,20 @@ public class AIEntity : Damageable
 
     }
 
-    protected override void Die() {
-        DropGold();
-        base.Die();
+    public virtual void TakeDamage(float damage) {
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth,0,AIconfig.maxHealth);
+        healthBar.SetCurrentHealth(currentHealth);
+        if(currentHealth == 0) {
+            Die();
+        }
     }
+
+    protected virtual void Die() {
+        DropGold();
+        Destroy(this.gameObject);
+    }
+
 
     void DropGold() {
         Instantiate(goldPrefab, transform.position, Quaternion.identity);

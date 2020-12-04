@@ -49,7 +49,6 @@ public class GunPickup : Interactable
             return;
         }
         base.OnInteract();
-        nearbyPlayer.PickupGun(config);
         StartCoroutine(Destroy());
     }
 
