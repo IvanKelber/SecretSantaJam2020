@@ -1,28 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Reflection;
 
 [CreateAssetMenu(menuName="Effects/Reward")]
-public class RewardEffect : ScriptableObject
+public class RewardEffect : PlayerValues
 {
-
-    public int projectileDamage;
-    public int projectileSpeed;
-    public float projectileSpread;
-    public int numberOfProjectilesPerShot;
-
-    public float projectileSpreadNoise;
-
-    public float projectileLifetime;
-
-    public float fireRate;
-
-    public float playerMovementSpeed;
-
-    public float playerMaxHealth;
-    public float playerCurrentHealth;
-
     public virtual void Apply(PlayerValues values) {
-        
+        // FieldInfo[] fieldInfo;
+        // Type valuesType = typeof(PlayerValues);
+        // // Get the type and fields of PlayerValues.
+        // fieldInfo = valuesType.GetFields(BindingFlags.Instance| BindingFlags.Public);
+        // for(int i = 0; i < fieldInfo.Length; i++)
+        // {
+        //     if(fieldInfo[i].FieldType == typeof(int) || fieldInfo[i].FieldType == typeof(float)) {
+        //         dynamic current = Convert.ChangeType(fieldInfo[i].GetValue(values), fieldInfo[i].FieldType); 
+        //         dynamic effect = Convert.ChangeType(fieldInfo[i].GetValue(this), fieldInfo[i].FieldType); 
+        //         fieldInfo[i].SetValue(values, (Object) (current + effect));
+        //     }
+        // }
+
+        values.maxHealth += maxHealth;
+
+        values.currentHealth += currentHealth;
+
+        values.goldCount += goldCount;
+
+        values.projectileDamage += projectileDamage;
+        values.projectileSpeed += projectileSpeed;
+        values.projectileSpread += projectileSpread;
+        values.numberOfProjectilesPerShot += numberOfProjectilesPerShot;
+
+        values.projectileSpreadNoise += projectileSpreadNoise;
+
+        values.projectileLifetime += projectileLifetime;
+
+        values.subsequentProjectileDelay += subsequentProjectileDelay;
+
+        values.fireRate += fireRate;
+
+        values.playerMovementSpeed += playerMovementSpeed;
+
+        values.onFireKnockback += onFireKnockback;
+
     }
 }

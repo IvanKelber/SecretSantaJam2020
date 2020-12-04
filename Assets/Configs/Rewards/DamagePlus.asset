@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8272117a407b741b082d2cb7bac96a13, type: 3}
-  m_Name: 1Damage
+  m_Name: DamagePlus
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 7b0ce137750b04d35bef3ba276a9b328, type: 2}
   name: Damage+
   description: Increases damage done by projectiles by 1
   rewardPrefab: {fileID: 3207492534920678942, guid: 56abe77af1f51416c91b002be0bb67a1, type: 3}
   rewardSprite: {fileID: 8019853662744409199, guid: d372586842399439ba8c0383c22a3a8f, type: 3}
+  effects:
+  - {fileID: 11400000, guid: 96fdafacbc10c4c7ab361aa8d629ae5d, type: 2}

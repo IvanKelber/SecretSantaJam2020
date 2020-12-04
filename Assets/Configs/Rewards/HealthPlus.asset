@@ -18,4 +18,4 @@ MonoBehaviour:
   rewardPrefab: {fileID: 3207492534920678942, guid: 56abe77af1f51416c91b002be0bb67a1, type: 3}
   rewardSprite: {fileID: 5514073214853259731, guid: d372586842399439ba8c0383c22a3a8f, type: 3}
   effects:
-  - {fileID: 11400000, guid: 3d3433a6ebf584a819698fe371e24cc6, type: 2}
+  - {fileID: 11400000, guid: 249235b0990ac4c22a788289c52a179b, type: 2}

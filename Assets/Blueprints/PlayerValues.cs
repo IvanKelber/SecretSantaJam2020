@@ -9,7 +9,7 @@ using System.Reflection;
 public class PlayerValues : ScriptableObject
 {
 
-    [Min(1)]
+    [Min(0)]
     public float maxHealth = 100;
 
     [Min(0)]
