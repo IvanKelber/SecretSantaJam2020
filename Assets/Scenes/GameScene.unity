@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 52432dbdae239614b9d5d23b382317be, type: 3}
   maskValue: 0
-  maskColor: {r: 0, g: 0, b: 0, a: 0.001834631}
+  maskColor: {r: 0, g: 0, b: 0, a: 0.004302025}
   maskTexture: {fileID: 2800000, guid: 45ebb0bdc0ecfe44dbd034ee7370d465, type: 3}
   maskInvert: 0
 --- !u!114 &1206863048
@@ -2769,14 +2769,6 @@ PrefabInstance:
     - target: {fileID: 2521559355725457422, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3623601480482588700, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: playerValues
-      value: 
-      objectReference: {fileID: 11400000, guid: 10f8680488366469d993f8213020541e, type: 2}
-    - target: {fileID: 3623601480482588701, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
-      propertyPath: m_Value
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3623601480926881419, guid: bf3ab888bd97e459a8755d727d0a9feb, type: 3}
       propertyPath: m_AnchorMax.x

@@ -103,7 +103,7 @@ public class Imp : AIEntity
                 currentState = AIState.Searching;
                 return;
             } else {
-                Damageable d = hit.collider.gameObject.GetComponent<Damageable>();
+                IDamageable d = hit.collider.gameObject.GetComponent<IDamageable>();
                 if(d == null) {
                     return;
                 }

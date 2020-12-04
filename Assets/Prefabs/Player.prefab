@@ -809,8 +809,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2020643465
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -852,8 +852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 11400000, guid: 310b95a54384d450e9d4037fb30c71b1, type: 2}
-    m_AmplitudeGain: 0.01
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
@@ -1713,6 +1713,10 @@ PrefabInstance:
       propertyPath: alwaysVisible
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4714481669043388784, guid: 485e450e120874ad5abb1743baacf3d8, type: 3}
+      propertyPath: playerValues
+      value: 
+      objectReference: {fileID: 11400000, guid: 10f8680488366469d993f8213020541e, type: 2}
     - target: {fileID: 4714481669043388786, guid: 485e450e120874ad5abb1743baacf3d8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 77
