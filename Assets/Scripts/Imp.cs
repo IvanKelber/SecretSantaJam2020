@@ -119,7 +119,7 @@ public class Imp : AIEntity
     }
 
     public override void TakeDamage(float damage, Vector3 knockback) {
-        movement.Move(knockback * Time.deltaTime);
+        movement.Force(knockback);
         base.TakeDamage(damage, knockback);
     }
 

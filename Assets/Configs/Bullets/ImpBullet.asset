@@ -53,4 +53,4 @@ MonoBehaviour:
   gravityDirection: -90
   gravityMagnitude: 0
   independentOfAim: 0
-  knockbackOnHit: 70
+  knockbackOnHit: 1
