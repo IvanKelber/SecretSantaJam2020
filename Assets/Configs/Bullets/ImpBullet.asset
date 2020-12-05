@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
   m_Name: ImpBullet
   m_EditorClassIdentifier: 
-  lifetime: 5
+  bulletRange: 20
   bulletDamage: 10
   collisionImpulse:
     m_ImpulseChannel: 1
@@ -53,3 +53,4 @@ MonoBehaviour:
   gravityDirection: -90
   gravityMagnitude: 0
   independentOfAim: 0
+  knockbackOnHit: 70

@@ -22,6 +22,7 @@ public class PlayerMovement : Controller2D
 
     [HideInInspector]
     public bool flipped = false;
+    public bool playerDead = false;
     void Start()
     {
         base.Start();
@@ -29,10 +30,10 @@ public class PlayerMovement : Controller2D
 
     void Update()
     {
-  
+
         UpdateRaycastOrigins();
         UpdateMousePosition();
-        if(StaticUserControls.paused) {
+        if(StaticUserControls.paused || playerDead) {
             return;
         }
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));

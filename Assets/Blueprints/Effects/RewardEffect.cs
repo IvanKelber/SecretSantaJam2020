@@ -34,7 +34,7 @@ public class RewardEffect : PlayerValues
 
         values.projectileSpreadNoise += projectileSpreadNoise;
 
-        values.projectileLifetime += projectileLifetime;
+        values.projectileRange += projectileRange;
 
         values.subsequentProjectileDelay += subsequentProjectileDelay;
 
@@ -44,6 +44,7 @@ public class RewardEffect : PlayerValues
 
         values.onFireKnockback += onFireKnockback;
         values.maxArmor += maxArmor;
+        values.knockbackOnHit += knockbackOnHit;
 
     }
 }

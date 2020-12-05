@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
   m_Name: Tear
   m_EditorClassIdentifier: 
-  lifetime: 3
+  bulletRange: 200
   bulletDamage: 5
   collisionImpulse:
     m_ImpulseChannel: 1
@@ -53,3 +53,4 @@ MonoBehaviour:
   gravityDirection: -90
   gravityMagnitude: 15
   independentOfAim: 1
+  knockbackOnHit: 1

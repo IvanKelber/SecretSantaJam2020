@@ -49,6 +49,8 @@ public class PlayerGun : MonoBehaviour
             bullet.SetConfig(playerValues.projectile);
             bullet.SetSpeed(playerValues.projectileSpeed);
             bullet.SetDamage(playerValues.projectileDamage);
+            bullet.SetKnockbackOnHit(playerValues.knockbackOnHit);
+            bullet.SetRange(playerValues.projectileRange);
             Vector3 noisyDirection = GetCenter(direction);
 
             noisyDirection = Quaternion.Euler(0,0, - playerValues.projectileSpread + (angleStep * i)) * noisyDirection;

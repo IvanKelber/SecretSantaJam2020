@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
   m_Name: FirstBullet
   m_EditorClassIdentifier: 
-  lifetime: 2
+  bulletRange: 10
   bulletDamage: 5
   collisionImpulse:
     m_ImpulseChannel: 1
@@ -45,7 +45,7 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   collisionSound: BulletCollision
-  bulletSpeed: 20
+  bulletSpeed: 10
   damagingLayer:
     serializedVersion: 2
     m_Bits: 2304
@@ -53,3 +53,4 @@ MonoBehaviour:
   gravityDirection: -90
   gravityMagnitude: 0
   independentOfAim: 0
+  knockbackOnHit: 1

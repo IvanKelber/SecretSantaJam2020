@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     AudioSource audioSource;
     Vector3 direction;
-    float birthTime;
+    Vector3 birthPosition;
     float speed;
     CircleCollider2D collider;
     CinemachineImpulseSource impulseSource;
@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     Vector2 gravity;
 
     void Start() {
-        birthTime = Time.time;
+        birthPosition = transform.position;
         audioSource = gameObject.AddComponent<AudioSource>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
         collider = GetComponent<CircleCollider2D>();
@@ -40,7 +40,6 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         if(StaticUserControls.paused) {
-            birthTime += Time.deltaTime;
             return;
         }
         velocity += gravity * Time.deltaTime;
@@ -50,7 +49,7 @@ public class Bullet : MonoBehaviour
             if(!destroying)
                 StartCoroutine(Collision(collisions));
         }
-        if(!destroying && Time.time - birthTime >= config.lifetime) {
+        if(!destroying && Vector3.Distance(transform.position, birthPosition) >= config.bulletRange) {
             Destroy(this.gameObject);
         }
     }
@@ -70,6 +69,14 @@ public class Bullet : MonoBehaviour
         this.config.bulletDamage = damage;
     }
 
+    public void SetKnockbackOnHit(float knockback) {
+        this.config.knockbackOnHit = knockback;
+    }
+
+    public void SetRange(float range) {
+        this.config.bulletRange = range;
+    }
+
     public Collider2D[] CheckCollision() {
         Collider2D[] collisions = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), collider.radius,
                                                             config.damagingLayer);
@@ -83,7 +90,8 @@ public class Bullet : MonoBehaviour
         foreach(Collider2D collider in collisions) {
             IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
             if(damageable != null) {
-                damageable.TakeDamage(config.bulletDamage);
+                Vector3 knockback = (collider.transform.position - this.transform.position).normalized * config.knockbackOnHit;
+                damageable.TakeDamage(config.bulletDamage, knockback);
             }
         }
         yield return audioManager.PlayAndWait(config.collisionSound, audioSource);

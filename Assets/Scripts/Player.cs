@@ -82,6 +82,7 @@ public class Player : MonoBehaviour, IDamageable
         if(waitingToRespawn) {
             playerValues.Reset(defaultPlayerValues);
             waitingToRespawn = false;
+            playerMovement.playerDead = false;
         }
     }
 
@@ -122,10 +123,16 @@ public class Player : MonoBehaviour, IDamageable
 
     protected void Die() {
         dying = true;
+        playerMovement.playerDead = true;
         StartCoroutine(audioManager.PlayAndWait("PlayerDeath", audioSource));
         playerDeath.Raise();
         waitingToRespawn = true;
         dying = false;
+    }
+
+    public void TakeDamage(float damage, Vector3 knockback) {
+        playerMovement.Move(knockback * Time.deltaTime);
+        TakeDamage(damage);
     }
 
     public void OnRewardChosen(GameObject reward) {

@@ -118,6 +118,11 @@ public class Imp : AIEntity
         timeSinceLastAttack += Time.deltaTime;
     }
 
+    public override void TakeDamage(float damage, Vector3 knockback) {
+        movement.Move(knockback * Time.deltaTime);
+        base.TakeDamage(damage, knockback);
+    }
+
     void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, AIconfig.detectionRadius);

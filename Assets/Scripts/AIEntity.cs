@@ -78,10 +78,16 @@ public class AIEntity : MonoBehaviour, IDamageable
         }
     }
 
+    public virtual void TakeDamage(float damage, Vector3 knockback) {
+        TakeDamage(damage);
+    }
+
     protected virtual void Die() {
         DropGold();
         Destroy(this.gameObject);
     }
+
+
 
 
     void DropGold() {

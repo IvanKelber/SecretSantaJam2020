@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  maxArmor: 0
+  currentArmor: 0
   goldCount: 0
-  projectileDamage: 5
+  projectileDamage: 4
   projectileSpeed: 10
   projectileSpread: 0
   numberOfProjectilesPerShot: 1
   projectileSpreadNoise: 10
-  projectileLifetime: 2
+  projectileRange: 5
   subsequentProjectileDelay: 0
-  fireRate: 1
+  shotsPerSecond: 1
   playerMovementSpeed: 10
   gunSprite: {fileID: 576788955910145305, guid: 2262f408278271248889a3ea3c7e75bf, type: 3}
   fireImpulse:
@@ -56,3 +58,5 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   projectile: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
+  onFireKnockback: 0
+  knockbackOnHit: 0

@@ -10,10 +10,10 @@ public class PlayerValues : ScriptableObject
 {
 
     [Min(0)]
-    public float maxHealth = 100;
+    public float maxHealth = 0;
 
     [Min(0)]
-    public float currentHealth = 100;
+    public float currentHealth = 0;
 
     [Min(0)]
     public int maxArmor = 0;
@@ -23,20 +23,20 @@ public class PlayerValues : ScriptableObject
     [Min(0)]
     public int goldCount = 0;
 
-    public int projectileDamage = 5;
-    public int projectileSpeed = 10;
+    public int projectileDamage = 0;
+    public int projectileSpeed = 0;
     public float projectileSpread = 0;
-    public int numberOfProjectilesPerShot = 1;
+    public int numberOfProjectilesPerShot = 0;
 
     public float projectileSpreadNoise = 10;
 
-    public float projectileLifetime = 2;
+    public float projectileRange = 0;
 
     public float subsequentProjectileDelay = 0;
 
-    public float shotsPerSecond = 1;
+    public float shotsPerSecond = 0;
 
-    public float playerMovementSpeed = 10;
+    public float playerMovementSpeed = 0;
 
     public Sprite gunSprite;
 
@@ -44,6 +44,8 @@ public class PlayerValues : ScriptableObject
     public BulletConfig projectile;
 
     public float onFireKnockback = 0;
+
+    public float knockbackOnHit = 0;
 
     public void Reset(PlayerValues other) {
 

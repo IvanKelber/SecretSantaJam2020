@@ -7,8 +7,8 @@ using Cinemachine;
 [CreateAssetMenu(menuName="Configs/Bullet")]
 public class BulletConfig : ScriptableObject
 {
-    [Range(.5f,5)]
-    public float lifetime = 1;
+    [Range(0f,200)]
+    public float bulletRange = 1;
 
     [Range(1,100)]
     public float bulletDamage = 5;
@@ -30,5 +30,7 @@ public class BulletConfig : ScriptableObject
     public float gravityMagnitude = 0;
     
     public bool independentOfAim = false;
+
+    public float knockbackOnHit = 1;
 
 }
