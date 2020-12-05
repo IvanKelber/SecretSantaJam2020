@@ -90,7 +90,8 @@ public class Player : MonoBehaviour, IDamageable
     void Shoot() {
         playerGun.Shoot(playerMovement.mousePosition);
         Vector3 knockbackDirection = (transform.position - playerMovement.mousePosition).normalized;
-        Vector2 knockback = playerValues.onFireKnockback * new Vector2(knockbackDirection.x, knockbackDirection.y);
+        float knockbackMagnitude = Mathf.Clamp(playerValues.onFireKnockback - playerValues.knockbackResistance, 0, playerValues.onFireKnockback);
+        Vector2 knockback =  knockbackMagnitude * new Vector2(knockbackDirection.x, knockbackDirection.y);
         playerMovement.Force(knockback);
         timeSinceLastShot = 0;
     }
@@ -131,7 +132,10 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     public void TakeDamage(float damage, Vector3 knockback) {
-        playerMovement.Force(knockback);
+        float magnitude = knockback.magnitude;
+        magnitude -= playerValues.knockbackResistance;
+        magnitude = Mathf.Clamp(magnitude, 0, knockback.magnitude);
+        playerMovement.Force(knockback.normalized * magnitude);
         TakeDamage(damage);
     }
 
