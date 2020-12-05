@@ -13,17 +13,19 @@ MonoBehaviour:
   m_Name: PlayerValues
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 60
-  goldCount: 211
-  projectileDamage: 8
-  projectileSpeed: 11
+  currentHealth: 82
+  maxArmor: 1
+  currentArmor: 1
+  goldCount: 78
+  projectileDamage: 5
+  projectileSpeed: 10
   projectileSpread: 0
   numberOfProjectilesPerShot: 1
   projectileSpreadNoise: 10
   projectileLifetime: 2
   subsequentProjectileDelay: 0
-  fireRate: 1
-  playerMovementSpeed: 10
+  shotsPerSecond: 1.5
+  playerMovementSpeed: 11
   gunSprite: {fileID: 576788955910145305, guid: 2262f408278271248889a3ea3c7e75bf, type: 3}
   fireImpulse:
     m_ImpulseChannel: 1

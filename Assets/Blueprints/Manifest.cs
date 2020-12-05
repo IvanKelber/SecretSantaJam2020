@@ -5,7 +5,7 @@ using UnityEngine;
 public class Manifest<T> : ScriptableObject 
                  where T : ScriptableObject
 {
-    public List<T> items;
+    public List<T> items = new List<T>();
     private Dictionary<string, T> itemMap = new Dictionary<string, T>();
 
     void OnEnable() {

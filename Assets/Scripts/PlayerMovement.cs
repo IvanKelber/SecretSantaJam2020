@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerMovement : Controller2D
 {
 
-    [SerializeField]
-    float playerSpeed = 10;
+    PlayerValues playerValues;
 
     [SerializeField]
     Camera cam;
@@ -26,7 +25,6 @@ public class PlayerMovement : Controller2D
     void Start()
     {
         base.Start();
-
     }
 
     void Update()
@@ -41,7 +39,7 @@ public class PlayerMovement : Controller2D
         flipped = Mathf.Sign(mousePosition.x - transform.position.x) < 0;
 
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), transform.localScale.y, transform.localScale.z);
-        Vector2 displacement = playerInput.normalized * playerSpeed * Time.deltaTime;
+        Vector2 displacement = playerInput.normalized * playerValues.playerMovementSpeed * Time.deltaTime;
 
         Move(displacement);
 
@@ -52,6 +50,10 @@ public class PlayerMovement : Controller2D
         mousePosition.z = transform.position.z;
         playerCursor.transform.position = mousePosition;
         cameraFocus.transform.position = Vector3.Lerp(transform.position, mousePosition, cameraFocusScale);
+    }
+
+    public void SetPlayerValues(PlayerValues values) {
+        playerValues = values;
     }
 
     public bool GetInteractKey() {

@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45d75c4b41b8d445592529f3f2e0602f, type: 3}
-  m_Name: ProjectileSpeedIncrease1
+  m_Name: PlayerMovementSpeedIncrease1
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
   goldCount: 0
   projectileDamage: 0
-  projectileSpeed: 1
+  projectileSpeed: 0
   projectileSpread: 0
   numberOfProjectilesPerShot: 0
   projectileSpreadNoise: 0
   projectileLifetime: 0
   subsequentProjectileDelay: 0
   shotsPerSecond: 0
-  playerMovementSpeed: 0
+  playerMovementSpeed: 1
   gunSprite: {fileID: 0}
   fireImpulse:
     m_ImpulseChannel: 1

@@ -46,6 +46,8 @@ public class Player : MonoBehaviour, IDamageable
             audioSource = gameObject.AddComponent<AudioSource>();
         }
         playerMovement = GetComponent<PlayerMovement>();
+        playerMovement.SetPlayerValues(playerValues);
+
         Reset();
     }
 
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour, IDamageable
         }
         UpdateHand();
         
-        if(playerMovement.GetShootKey() && timeSinceLastShot > playerValues.fireRate) {
+        if(playerMovement.GetShootKey() && timeSinceLastShot > 1/playerValues.shotsPerSecond) {
             Shoot();
         }
         timeSinceLastShot += Time.deltaTime;
@@ -96,9 +98,26 @@ public class Player : MonoBehaviour, IDamageable
         if(godModeEnabled || playerValues.currentHealth <= 0) {
             return;
         }
+        audioManager.Play("PlayerGrunt", audioSource);
+        if(playerValues.currentArmor > 0) {
+            float actualDamage = damage - playerValues.currentArmor;
+            if(actualDamage < 0) {
+                playerValues.currentArmor -= (int) damage;
+                return;
+            } else {
+                playerValues.currentArmor = 0;
+                damage = actualDamage;
+            }
+        }
         playerValues.currentHealth -= damage;
         playerValues.currentHealth = Mathf.Clamp(playerValues.currentHealth, 0, playerValues.maxHealth);
-        audioManager.Play("PlayerGrunt", audioSource);
+        if(playerValues.currentHealth == 0) {
+            Die();
+        }
+    }
+
+    public void ResetArmor() {
+        playerValues.currentArmor = playerValues.maxArmor;
     }
 
     protected void Die() {
@@ -111,7 +130,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnRewardChosen(GameObject reward) {
         RewardConfig rewardConfig = reward.GetComponent<Reward>().config;
-        Debug.Log("Player received config: " + rewardConfig.name);
+        ResetArmor();
     }
 
 }

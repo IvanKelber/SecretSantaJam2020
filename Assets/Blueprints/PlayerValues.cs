@@ -16,6 +16,11 @@ public class PlayerValues : ScriptableObject
     public float currentHealth = 100;
 
     [Min(0)]
+    public int maxArmor = 0;
+    [Min(0)]
+    public int currentArmor = 0;
+
+    [Min(0)]
     public int goldCount = 0;
 
     public int projectileDamage = 5;
@@ -29,7 +34,7 @@ public class PlayerValues : ScriptableObject
 
     public float subsequentProjectileDelay = 0;
 
-    public float fireRate = 1;
+    public float shotsPerSecond = 1;
 
     public float playerMovementSpeed = 10;
 

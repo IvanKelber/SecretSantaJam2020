@@ -38,11 +38,12 @@ public class RewardEffect : PlayerValues
 
         values.subsequentProjectileDelay += subsequentProjectileDelay;
 
-        values.fireRate += fireRate;
+        values.shotsPerSecond += shotsPerSecond;
 
         values.playerMovementSpeed += playerMovementSpeed;
 
         values.onFireKnockback += onFireKnockback;
+        values.maxArmor += maxArmor;
 
     }
 }

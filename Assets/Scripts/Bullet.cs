@@ -66,6 +66,10 @@ public class Bullet : MonoBehaviour
         this.config = config;
     }
 
+    public void SetDamage(float damage) {
+        this.config.bulletDamage = damage;
+    }
+
     public Collider2D[] CheckCollision() {
         Collider2D[] collisions = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), collider.radius,
                                                             config.damagingLayer);

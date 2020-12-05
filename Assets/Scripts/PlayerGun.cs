@@ -48,6 +48,7 @@ public class PlayerGun : MonoBehaviour
             Bullet bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
             bullet.SetConfig(playerValues.projectile);
             bullet.SetSpeed(playerValues.projectileSpeed);
+            bullet.SetDamage(playerValues.projectileDamage);
             Vector3 noisyDirection = GetCenter(direction);
 
             noisyDirection = Quaternion.Euler(0,0, - playerValues.projectileSpread + (angleStep * i)) * noisyDirection;
