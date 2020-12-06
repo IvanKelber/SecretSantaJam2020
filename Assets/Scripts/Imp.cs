@@ -68,7 +68,7 @@ public class Imp : AIEntity
         if(path == null) {
             return;
         }
-        if(currentWaypoint >= path.vectorPath.Count) {
+        if(currentWaypoint >= path.vectorPath.Count - 1) {
             return;
         }
         Vector3 direction = (path.vectorPath[currentWaypoint + 1] - transform.position).normalized;

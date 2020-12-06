@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8272117a407b741b082d2cb7bac96a13, type: 3}
-  m_Name: NumberOfProjectilesPlus
+  m_Name: Bounce+
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 7b0ce137750b04d35bef3ba276a9b328, type: 2}
-  name: Another weaker projectile
-  description: Increase projectiles per shot by 1, but decreases damage of each shot
-    by 2
+  name: Bounce+
+  description: Increases the number of times your projectiles bounce by 1
   rewardPrefab: {fileID: 3207492534920678942, guid: 56abe77af1f51416c91b002be0bb67a1, type: 3}
-  rewardSprite: {fileID: 4849040106387310222, guid: d372586842399439ba8c0383c22a3a8f, type: 3}
+  rewardSprite: {fileID: 2009000090546564100, guid: d372586842399439ba8c0383c22a3a8f, type: 3}
   effects:
-  - {fileID: 11400000, guid: b48f6eae2b3f14c139ad3c04c0cf5814, type: 2}
+  - {fileID: 11400000, guid: ee4b29225f2ad45e2952e6d226057006, type: 2}

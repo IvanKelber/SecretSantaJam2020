@@ -49,6 +49,8 @@ public class PlayerValues : ScriptableObject
 
     public float knockbackResistance = 0;
 
+    public int projectileBounces = 0;
+
     public void Reset(PlayerValues other) {
 
         FieldInfo[] fieldInfo;

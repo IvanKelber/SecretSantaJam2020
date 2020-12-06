@@ -9,24 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5102c35563674d8790ef29c40cb77a8, type: 3}
-  m_Name: PlayerValues
+  m_Script: {fileID: 11500000, guid: 45d75c4b41b8d445592529f3f2e0602f, type: 3}
+  m_Name: ProjectileBounceIncrease1
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 80
+  maxHealth: 0
+  currentHealth: 0
   maxArmor: 0
   currentArmor: 0
-  goldCount: 45
-  projectileDamage: 4
-  projectileSpeed: 10
+  goldCount: 0
+  projectileDamage: 0
+  projectileSpeed: 0
   projectileSpread: 0
-  numberOfProjectilesPerShot: 1
-  projectileSpreadNoise: 10
-  projectileRange: 5
+  numberOfProjectilesPerShot: 0
+  projectileSpreadNoise: 0
+  projectileRange: 0
   subsequentProjectileDelay: 0
-  shotsPerSecond: 1.5
-  playerMovementSpeed: 10
-  gunSprite: {fileID: 576788955910145305, guid: 2262f408278271248889a3ea3c7e75bf, type: 3}
+  shotsPerSecond: 0
+  playerMovementSpeed: 0
+  gunSprite: {fileID: 0}
   fireImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
@@ -57,9 +57,9 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
-  projectile: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
+  projectile: {fileID: 0}
   onFireKnockback: 0
   knockbackOnHit: 0
   knockbackResistance: 0
-  projectileBounces: 2
+  projectileBounces: 1
   projectilesPierce: 0

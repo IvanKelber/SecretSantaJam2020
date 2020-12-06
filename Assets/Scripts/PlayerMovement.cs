@@ -40,7 +40,7 @@ public class PlayerMovement : Controller2D
         flipped = Mathf.Sign(mousePosition.x - transform.position.x) < 0;
 
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), transform.localScale.y, transform.localScale.z);
-        Vector2 displacement = playerInput.normalized * playerValues.playerMovementSpeed * Time.deltaTime;
+        Vector2 displacement = playerInput.normalized * Mathf.Max(playerValues.playerMovementSpeed, 1) * Time.deltaTime;
 
         Move(displacement);
 

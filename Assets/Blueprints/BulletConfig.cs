@@ -33,4 +33,7 @@ public class BulletConfig : ScriptableObject
 
     public float knockbackOnHit = 1;
 
+    public bool isPiercing = false;
+    public int bulletBounces = 0;
+
 }

@@ -45,6 +45,6 @@ public class RewardEffect : PlayerValues
         values.onFireKnockback += onFireKnockback;
         values.maxArmor += maxArmor;
         values.knockbackOnHit += knockbackOnHit;
-
+        values.projectileBounces += projectileBounces;
     }
 }

@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45d75c4b41b8d445592529f3f2e0602f, type: 3}
-  m_Name: ProjectileCountIncrease1
+  m_Name: RangeShotsPerSecondIncrease1
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  maxArmor: 0
+  currentArmor: 0
   goldCount: 0
   projectileDamage: 0
   projectileSpeed: 0
   projectileSpread: 0
-  numberOfProjectilesPerShot: 1
-  projectileSpreadNoise: 0
-  projectileLifetime: 0
+  numberOfProjectilesPerShot: 0
+  projectileSpreadNoise: 10
+  projectileRange: -1
   subsequentProjectileDelay: 0
-  shotsPerSecond: 0
+  shotsPerSecond: 1
   playerMovementSpeed: 0
   gunSprite: {fileID: 0}
   fireImpulse:
@@ -57,3 +59,7 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   projectile: {fileID: 0}
   onFireKnockback: 0
+  knockbackOnHit: 0
+  knockbackResistance: 0
+  projectileBounces: 0
+  projectilesPierce: 0
