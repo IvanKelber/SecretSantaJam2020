@@ -62,4 +62,38 @@ public class PlayerValues : ScriptableObject
             fieldInfo[i].SetValue(this, fieldInfo[i].GetValue(other));
         }
     }
+
+    public void Validate() {
+        maxHealth = Mathf.Max(1, maxHealth);
+
+        currentHealth = Mathf.Max(0, currentHealth);
+
+        maxArmor = Mathf.Max(0, maxArmor);
+        currentArmor = Mathf.Max(0, currentArmor);
+
+        goldCount = Mathf.Max(0, goldCount);
+
+        projectileDamage = Mathf.Max(1, projectileDamage);
+        projectileSpeed = Mathf.Max(1, projectileSpeed);
+        projectileSpread = Mathf.Max(0, projectileSpread);
+        numberOfProjectilesPerShot = Mathf.Max(1, numberOfProjectilesPerShot);
+
+        projectileSpreadNoise = Mathf.Max(0, projectileSpreadNoise);
+
+        projectileRange = Mathf.Max(1, projectileRange);
+
+        subsequentProjectileDelay = Mathf.Max(0, subsequentProjectileDelay);
+
+        shotsPerSecond = Mathf.Max(.5f, shotsPerSecond);
+
+        playerMovementSpeed = Mathf.Max(1, playerMovementSpeed);
+
+        onFireKnockback = Mathf.Max(0, onFireKnockback);
+
+        knockbackOnHit = Mathf.Max(0, knockbackOnHit);
+
+        knockbackResistance = Mathf.Max(0, knockbackResistance);
+
+        projectileBounces = Mathf.Max(0, projectileBounces); 
+    }
 }

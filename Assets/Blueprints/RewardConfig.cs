@@ -51,6 +51,9 @@ public class RewardConfig
 
     public string GetTitle() {
         StringBuilder sb = new StringBuilder();
+        if(rarity == Rarity.Epic) {
+            sb.Append("Incredibly ");
+        }
         if(rarity != Rarity.Common) {
             sb.Append(negativeEffect.adjective);
             sb.Append(" ");

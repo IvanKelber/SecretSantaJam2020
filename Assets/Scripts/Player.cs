@@ -59,6 +59,7 @@ public class Player : MonoBehaviour, IDamageable
         if(Input.GetKeyDown(KeyCode.G)) {
             godModeEnabled = !godModeEnabled;
         }
+        playerValues.Validate();
         UpdateHand();
         
         if(playerMovement.GetShootKey() && timeSinceLastShot > 1/playerValues.shotsPerSecond) {
