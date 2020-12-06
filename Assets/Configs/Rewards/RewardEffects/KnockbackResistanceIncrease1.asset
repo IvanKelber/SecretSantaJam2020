@@ -61,3 +61,9 @@ MonoBehaviour:
   onFireKnockback: 0
   knockbackOnHit: 0
   knockbackResistance: 1
+  projectileBounces: 0
+  effectText: Increase knockback resistance by {0}
+  adjective: Clumsy
+  descriptor: Moose
+  value: 1
+  name: Clumsy Moose

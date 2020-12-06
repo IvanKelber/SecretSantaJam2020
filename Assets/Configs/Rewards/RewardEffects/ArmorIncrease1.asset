@@ -22,7 +22,7 @@ MonoBehaviour:
   projectileSpread: 0
   numberOfProjectilesPerShot: 0
   projectileSpreadNoise: 0
-  projectileLifetime: 0
+  projectileRange: 0
   subsequentProjectileDelay: 0
   shotsPerSecond: 0
   playerMovementSpeed: 0
@@ -59,3 +59,11 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   projectile: {fileID: 0}
   onFireKnockback: 0
+  knockbackOnHit: 0
+  knockbackResistance: 0
+  projectileBounces: 0
+  effectText: Increase armor by {0}
+  adjective: Soft
+  descriptor: Armadillo
+  value: 1
+  name: Soft Armadillo

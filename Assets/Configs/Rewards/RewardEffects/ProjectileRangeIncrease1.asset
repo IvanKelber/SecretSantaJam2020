@@ -60,3 +60,10 @@ MonoBehaviour:
   projectile: {fileID: 0}
   onFireKnockback: 0
   knockbackOnHit: 0
+  knockbackResistance: 0
+  projectileBounces: 0
+  effectText: Increase range by {0}
+  adjective: Fingerless
+  descriptor: Monkey
+  value: 1
+  name: Fingerless Monkey

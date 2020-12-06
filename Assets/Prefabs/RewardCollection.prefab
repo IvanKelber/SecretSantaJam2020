@@ -78,6 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRewards: 3
-  rewardManifest: {fileID: 11400000, guid: a85e7e768f40d4d2789f1d8efd52d4d6, type: 2}
-  rewardPrefab: {fileID: 9050953389741368878, guid: 7da314033c2b7417abb13fa83717221e, type: 3}
+  effectManifest: {fileID: 11400000, guid: d1a9569df448943058186f768a2c4098, type: 2}
+  cardPrefab: {fileID: 3207492534920678942, guid: 56abe77af1f51416c91b002be0bb67a1, type: 3}
   lockDoors: {fileID: 11400000, guid: 3cc137532380446e687a1865c8191bef, type: 2}

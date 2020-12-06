@@ -17,9 +17,9 @@ public class CardReward : Reward
 
     public override void Init(RewardConfig config) {
         base.Init(config);
-        image.sprite = config.rewardSprite;
-        cardTitle.text = config.name;
-        cardDescription.text = config.description;
+        // image.sprite = config.rewardSprite;
+        cardTitle.text = config.GetTitle();
+        cardDescription.text = config.GetDescription();
     }
 
     public override void OnEnterTrigger(Collider2D collider) {

@@ -7,7 +7,10 @@ public class RewardCollection : MonoBehaviour
 {
     public int numberOfRewards = 3;
     [SerializeField]
-    RewardManifest rewardManifest;
+    EffectManifest effectManifest;
+
+    [SerializeField]
+    GameObject cardPrefab;
 
     [SerializeField]
     BoolGameEvent lockDoors;
@@ -16,10 +19,10 @@ public class RewardCollection : MonoBehaviour
 
     void Start()
     {
-        rewards = rewardManifest.Get(numberOfRewards);
+        rewards = effectManifest.GetRewards(numberOfRewards);
         for(int i = 0; i < rewards.Count; i++) {
             Vector3 position = transform.position + new Vector3(5 *(i - 1), 0, 0);
-            GameObject rewardObj = Instantiate(rewards[i].rewardPrefab, position, Quaternion.identity);
+            GameObject rewardObj = Instantiate(cardPrefab, position, Quaternion.identity);
             rewardObj.GetComponent<Reward>().Init(rewards[i]);
             rewardObj.transform.parent = transform;
         }

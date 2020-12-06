@@ -7,44 +7,46 @@ using System.Reflection;
 [CreateAssetMenu(menuName="Effects/Reward")]
 public class RewardEffect : PlayerValues
 {
+    public string effectText;
+    public string adjective;
+    public string descriptor;
+    public float value;
+
+    public string name;
+
+    public void OnEnable() {
+        name = adjective + " " + descriptor;
+    }
+
     public virtual void Apply(PlayerValues values) {
-        // FieldInfo[] fieldInfo;
-        // Type valuesType = typeof(PlayerValues);
-        // // Get the type and fields of PlayerValues.
-        // fieldInfo = valuesType.GetFields(BindingFlags.Instance| BindingFlags.Public);
-        // for(int i = 0; i < fieldInfo.Length; i++)
-        // {
-        //     if(fieldInfo[i].FieldType == typeof(int) || fieldInfo[i].FieldType == typeof(float)) {
-        //         dynamic current = Convert.ChangeType(fieldInfo[i].GetValue(values), fieldInfo[i].FieldType); 
-        //         dynamic effect = Convert.ChangeType(fieldInfo[i].GetValue(this), fieldInfo[i].FieldType); 
-        //         fieldInfo[i].SetValue(values, (Object) (current + effect));
-        //     }
-        // }
+        Apply(1, values);
+    }
 
-        values.maxHealth += maxHealth;
+    public virtual void Apply(int scalar, PlayerValues values) {
+        values.maxHealth += maxHealth * scalar;
 
-        values.currentHealth += currentHealth;
+        values.currentHealth += currentHealth * scalar;
 
-        values.goldCount += goldCount;
+        values.goldCount += goldCount * scalar;
 
-        values.projectileDamage += projectileDamage;
-        values.projectileSpeed += projectileSpeed;
-        values.projectileSpread += projectileSpread;
-        values.numberOfProjectilesPerShot += numberOfProjectilesPerShot;
+        values.projectileDamage += projectileDamage * scalar;
+        values.projectileSpeed += projectileSpeed * scalar;
+        values.projectileSpread += projectileSpread * scalar;
+        values.numberOfProjectilesPerShot += numberOfProjectilesPerShot * scalar;
 
-        values.projectileSpreadNoise += projectileSpreadNoise;
+        values.projectileSpreadNoise += projectileSpreadNoise * scalar;
 
-        values.projectileRange += projectileRange;
+        values.projectileRange += projectileRange * scalar;
 
-        values.subsequentProjectileDelay += subsequentProjectileDelay;
+        values.subsequentProjectileDelay += subsequentProjectileDelay * scalar;
 
-        values.shotsPerSecond += shotsPerSecond;
+        values.shotsPerSecond += shotsPerSecond * scalar;
 
-        values.playerMovementSpeed += playerMovementSpeed;
+        values.playerMovementSpeed += playerMovementSpeed * scalar;
 
-        values.onFireKnockback += onFireKnockback;
-        values.maxArmor += maxArmor;
-        values.knockbackOnHit += knockbackOnHit;
-        values.projectileBounces += projectileBounces;
+        values.onFireKnockback += onFireKnockback * scalar;
+        values.maxArmor += maxArmor * scalar;
+        values.knockbackOnHit += knockbackOnHit * scalar;
+        values.projectileBounces += projectileBounces * scalar;  
     }
 }

@@ -62,4 +62,8 @@ MonoBehaviour:
   knockbackOnHit: 0
   knockbackResistance: 0
   projectileBounces: 1
-  projectilesPierce: 0
+  effectText: Increase bounces by {0}
+  adjective: Sticky
+  descriptor: Rabbit
+  value: 1
+  name: Sticky Rabbit

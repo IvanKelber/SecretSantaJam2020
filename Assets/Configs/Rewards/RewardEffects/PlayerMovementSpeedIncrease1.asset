@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  maxArmor: 0
+  currentArmor: 0
   goldCount: 0
   projectileDamage: 0
   projectileSpeed: 0
   projectileSpread: 0
   numberOfProjectilesPerShot: 0
   projectileSpreadNoise: 0
-  projectileLifetime: 0
+  projectileRange: 0
   subsequentProjectileDelay: 0
   shotsPerSecond: 0
   playerMovementSpeed: 1
@@ -57,3 +59,11 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   projectile: {fileID: 0}
   onFireKnockback: 0
+  knockbackOnHit: 0
+  knockbackResistance: 0
+  projectileBounces: 0
+  effectText: Increase movement speed by {0}
+  adjective: Lazy
+  descriptor: Cheetah
+  value: 1
+  name: Lazy Cheetah

@@ -59,4 +59,11 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   projectile: {fileID: 0}
   onFireKnockback: 0
-  knockbackOnHit: 10
+  knockbackOnHit: 5
+  knockbackResistance: 0
+  projectileBounces: 0
+  effectText: Increase enemy knockback by {0}
+  adjective: Weak
+  descriptor: Beetle
+  value: 5
+  name: Weak Beetle
