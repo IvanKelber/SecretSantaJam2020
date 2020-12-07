@@ -10,7 +10,7 @@ public class EffectManifest : Manifest<RewardEffect>
     public float epicEffectChance = .02f;
 
     public List<RewardConfig> GetRewards(int numberOfRewards) {
-        List<RewardConfig> rewards = new List<RewardConfig>();
+        Dictionary<string, RewardConfig> rewards = new Dictionary<string, RewardConfig>();
         for(int i = 0; i < numberOfRewards; i++) {
             float quality = Random.Range(0f,1f);
             RewardConfig.Rarity rarity;
@@ -21,9 +21,18 @@ public class EffectManifest : Manifest<RewardEffect>
             } else {
                 rarity = RewardConfig.Rarity.Common;
             }
-            rewards.Add(GenerateRandomReward(rarity));
+            RewardConfig reward = GenerateRandomReward(rarity);
+            while(rewards.ContainsKey(reward.GetTitle())) {
+                reward = GenerateRandomReward(rarity);
+            }
+            rewards.Add(reward.GetTitle(), reward);
         }
-        return rewards;
+        List<RewardConfig> r = new List<RewardConfig>();
+        foreach(string key in rewards.Keys) {
+            r.Add(rewards[key]);
+        }
+        return r;
+
     }
 
     public RewardConfig GenerateRandomReward(RewardConfig.Rarity rarity) {
