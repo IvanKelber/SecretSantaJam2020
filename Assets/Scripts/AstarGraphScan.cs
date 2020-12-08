@@ -8,11 +8,8 @@ public class AstarGraphScan : MonoBehaviour
 
     public Transform playerTransform;
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        Bounds updateBounds = new Bounds(playerTransform.position, new Vector3(30,18,0));
+    public void UpdateBounds() {
+        Bounds updateBounds = new Bounds(playerTransform.position, new Vector3(60,36,0));
         GraphUpdateObject guo = new GraphUpdateObject(updateBounds);
         GridGraph gg = AstarPath.active.data.gridGraph;
         gg.center = playerTransform.position;

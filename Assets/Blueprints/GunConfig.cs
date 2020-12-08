@@ -7,7 +7,7 @@ using Cinemachine;
 [CreateAssetMenu(menuName="Configs/Gun")]
 public class GunConfig : ScriptableObject
 {
-    [Range(0.05f, 1.5f)]
+    [Range(0.05f, 10f)]
     public float fireRate = 1;
 
     public CinemachineImpulseDefinition fireImpulse;

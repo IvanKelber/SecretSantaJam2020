@@ -17,7 +17,6 @@ public class AIEntity : MonoBehaviour, IDamageable
     public AudioManager audioManager;
     public AudioSource audioSource;
 
-
     [SerializeField]
     protected LayerMask playerMask, wallMask;
     [SerializeField]
@@ -26,10 +25,13 @@ public class AIEntity : MonoBehaviour, IDamageable
     protected LayerMask collisionMask;
     
     protected AIState currentState = AIState.Wandering;
+    protected int difficulty = 1;
 
     public virtual void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
+        AIconfig.maxHealth = AIconfig.baseMaxHealth * difficulty;
+
         currentHealth = AIconfig.maxHealth;
         healthBar.SetMaxHealth(AIconfig.maxHealth);
 
@@ -80,6 +82,10 @@ public class AIEntity : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damage, Vector3 knockback) {
         TakeDamage(damage);
+    }
+
+    public void SetDifficulty(int difficulty) {
+        this.difficulty = difficulty;
     }
 
     protected virtual void Die() {

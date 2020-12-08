@@ -39,6 +39,7 @@ public class Bullet : MonoBehaviour
         velocity = direction.normalized * config.bulletSpeed;
         gravity = (Vector2)(Quaternion.Euler(0,0,config.gravityDirection) * Vector3.right).normalized * config.gravityMagnitude;
         bounces = config.bulletBounces;
+        transform.localScale = config.bulletScale;
     }
 
     void Update()

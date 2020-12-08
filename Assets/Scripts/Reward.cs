@@ -24,7 +24,6 @@ public class Reward : Interactable
         if(playerValues.goldCount >= cost) {
             playerValues.goldCount -= cost;
             rewardChosen.Raise(this.gameObject);
-            Debug.Log("reward chosen");
             base.OnInteract();
         } else {
             // audioManager.Play("NotEnoughGold", audioSource);

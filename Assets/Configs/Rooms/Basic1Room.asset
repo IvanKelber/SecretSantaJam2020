@@ -23,5 +23,6 @@ MonoBehaviour:
   interiorPrefab: {fileID: 5698244638658834036, guid: 5de581258245a42529b3d4f471987fd7, type: 3}
   enemiesToSpawn:
   - {fileID: 15768144417791391, guid: fb06aa45d3af842c1a205c5fcede043a, type: 3}
+  - {fileID: 6414999161791269721, guid: cdf1526ea79284649846f0cbb514e5f3, type: 3}
   numberOfWaves: 2
   lockDoors: {fileID: 11400000, guid: 3cc137532380446e687a1865c8191bef, type: 2}

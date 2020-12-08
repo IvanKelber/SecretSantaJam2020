@@ -6,6 +6,9 @@ using UnityEngine;
 public class AIConfig : ScriptableObject
 {
     [Range(1, 1000)]
+    public float baseMaxHealth = 10;
+
+    [Range(1, 1000)]
     public float maxHealth = 10;
 
     [Range(1, 11)]

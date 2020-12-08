@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e26c65610c0f94d7b86fc874f3e19590, type: 3}
-  m_Name: ImpAI
+  m_Name: WailerAI
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 6
   movementSpeed: 3
-  detectionRadius: 20
-  maxAttackDistance: 15
-  minAttackDistance: 6
-  gunConfig: {fileID: 11400000, guid: 45e463574e1124fe2a6c138e768d5606, type: 2}
+  detectionRadius: 30
+  maxAttackDistance: 10
+  minAttackDistance: 4
+  gunConfig: {fileID: 11400000, guid: b1b50e217adf144ed894eba91a8ee1c3, type: 2}
   spawnIndicator: {fileID: 4563912903957744767, guid: ff239d8b7492248a78794c6f869384a9, type: 3}

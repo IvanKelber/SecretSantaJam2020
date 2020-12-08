@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     private float timeBetweenSpawns;
     private List<GameObject> enemyPrefabs = new List<GameObject>();
     private int wavesSpawned = 0;
-
+    private int difficulty = 0;
 
     void Start() {
         timeSinceLastSpawn = timeBetweenSpawns;
@@ -39,6 +39,10 @@ public class EnemySpawner : MonoBehaviour
                 spawnPoints.Add(child);
             }
         }
+    }
+
+    public void SetDifficulty(int difficulty) {
+        this.difficulty = difficulty;
     }
 
     void Update()
@@ -99,6 +103,7 @@ public class EnemySpawner : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         enemy.transform.parent = spawnPoint;
         enemy.transform.localScale = Vector3.one;
+        enemy.GetComponent<AIEntity>().SetDifficulty(difficulty);
         spawnedEnemies.Add(enemy);
         totalEnemiesSpawned++;
         yield return null;

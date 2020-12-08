@@ -13,6 +13,8 @@ public class Room
 
     private List<GameObject> openings = new List<GameObject>();
 
+    private int roomDifficulty = 1;
+
     public Room(RoomConfig config, int i, int j) {
         this.config = config;
         roomIndex = new Vector2Int(i,j);
@@ -25,6 +27,10 @@ public class Room
         this.config = config;
     }
 
+    public void SetDifficulty(int difficulty) {
+        roomDifficulty = difficulty;
+    }
+
     public void Instantiate(Transform parent, Vector3 center) {
         if(config == null) {
             return;
@@ -32,6 +38,7 @@ public class Room
         room = GameObject.Instantiate(config.interiorPrefab, center, Quaternion.identity);
         room.transform.parent = parent;
         RoomBehavior rb = room.GetComponent<RoomBehavior>();
+        rb.SetDifficulty(roomDifficulty);
         rb.SetConfig(config);
     }
 

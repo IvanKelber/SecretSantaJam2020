@@ -496,7 +496,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -200050889
+  m_SortingLayerID: -2032591743
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1695396851
@@ -691,7 +691,6 @@ MonoBehaviour:
   interactPrompt: {fileID: 2833497736810558653}
   playerValues: {fileID: 11400000, guid: 10f8680488366469d993f8213020541e, type: 2}
   rewardChosen: {fileID: 11400000, guid: d6c60e0717c2e4455a2c01d00fbd1114, type: 2}
-  config: {fileID: 0}
   cost: 0
   image: {fileID: 1569279417}
   cardTitle: {fileID: 944544640}
@@ -758,6 +757,14 @@ PrefabInstance:
     - target: {fileID: 9050953389741368879, guid: 7da314033c2b7417abb13fa83717221e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9050953389741368879, guid: 7da314033c2b7417abb13fa83717221e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9050953389741368879, guid: 7da314033c2b7417abb13fa83717221e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da314033c2b7417abb13fa83717221e, type: 3}

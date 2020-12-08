@@ -29,10 +29,14 @@ public class Dungeon : MonoBehaviour
 
     int currentRooms = 0;
 
+    List<int> difficulties = new List<int>();
+    int difficulty = 1;
     [SerializeField]
     private bool testDungeon = false;
 
     public void Start() {
+        difficulties.Add(1);
+        difficulties.Add(1);
         if(testDungeon)
             GenerateLevel(0);
     }
@@ -45,6 +49,10 @@ public class Dungeon : MonoBehaviour
 
     public void GenerateLevel(int level) {
         //TODO update levelManifest (rooms, guns, enemies, tiles, etc.)
+        if(level == difficulties.Count) {
+            difficulties.Add(difficulties[level - 1] + difficulties[level - 2]);
+        }
+        difficulty = difficulties[level];
         GenerateGrid();
     }
 
@@ -69,6 +77,7 @@ public class Dungeon : MonoBehaviour
             Vector2 room = availableRooms[roomIndex];
             availableRooms.RemoveAt(roomIndex);
             grid[(int)room.x, (int)room.y] = new Room(roomManifest.GetRandomNonSpecific(), room);
+            grid[(int) room.x, (int) room.y].SetDifficulty(difficulty);
             currentRooms++;
             AddAdjacentRooms(ref availableRooms, room);
         }

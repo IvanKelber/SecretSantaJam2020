@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679a374be240547fc8d40e4ded58d077, type: 3}
   m_Name: Tears
   m_EditorClassIdentifier: 
-  fireRate: 0.303
+  fireRate: 2
   fireImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
@@ -45,8 +45,10 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   fireSound: 
   knockback: 0
-  spreadNoise: 0
-  angleBetweenBullets: 45
-  centerAngle: 90
-  numberOfBullets: 2
+  spreadNoise: 10
+  angleBetweenBullets: 30
+  centerAngle: 0
+  numberOfBullets: 8
   bullet: {fileID: 11400000, guid: 981e1e2ef96f34d0e82befc73b5a3276, type: 2}
+  timeBetweenShots: 0.01
+  gunSprite: {fileID: 0}

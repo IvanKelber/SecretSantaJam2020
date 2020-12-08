@@ -35,4 +35,6 @@ public class BulletConfig : ScriptableObject
 
     public int bulletBounces = 0;
 
+    public Vector3 bulletScale = Vector3.one;
+
 }
