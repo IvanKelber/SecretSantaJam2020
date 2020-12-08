@@ -24,6 +24,7 @@ public class StartLevel : Interactable
     public void OnPlayerDeath() {
         if(playerDead) {
             dungeon.DestroyCurrentLevel();
+            currentLevel = 0;
             player.transform.position = playerDeathSpawn.position;
             UpdateCamera(player.transform);
             playerDead = false;

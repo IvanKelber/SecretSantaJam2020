@@ -22,7 +22,9 @@ MonoBehaviour:
   spawnRate: 10
   interiorPrefab: {fileID: 7794801190495503695, guid: 899b7f9d2a1684246a4d65bbb0128527, type: 3}
   enemiesToSpawn:
-  - {fileID: 15768144417791391, guid: fb06aa45d3af842c1a205c5fcede043a, type: 3}
+  - {fileID: 3966913367405362670, guid: fb06aa45d3af842c1a205c5fcede043a, type: 3}
   - {fileID: 6414999161791269721, guid: cdf1526ea79284649846f0cbb514e5f3, type: 3}
+  - {fileID: 4713788913672242485, guid: 6e42473b7333c444aa31cdc9b5e3b67b, type: 3}
+  - {fileID: 6339143150964954965, guid: e3a131b2aa6a5451a8d687502b57d123, type: 3}
   numberOfWaves: 2
   lockDoors: {fileID: 11400000, guid: 3cc137532380446e687a1865c8191bef, type: 2}
