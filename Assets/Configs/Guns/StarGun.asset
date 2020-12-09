@@ -46,9 +46,9 @@ MonoBehaviour:
   fireSound: 
   knockback: 0
   spreadNoise: 0
-  angleBetweenBullets: 29
+  angleBetweenBullets: 30
   centerAngle: 0
   numberOfBullets: 6
   bullet: {fileID: 11400000, guid: 36b7ea4379bdb47ee9f878df6311a0e7, type: 2}
-  timeBetweenShots: 0.01
+  timeBetweenShots: 0
   gunSprite: {fileID: 0}

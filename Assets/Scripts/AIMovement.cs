@@ -9,7 +9,12 @@ public class AIMovement : Controller2D
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         entity = GetComponent<AIEntity>();
+    }
+
+    void Update() {
+        UpdateRaycastOrigins();
     }
 
     

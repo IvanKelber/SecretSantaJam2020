@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerValues
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 86
+  currentHealth: 100
   maxArmor: 0
   currentArmor: 0
   goldCount: 0

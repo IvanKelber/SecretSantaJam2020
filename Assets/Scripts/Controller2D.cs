@@ -55,7 +55,6 @@ public class Controller2D : RaycastController
         {
             rayLength = 2 * skinWidth;
         }
-
         for (int i = 0; i < horizontalRayCount; i++)
         {
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
@@ -63,7 +62,6 @@ public class Controller2D : RaycastController
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
             Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
-
             if (hit)
             {
                 moveAmount.x = (hit.distance - skinWidth) * directionX;
