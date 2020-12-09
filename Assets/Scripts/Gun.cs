@@ -20,7 +20,7 @@ public class Gun : MonoBehaviour
         impulseSource = GetComponent<CinemachineImpulseSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         if(config != null) {
-            spriteRenderer.sprite = config.gunSprite;
+            // spriteRenderer.sprite = config.gunSprite;
         }
         
         impulseSource.m_ImpulseDefinition = config.fireImpulse;

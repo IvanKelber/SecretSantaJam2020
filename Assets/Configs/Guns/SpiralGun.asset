@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679a374be240547fc8d40e4ded58d077, type: 3}
   m_Name: SpiralGun
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 0.05
   fireImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
@@ -46,9 +46,9 @@ MonoBehaviour:
   fireSound: 
   knockback: 0
   spreadNoise: 0
-  angleBetweenBullets: 3.6
+  angleBetweenBullets: 22.5
   centerAngle: 0
-  numberOfBullets: 30
-  bullet: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
-  timeBetweenShots: 0.361
+  numberOfBullets: 8
+  bullet: {fileID: 11400000, guid: 217c52374821e4fdaaae0cdc4fc00734, type: 2}
+  timeBetweenShots: 0.1
   gunSprite: {fileID: 0}

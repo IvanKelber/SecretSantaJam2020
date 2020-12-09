@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc377915f07f1466bbb9d4b4d6fc68f3, type: 3}
+  m_Name: BossRoomLowerRight
+  m_EditorClassIdentifier: 
+  name: BossRoomLowerRight
+  isSpecific: 1
+  infinteEnemySpawn: 0
+  spawnEnemies: 0
+  minNumberOfEnemies: 0
+  maxNumberOfEnemies: 0
+  maxEnemiesInRoomAtOnce: 0
+  spawnRate: 1
+  interiorPrefab: {fileID: 8539602259762783580, guid: 6bd01a7e7de4f41faafb1c16b89b1e5e, type: 3}
+  enemiesToSpawn: []
+  numberOfWaves: 0
+  lockDoors: {fileID: 0}

@@ -8,15 +8,15 @@ public class Imp : AIEntity
     public float nextWaypointDst = 1;
 
     [SerializeField]
-    Gun gun;
+    protected Gun gun;
 
-    Player nearbyPlayer;
-    float timeSinceLastAttack = 0;
-
-    int currentWaypoint = 0;
-    Seeker seeker;
-    Path path;
-    AIMovement movement;
+    protected Player nearbyPlayer;
+    protected float timeSinceLastAttack = 0;
+ 
+    protected int currentWaypoint = 0;
+    protected Seeker seeker;
+    protected Path path;
+    protected AIMovement movement;
 
     public override void Start() {
         base.Start();
@@ -111,7 +111,7 @@ public class Imp : AIEntity
         }
 
 
-        if(timeSinceLastAttack >= AIconfig.gunConfig.fireRate) {
+        if(timeSinceLastAttack >= gun.config.fireRate) {
             gun.Shoot(nearbyPlayer.transform.position);
             timeSinceLastAttack = 0;
         }

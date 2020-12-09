@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d5ad95da0377a44159cf3376a46ae278
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - AIconfig: {instanceID: 0}
+  - goldPrefab: {fileID: 3640144349248608208, guid: 2ece80f8fdde5486fb3a7b6b9d9399d3, type: 3}
+  - audioManager: {fileID: 11400000, guid: 75515b2d780e849468e7176a1be805dd, type: 2}
+  - audioSource: {instanceID: 0}
+  - healthBar: {instanceID: 0}
+  - gun: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

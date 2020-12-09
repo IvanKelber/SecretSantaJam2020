@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679a374be240547fc8d40e4ded58d077, type: 3}
   m_Name: StarGun
   m_EditorClassIdentifier: 
-  fireRate: 0.05
+  fireRate: 2
   fireImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}

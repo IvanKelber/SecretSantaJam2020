@@ -53,8 +53,14 @@ public class Dungeon : MonoBehaviour
             difficulties.Add(difficulties[level - 1] + difficulties[level - 2]);
         }
         difficulty = difficulties[level];
-        GenerateGrid();
+        if(level % 1 == 0) {
+            GenerateBossLevel();
+        } else {
+            GenerateGrid();
+        }
     }
+
+
 
     public void DestroyCurrentLevel() {
         grid = new Room[maxRoomsX, maxRoomsY];
@@ -64,6 +70,20 @@ public class Dungeon : MonoBehaviour
             if(child.gameObject.tag != "Grid")
                 Destroy(child.gameObject);
         }
+    }
+
+    public void GenerateBossLevel() {
+        DestroyCurrentLevel();
+        grid[1,1] = new Room(roomManifest.Get("StartRoom"), new Vector2(1,1));
+        grid[2,1] = new Room(roomManifest.Get("BossRoomLowerLeft"), new Vector2(2,1));
+        grid[2,2] = new Room(roomManifest.Get("BossRoomUpperLeft"), new Vector2(2,2));
+        grid[3,1] = new Room(roomManifest.Get("BossRoomLowerRight"), new Vector2(3,1));
+        grid[3,2] = new Room(roomManifest.Get("BossRoomUpperRight"), new Vector2(3,2));
+        grid[4,2] = new Room(roomManifest.Get("EndRoom"), new Vector2(4,2));
+        FillRooms();
+        endRoom = new Vector2(4,2);
+        FillAbyss();
+        PlaceBossWalls();
     }
 
     public void GenerateGrid() {
@@ -141,6 +161,47 @@ public class Dungeon : MonoBehaviour
                 }
             }
         }
+    }
+
+    void PlaceBossWalls() {
+        for(int i = 0; i < maxRoomsX; i++) {
+            for(int j = 0; j < maxRoomsY; j++) {
+                if(grid[i,j]) {
+                    Vector3 roomCenter = GetRoomCenter(i,j);
+                    Vector3 rightWall = roomCenter + (roomWidth + wallWidth)/2 * Vector3.right;
+                    Vector3 leftWall = roomCenter + (roomWidth + wallWidth)/2 * Vector3.left;
+                    Vector3 topWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.up;
+                    Vector3 bottomWall = roomCenter + (roomHeight + wallWidth)/2 * Vector3.down;
+
+                    //Right
+                    GameObject rightPrefab = (i + 1 >= maxRoomsX || !grid[i+1,j]) ? verticalWallPrefab : null;
+                    PlaceWall(rightWall, rightPrefab);
+
+                    //Left
+                    GameObject leftPrefab = (i - 1 < 0 || !grid[i-1,j]) ? verticalWallPrefab : null;
+                    PlaceWall(leftWall, leftPrefab);
+
+                    //Top
+                    GameObject topPrefab = (j + 1 >= maxRoomsY || !grid[i,j+1]) ? horizontalWallPrefab : null;
+                    PlaceWall(topWall, topPrefab);
+
+                    //Bottom
+                    GameObject bottomPrefab = (j - 1 < 0 || !grid[i,j-1]) ? horizontalWallPrefab : null;
+                    PlaceWall(bottomWall, bottomPrefab);
+                }
+                
+            }
+        }
+
+        Vector3 startCenter = GetRoomCenter(startRoom);
+        Vector3 bossEntrance = startCenter + (roomWidth + wallWidth)/2 * Vector3.right;
+        PlaceWall(bossEntrance, RandomOpening(false));
+        
+        Debug.Log("Endroom: " + endRoom);
+        Vector3 endCenter = GetRoomCenter(endRoom);
+        Vector3 bossExit = endCenter + (roomWidth + wallWidth)/2 * Vector3.left;
+        PlaceWall(bossExit, RandomOpening(false));
+                
     }
 
     void PlaceWalls() {
