@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BasicBossAI
   m_EditorClassIdentifier: 
   baseMaxHealth: 300
-  maxHealth: 200
+  maxHealth: 300
   movementSpeed: 3
   detectionRadius: 60
   maxAttackDistance: 30
   minAttackDistance: 14
   gunConfig: {fileID: 0}
-  spawnIndicator: {fileID: 0}
+  spawnIndicator: {fileID: 875903624081901432, guid: bf54d0024f54845a4b343988d6f9877a, type: 3}

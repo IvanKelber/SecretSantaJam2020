@@ -15,12 +15,13 @@ MonoBehaviour:
   name: BossRoomLowerRight
   isSpecific: 1
   infinteEnemySpawn: 0
-  spawnEnemies: 0
-  minNumberOfEnemies: 0
-  maxNumberOfEnemies: 0
-  maxEnemiesInRoomAtOnce: 0
+  spawnEnemies: 1
+  minNumberOfEnemies: 1
+  maxNumberOfEnemies: 1
+  maxEnemiesInRoomAtOnce: 1
   spawnRate: 1
   interiorPrefab: {fileID: 8539602259762783580, guid: 6bd01a7e7de4f41faafb1c16b89b1e5e, type: 3}
-  enemiesToSpawn: []
-  numberOfWaves: 0
-  lockDoors: {fileID: 0}
+  enemiesToSpawn:
+  - {fileID: 1088908848698597028, guid: 683424188ace94dc58e6f2bf38c00f82, type: 3}
+  numberOfWaves: 1
+  lockDoors: {fileID: 11400000, guid: 3cc137532380446e687a1865c8191bef, type: 2}
