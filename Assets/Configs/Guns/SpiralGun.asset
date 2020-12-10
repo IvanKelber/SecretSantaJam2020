@@ -51,4 +51,72 @@ MonoBehaviour:
   numberOfBullets: 8
   bullet: {fileID: 11400000, guid: 217c52374821e4fdaaae0cdc4fc00734, type: 2}
   timeBetweenShots: 0.1
+  independentOfAim: 0
+  changeDirectionOverTime: 1
+  xDirectionalChange:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.009771064
+      value: 1.0001204
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1.5619615
+      value: 0.000107620785
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.1415427
+      value: 0.99999106
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yDirectionalChange:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.024226045
+      outSlope: -0.024226045
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.03653717
+    - serializedVersion: 3
+      time: 1.5697602
+      value: 1.0001204
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.1414928
+      value: 0.000107620785
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   gunSprite: {fileID: 0}

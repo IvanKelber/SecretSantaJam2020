@@ -54,5 +54,5 @@ MonoBehaviour:
   gravityMagnitude: 0
   independentOfAim: 0
   knockbackOnHit: 1
-  bulletBounces: 5
+  bulletBounces: 2
   bulletScale: {x: 1, y: 1, z: 1}

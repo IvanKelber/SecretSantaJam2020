@@ -9,6 +9,9 @@ public class Gun : MonoBehaviour
     public GunConfig config;
     public AudioManager audioManager;
     public GameObject bulletPrefab;
+
+    private Vector3 shotDirection = Vector3.one;
+    private float angle = 0;
     AudioSource audioSource;
     CinemachineImpulseSource impulseSource;
 
@@ -33,7 +36,11 @@ public class Gun : MonoBehaviour
     }
 
     public Vector3 GetCenter(Vector3 direction) {
-        if(config.bullet.independentOfAim) {
+        if(config.changeDirectionOverTime) {
+            shotDirection = Quaternion.Euler(0,0, angle) * shotDirection;
+            angle += 15 * Time.deltaTime;
+            return shotDirection;
+        } else if(config.independentOfAim) {
             return Quaternion.Euler(0,0,config.centerAngle) * Vector3.right;
         }
         return (direction - transform.position).normalized;

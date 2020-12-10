@@ -15,6 +15,7 @@ public class RoomBehavior : Interactable
     BoxCollider2D roomBoundaries;
 
     bool roomComplete = false;
+    bool roomEntered = false;
     int difficulty = 1;
 
     public void SetConfig(RoomConfig config) {
@@ -31,7 +32,8 @@ public class RoomBehavior : Interactable
     }
 
     public override void OnEnterTrigger(Collider2D collider) {
-        if(config.spawnEnemies && !roomComplete) {
+        if(!roomEntered && config.spawnEnemies && !roomComplete) {
+            roomEntered = true;
             enemySpawner.SetRoomConfig(config);
             enemySpawner.SetDifficulty(difficulty);
             enemySpawner.StartSpawning();

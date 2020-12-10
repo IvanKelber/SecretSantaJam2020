@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40950291ac44d4885b423f3cb5980996, type: 3}
   m_Name: BossSpiralBullet
   m_EditorClassIdentifier: 
-  bulletRange: 30
-  bulletDamage: 5
+  bulletRange: 60
+  bulletDamage: 8
   collisionImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
@@ -52,7 +52,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: a8c6e744eb5f74b16908a3342f3c85dc, type: 3}
   gravityDirection: -90
   gravityMagnitude: 0
-  independentOfAim: 1
   knockbackOnHit: 30
   bulletBounces: 0
   bulletScale: {x: 1, y: 1, z: 1}

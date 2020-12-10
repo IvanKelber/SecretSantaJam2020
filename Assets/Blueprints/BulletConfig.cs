@@ -29,8 +29,6 @@ public class BulletConfig : ScriptableObject
 
     public float gravityMagnitude = 0;
     
-    public bool independentOfAim = false;
-
     public float knockbackOnHit = 1;
 
     public int bulletBounces = 0;

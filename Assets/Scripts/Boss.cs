@@ -10,13 +10,25 @@ public class Boss : Imp
 
     private float timeSinceLastAttackChange = 0;
 
+    public float radius = 5;
+    public float angleChangeRate = 15;
+    private float angle = 0;
+    private Vector3 startPosition;
+
     public override void Start() {
         base.Start();
         ChangeGun();
+        startPosition = transform.position;
+    }
+    public void Circles() {
+        Vector3 destination = startPosition + new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0) * radius;
+        movement.Move((destination - transform.position) * Time.deltaTime);
+        angle += angleChangeRate * Time.deltaTime;
     }
 
     public override void Update() {
         base.Update();
+        Circles();
         if(timeSinceLastAttackChange >= attackChangeTimer) {
             ChangeGun();
             timeSinceLastAttackChange = 0;

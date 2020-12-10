@@ -33,5 +33,12 @@ public class GunConfig : ScriptableObject
     [Range(0, 2)]
     public float timeBetweenShots = 0;
 
+    public bool independentOfAim = false;
+
+    public bool changeDirectionOverTime = false;
+
+    public AnimationCurve xDirectionalChange;
+    public AnimationCurve yDirectionalChange;
+
     public Sprite gunSprite;
 }
