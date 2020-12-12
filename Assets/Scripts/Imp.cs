@@ -18,25 +18,32 @@ public class Imp : AIEntity
     protected Path path;
     protected AIMovement movement;
 
+    bool playerInLOS = false;
+
     public override void Start() {
         base.Start();
         seeker = GetComponent<Seeker>();
         movement = GetComponent<AIMovement>();
         gun.config = AIconfig.gunConfig;
+        InvokeRepeating("UpdatePath", 0,.5f);
     }
 
     public override void Update() {
-        if(nearbyPlayer != null) {
-            transform.localScale = new Vector3(Mathf.Sign(transform.position.x - nearbyPlayer.transform.position.x), 
-                                               transform.localScale.y, 
-                                               transform.localScale.z);
-            if(Vector3.Distance(transform.position, nearbyPlayer.transform.position) <= AIconfig.minAttackDistance) {
-                path = null;
-            } else {
-                UpdatePath();
-            }
-        }
         base.Update();
+    }
+
+    void IsPlayerInLOS() {
+        Vector3 directionToPlayer = (nearbyPlayer.transform.position - transform.position).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, AIconfig.maxAttackDistance * 2, collisionMask);
+        Debug.DrawRay(transform.position, directionToPlayer * AIconfig.maxAttackDistance, Color.green);
+        if(hit) {
+            if(hit.collider != null) {
+                Debug.Log("hit.collider is a thing", hit.collider.gameObject);
+                playerInLOS = (hit.collider.gameObject.GetComponent<Player>() != null);
+            }
+        } else {
+            playerInLOS = false;
+        }
     }
 
     protected override bool DetectPlayer() {
@@ -61,7 +68,18 @@ public class Imp : AIEntity
     }
 
     void UpdatePath() {
-        seeker.StartPath(transform.position, nearbyPlayer.transform.position, OnCompletePath);
+        if(nearbyPlayer != null) {
+            transform.localScale = new Vector3(Mathf.Sign(transform.position.x - nearbyPlayer.transform.position.x), 
+                                               transform.localScale.y, 
+                                               transform.localScale.z);
+            IsPlayerInLOS();
+
+            if(playerInLOS && Vector3.Distance(transform.position, nearbyPlayer.transform.position) <= AIconfig.minAttackDistance) {
+                path = null;
+            } else {
+                seeker.StartPath(transform.position, nearbyPlayer.transform.position, OnCompletePath);
+            }
+        }
     }
 
     void UpdateMovement() {

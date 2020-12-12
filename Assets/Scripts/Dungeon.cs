@@ -53,7 +53,7 @@ public class Dungeon : MonoBehaviour
             difficulties.Add(difficulties[level - 1] + difficulties[level - 2]);
         }
         difficulty = difficulties[level];
-        if(level % 1 == 0) {
+        if(level % 3 == 0) {
             GenerateBossLevel();
         } else {
             GenerateGrid();

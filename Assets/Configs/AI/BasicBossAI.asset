@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26c65610c0f94d7b86fc874f3e19590, type: 3}
   m_Name: BasicBossAI
   m_EditorClassIdentifier: 
-  baseMaxHealth: 1000
-  maxHealth: 200
+  baseMaxHealth: 10000
+  maxHealth: 10000
   movementSpeed: 5
   detectionRadius: 60
   maxAttackDistance: 60

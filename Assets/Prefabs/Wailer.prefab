@@ -165,7 +165,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   healthBar: {fileID: 1759662422814293996}
-  nextWaypointDst: 1
+  nextWaypointDst: 0.1
   gun: {fileID: 581849374986061113}
 --- !u!1 &6414999161792173172
 GameObject:

@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1088908848698597029}
   - component: {fileID: 1088908848698597034}
   - component: {fileID: 1088908848698597035}
+  - component: {fileID: 594168678}
   m_Layer: 11
   m_Name: Boss
   m_TagString: Untagged
@@ -147,6 +148,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0adff894057424a2783a1631891f2660, type: 2}
   - {fileID: 11400000, guid: 2f2869717bb2642069c1cc886a81e889, type: 2}
   attackChangeTimer: 4
+  radius: 5
+  angleChangeRate: 15
 --- !u!61 &1088908848698597035
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -173,6 +176,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.6653094, y: 7.5017433}
   m_EdgeRadius: 0
+--- !u!114 &594168678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088908848698597028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485adc1af4d5e4523860eb735d5c7d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 0}
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 1280
+  initialRaySpacing: 0.1
+  horizontalRayCount: 0
+  verticalRayCount: 0
+  horizontalRaySpacing: 0
+  verticalRaySpacing: 0
 --- !u!1001 &1088908848256986909
 PrefabInstance:
   m_ObjectHideFlags: 0
