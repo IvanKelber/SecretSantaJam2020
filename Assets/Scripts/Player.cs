@@ -53,6 +53,9 @@ public class Player : MonoBehaviour, IDamageable
 
     void Update()
     {
+        if(playerValues.currentHealth <= 0) {
+            Die();
+        }
         if(dying) {
             return;
         }

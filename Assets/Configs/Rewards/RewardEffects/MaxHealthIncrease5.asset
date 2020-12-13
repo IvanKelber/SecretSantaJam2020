@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d75c4b41b8d445592529f3f2e0602f, type: 3}
   m_Name: MaxHealthIncrease5
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  currentHealth: 0
+  maxHealth: 0
+  currentHealth: 10
   maxArmor: 0
   currentArmor: 0
   goldCount: 0
@@ -62,8 +62,8 @@ MonoBehaviour:
   knockbackOnHit: 0
   knockbackResistance: 0
   projectileBounces: 0
-  effectText: Increase max health by {0}
+  effectText: Increase current health by {0}
   adjective: Sickly
   descriptor: Turtle
-  value: 5
+  value: 10
   name: Sickly Turtle

@@ -48,5 +48,6 @@ public class RewardEffect : PlayerValues
         values.maxArmor += maxArmor * scalar;
         values.knockbackOnHit += knockbackOnHit * scalar;
         values.projectileBounces += projectileBounces * scalar;  
+        values.knockbackResistance += knockbackResistance * scalar;
     }
 }

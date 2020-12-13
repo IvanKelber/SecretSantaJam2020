@@ -52,7 +52,6 @@ MonoBehaviour:
   sprite: {fileID: -6812079455472661240, guid: c17ce153a29a944079007cc9deb62168, type: 3}
   gravityDirection: -90
   gravityMagnitude: 0
-  independentOfAim: 0
-  knockbackOnHit: 1
+  knockbackOnHit: 10
   bulletBounces: 0
   bulletScale: {x: 1, y: 1, z: 1}
