@@ -92,7 +92,7 @@ public class Player : MonoBehaviour, IDamageable
 
 
     void Shoot() {
-        playerGun.Shoot(playerMovement.mousePosition);
+        playerGun.Shoot(playerMovement.mousePosition + Vector3.up * .65f, transform.position);
         Vector3 knockbackDirection = (transform.position - playerMovement.mousePosition).normalized;
         float knockbackMagnitude = Mathf.Clamp(playerValues.onFireKnockback - playerValues.knockbackResistance, 0, playerValues.onFireKnockback);
         Vector2 knockback =  knockbackMagnitude * new Vector2(knockbackDirection.x, knockbackDirection.y);

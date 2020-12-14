@@ -35,10 +35,8 @@ public class Imp : AIEntity
     void IsPlayerInLOS() {
         Vector3 directionToPlayer = (nearbyPlayer.transform.position - transform.position).normalized;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, AIconfig.maxAttackDistance * 2, collisionMask);
-        Debug.DrawRay(transform.position, directionToPlayer * AIconfig.maxAttackDistance, Color.green);
         if(hit) {
             if(hit.collider != null) {
-                Debug.Log("hit.collider is a thing", hit.collider.gameObject);
                 playerInLOS = (hit.collider.gameObject.GetComponent<Player>() != null);
             }
         } else {
@@ -69,7 +67,7 @@ public class Imp : AIEntity
 
     void UpdatePath() {
         if(nearbyPlayer != null) {
-            transform.localScale = new Vector3(Mathf.Sign(transform.position.x - nearbyPlayer.transform.position.x), 
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(transform.position.x - nearbyPlayer.transform.position.x), 
                                                transform.localScale.y, 
                                                transform.localScale.z);
             IsPlayerInLOS();

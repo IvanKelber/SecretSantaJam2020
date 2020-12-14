@@ -47,11 +47,11 @@ public class RoomBehavior : Interactable
 
     public void OnRoomComplete() {
         //spawn rewards
-        if(roomEntered) {
-            roomComplete = true;
-            Instantiate(rewardCollectionPrefab, transform.position + Vector3.down * 5, Quaternion.identity);
+        if(!roomComplete) {
+            if(roomEntered) {
+                roomComplete = true;
+                Instantiate(rewardCollectionPrefab, transform.position + Vector3.down * 5, Quaternion.identity);
+            }
         }
-
-        
     }
 }

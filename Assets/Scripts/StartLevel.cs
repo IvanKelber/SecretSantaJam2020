@@ -33,7 +33,7 @@ public class StartLevel : Interactable
 
     public void NextLevel(int level) {
         dungeon.GenerateLevel(level);
-        player.transform.position = dungeon.GetStartRoom();
+        player.transform.position = dungeon.GetStartRoom() + Vector3.forward * -1f;
         UpdateCamera(player.transform);
     }
 

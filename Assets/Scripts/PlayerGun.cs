@@ -11,10 +11,15 @@ public class PlayerGun : MonoBehaviour
     [SerializeField]
     PlayerValues playerValues;
 
+    [SerializeField]
+    Transform barrelExit;
+
     AudioSource audioSource;
     CinemachineImpulseSource impulseSource;
     SpriteRenderer spriteRenderer;
     bool shooting = false;
+
+    Vector3 playerPosition = Vector3.zero;
 
     void Awake() {
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -28,27 +33,32 @@ public class PlayerGun : MonoBehaviour
 
     }
 
-    public Vector3 GetCenter(Vector3 direction) {
-        return (direction - transform.position).normalized;
+    public Vector3 GetCenter(Vector3 destination) {
+        Vector3 direction = destination - playerPosition;
+        if(direction.magnitude < (barrelExit.position - playerPosition).magnitude + .3f) {
+            return direction.normalized;
+        }
+        return (destination - barrelExit.position).normalized;
     }
 
-    public void Shoot(Vector3 direction) {
+    public void Shoot(Vector3 destination, Vector3 playerPosition) {
+        this.playerPosition = playerPosition;
         if(!shooting) {
-            StartCoroutine(DoShoot(direction));
+            StartCoroutine(DoShoot(destination));
         }
         
     }
 
-    IEnumerator DoShoot(Vector3 direction) {
+    IEnumerator DoShoot(Vector3 destination) {
         shooting = true;
         float angleStep = playerValues.projectileSpread * 2;
         for(int i = 0; i < playerValues.numberOfProjectilesPerShot; i++) {
             ShotFX();
 
-            Bullet bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
+            Bullet bullet = Instantiate(projectilePrefab, barrelExit.position, Quaternion.identity).GetComponent<Bullet>();
             bullet.SetConfig(playerValues.projectile);
             bullet.SetPlayerValues(playerValues);
-            Vector3 noisyDirection = GetCenter(direction);
+            Vector3 noisyDirection = GetCenter(destination);
 
             noisyDirection = Quaternion.Euler(0,0, - playerValues.projectileSpread + (angleStep * i)) * noisyDirection;
             noisyDirection = Quaternion.Euler(0,0, Random.Range(-playerValues.projectileSpreadNoise, playerValues.projectileSpreadNoise)) * noisyDirection;

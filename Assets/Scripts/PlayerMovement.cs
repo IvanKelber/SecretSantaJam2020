@@ -39,7 +39,7 @@ public class PlayerMovement : Controller2D
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         flipped = Mathf.Sign(mousePosition.x - transform.position.x) < 0;
 
-        transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(mousePosition.x - transform.position.x), transform.localScale.y, transform.localScale.z);
         Vector2 displacement = playerInput.normalized * Mathf.Max(playerValues.playerMovementSpeed, 1) * Time.deltaTime;
 
         Move(displacement);
@@ -49,7 +49,7 @@ public class PlayerMovement : Controller2D
     void UpdateMousePosition() {
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
-        playerCursor.transform.position = mousePosition;
+        playerCursor.transform.position = mousePosition + Vector3.up * .65f;
         cameraFocus.transform.position = Vector3.Lerp(transform.position, mousePosition, cameraFocusScale);
     }
 

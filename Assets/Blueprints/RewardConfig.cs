@@ -72,7 +72,6 @@ public class RewardConfig
 
     public void ApplyEffect(PlayerValues values) {
         negativeEffect.Apply(-((int)rarity), values);
-        
         positiveEffect.Apply(((int)rarity + 1), values);
              
     }
