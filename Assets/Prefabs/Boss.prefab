@@ -62,6 +62,8 @@ MonoBehaviour:
   healthBar: {fileID: 5652475811707432557}
   nextWaypointDst: 1
   gun: {fileID: 6775972986662305767}
+  renderer: {fileID: 1682925947677709311}
+  flashFrames: 5
   configs:
   - {fileID: 11400000, guid: 0adff894057424a2783a1631891f2660, type: 2}
   - {fileID: 11400000, guid: 2f2869717bb2642069c1cc886a81e889, type: 2}

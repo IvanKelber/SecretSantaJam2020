@@ -24,12 +24,24 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     PlayerGun playerGun;
 
+    [SerializeField]
+    Renderer renderer;
+
+    [SerializeField,
+    Range(0,60)]
+    int flashFrames = 10;
+
+    [SerializeField,
+    Range(0,60)]
+    int freezeFrames = 10;
+
     PlayerMovement playerMovement;
 
     float timeSinceLastShot = 0;
 
 
     bool waitingToRespawn = true;
+    bool flashing = false;
 
     AudioSource audioSource;
 
@@ -101,9 +113,10 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     public void TakeDamage(float damage) {
-        if(godModeEnabled || playerValues.currentHealth <= 0) {
+        if(godModeEnabled || playerValues.currentHealth <= 0 || flashing) {
             return;
         }
+        StartCoroutine(Flash());
         audioManager.Play("PlayerGrunt", audioSource);
         if(playerValues.currentArmor > 0) {
             float actualDamage = damage - playerValues.currentArmor;
@@ -142,6 +155,23 @@ public class Player : MonoBehaviour, IDamageable
         playerMovement.Force(knockback.normalized * magnitude);
         TakeDamage(damage);
     }
+
+    IEnumerator Flash() {
+        flashing = true;
+        Color initialColor = renderer.material.color;
+        renderer.material.color = Color.white;
+        Time.timeScale = 0;
+        for(int i = 0; i < freezeFrames; i++) {
+            yield return null;
+        }
+        Time.timeScale = 1;
+        for(int i = 0; i < flashFrames; i++) {
+            yield return null;
+        }
+        renderer.material.color = initialColor;
+        flashing = false;
+    }
+
 
     public void OnRewardChosen(GameObject reward) {
         RewardConfig rewardConfig = reward.GetComponent<Reward>().config;

@@ -471,6 +471,9 @@ MonoBehaviour:
   playerDeath: {fileID: 11400000, guid: 1aa39f4b8f23f490f8dbf0980a27c8df, type: 2}
   audioManager: {fileID: 11400000, guid: 75515b2d780e849468e7176a1be805dd, type: 2}
   playerGun: {fileID: 1741528380682005256}
+  renderer: {fileID: 4680162829609624637}
+  flashFrames: 5
+  freezeFrames: 1
   playerValues: {fileID: 11400000, guid: 10f8680488366469d993f8213020541e, type: 2}
   defaultPlayerValues: {fileID: 11400000, guid: 81384e4fa2f8745ea96360ba2006f0db, type: 2}
 --- !u!61 &2521559355725457410
@@ -850,6 +853,7 @@ MonoBehaviour:
   audioManager: {fileID: 11400000, guid: 75515b2d780e849468e7176a1be805dd, type: 2}
   projectilePrefab: {fileID: 7835573758944721104, guid: 0f925a859a68c484caf3ffa867d9f7ea, type: 3}
   playerValues: {fileID: 11400000, guid: 10f8680488366469d993f8213020541e, type: 2}
+  barrelExit: {fileID: 0}
 --- !u!114 &4435067591474698978
 MonoBehaviour:
   m_ObjectHideFlags: 0

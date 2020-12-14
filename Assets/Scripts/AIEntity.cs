@@ -22,6 +22,15 @@ public class AIEntity : MonoBehaviour, IDamageable
     [SerializeField]
     protected HealthBar healthBar;
 
+    [SerializeField]
+    protected Renderer renderer;
+
+    [SerializeField,
+    Range(0,10)]
+    protected int flashFrames = 2;
+    bool flashing = false;
+
+
     protected LayerMask collisionMask;
     
     protected AIState currentState = AIState.Wandering;
@@ -72,6 +81,9 @@ public class AIEntity : MonoBehaviour, IDamageable
     }
 
     public virtual void TakeDamage(float damage) {
+        if(!flashing) {
+            StartCoroutine(Flash());
+        }
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth,0,AIconfig.maxHealth);
         healthBar.SetCurrentHealth(currentHealth);
@@ -83,6 +95,18 @@ public class AIEntity : MonoBehaviour, IDamageable
     public virtual void TakeDamage(float damage, Vector3 knockback) {
         TakeDamage(damage);
     }
+
+    protected IEnumerator Flash() {
+        flashing = true;
+        Color initialColor = renderer.material.color;
+        renderer.material.color = Color.white;
+        for(int i = 0; i < flashFrames; i++) {
+            yield return null;
+        }
+        renderer.material.color = initialColor;
+        flashing = false;
+    }
+
 
     public void SetDifficulty(int difficulty) {
         this.difficulty = difficulty;

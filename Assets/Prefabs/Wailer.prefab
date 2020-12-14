@@ -167,6 +167,8 @@ MonoBehaviour:
   healthBar: {fileID: 1759662422814293996}
   nextWaypointDst: 0.1
   gun: {fileID: 581849374986061113}
+  renderer: {fileID: 2163119852065388715}
+  flashFrames: 5
 --- !u!1 &6414999161792173172
 GameObject:
   m_ObjectHideFlags: 0
