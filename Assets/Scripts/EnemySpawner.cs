@@ -102,7 +102,6 @@ public class EnemySpawner : MonoBehaviour
         yield return null;        
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         enemy.transform.parent = spawnPoint;
-        enemy.transform.localScale = Vector3.one;
         enemy.GetComponent<AIEntity>().SetDifficulty(difficulty);
         spawnedEnemies.Add(enemy);
         totalEnemiesSpawned++;

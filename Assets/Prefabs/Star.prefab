@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: config
       value: 
       objectReference: {fileID: 11400000, guid: 81b87def6f0ce4218afc16504592e406, type: 2}
+    - target: {fileID: 2163119852065388715, guid: cdf1526ea79284649846f0cbb514e5f3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 090ffecf49edf4f5e89ce76750cd7943, type: 2}
     - target: {fileID: 6414999161791269721, guid: cdf1526ea79284649846f0cbb514e5f3, type: 3}
       propertyPath: m_Name
       value: Star

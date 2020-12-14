@@ -67,9 +67,6 @@ public class Imp : AIEntity
 
     void UpdatePath() {
         if(nearbyPlayer != null) {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(transform.position.x - nearbyPlayer.transform.position.x), 
-                                               transform.localScale.y, 
-                                               transform.localScale.z);
             IsPlayerInLOS();
 
             if(playerInLOS && Vector3.Distance(transform.position, nearbyPlayer.transform.position) <= AIconfig.minAttackDistance) {

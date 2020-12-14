@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMaxHealth: 13
   maxHealth: 13
-  movementSpeed: 2
+  movementSpeed: 5
   detectionRadius: 30
   maxAttackDistance: 15
   minAttackDistance: 8

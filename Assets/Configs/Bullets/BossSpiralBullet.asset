@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossSpiralBullet
   m_EditorClassIdentifier: 
   bulletRange: 60
-  bulletDamage: 8
+  bulletDamage: 15
   collisionImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}

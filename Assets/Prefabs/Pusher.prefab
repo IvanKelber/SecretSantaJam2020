@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: config
       value: 
       objectReference: {fileID: 11400000, guid: aac83b215f4b24297a105a3a8780006d, type: 2}
+    - target: {fileID: 1759662423443607931, guid: cdf1526ea79284649846f0cbb514e5f3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759662423443607931, guid: cdf1526ea79284649846f0cbb514e5f3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163119852065388715, guid: cdf1526ea79284649846f0cbb514e5f3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 81387a0c21b6a41ef99e09f9c649c637, type: 2}
     - target: {fileID: 6414999161791269721, guid: cdf1526ea79284649846f0cbb514e5f3, type: 3}
       propertyPath: m_Name
       value: Pusher
