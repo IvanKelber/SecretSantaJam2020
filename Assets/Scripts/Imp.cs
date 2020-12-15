@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using DG.Tweening;
 
 public class Imp : AIEntity
 {
@@ -18,10 +19,14 @@ public class Imp : AIEntity
     protected Path path;
     protected AIMovement movement;
 
+    protected Vector3 initialScale;
+
     bool playerInLOS = false;
+    bool attackLoop = false;
 
     public override void Start() {
         base.Start();
+        initialScale = transform.localScale;
         seeker = GetComponent<Seeker>();
         movement = GetComponent<AIMovement>();
         gun.config = AIconfig.gunConfig;
@@ -123,16 +128,25 @@ public class Imp : AIEntity
             }
         }
 
-
-        if(timeSinceLastAttack >= gun.config.fireRate) {
-            gun.Shoot(nearbyPlayer.transform.position);
-            timeSinceLastAttack = 0;
+        if(!attackLoop) {
+            StartCoroutine(DoAttack());
         }
-        timeSinceLastAttack += Time.deltaTime;
     }
+
+    IEnumerator DoAttack() {
+        attackLoop = true;
+        Vector3 finalScale = initialScale * .7f;
+        Tween attackTween = transform.DOScale(finalScale, gun.config.fireRate);
+        yield return attackTween.WaitForCompletion();
+        transform.DOScale(initialScale, .1f);
+        gun.Shoot(nearbyPlayer.transform.position);    
+        attackLoop = false;
+    }
+
 
     public override void TakeDamage(float damage, Vector3 knockback) {
         movement.Force(knockback);
+        transform.DOShakeScale(.3f,knockback.normalized,40,60);
         base.TakeDamage(damage, knockback);
     }
 

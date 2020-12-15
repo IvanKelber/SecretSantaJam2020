@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d75c4b41b8d445592529f3f2e0602f, type: 3}
+  m_Name: DodgeCooldown
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  maxArmor: 0
+  currentArmor: 0
+  goldCount: 0
+  projectileDamage: 0
+  projectileSpeed: 0
+  projectileSpread: 0
+  numberOfProjectilesPerShot: 0
+  projectileSpreadNoise: 0
+  projectileRange: 0
+  subsequentProjectileDelay: 0
+  shotsPerSecond: 0
+  playerMovementSpeed: 0
+  gunSprite: {fileID: 0}
+  fireImpulse:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+    m_PropagationSpeed: 343
+  projectile: {fileID: 0}
+  onFireKnockback: 0
+  knockbackOnHit: 0
+  knockbackResistance: 0
+  projectileBounces: 0
+  dodgeCooldown: -1
+  effectText: 
+  adjective: 
+  descriptor: 
+  value: 0
+  name: ' '

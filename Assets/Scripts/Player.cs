@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
+using DG.Tweening;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -38,10 +39,15 @@ public class Player : MonoBehaviour, IDamageable
     PlayerMovement playerMovement;
 
     float timeSinceLastShot = 0;
-
+    float timeSinceLastDodge = 0;
 
     bool waitingToRespawn = true;
     bool flashing = false;
+    bool dodging = false;
+    Vector3 initialScale;
+
+    [SerializeField, Range(.01f,1)]
+    float invincibilityDuration = .5f;
 
     AudioSource audioSource;
 
@@ -57,8 +63,10 @@ public class Player : MonoBehaviour, IDamageable
         if(audioSource == null) {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+        initialScale = transform.localScale;
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.SetPlayerValues(playerValues);
+        timeSinceLastDodge = playerValues.dodgeCooldown;
 
         Reset();
     }
@@ -77,10 +85,28 @@ public class Player : MonoBehaviour, IDamageable
         playerValues.Validate();
         UpdateHand();
         
-        if(playerMovement.GetShootKey() && timeSinceLastShot > 1/playerValues.shotsPerSecond) {
+        if(playerMovement.GetDodgeKeyDown() && timeSinceLastDodge > playerValues.dodgeCooldown) {
+            StartCoroutine(Dodge());
+        }
+        if(!dodging && playerMovement.GetShootKey() && timeSinceLastShot > 1/playerValues.shotsPerSecond) {
             Shoot();
         }
+
+
         timeSinceLastShot += Time.deltaTime;
+        timeSinceLastDodge += Time.deltaTime;
+    }
+
+    IEnumerator Dodge() {
+        dodging = true;
+        timeSinceLastDodge = 0;
+        Tween scaleDown = transform.DOScale(new Vector3(.2f, transform.localScale.y, transform.localScale.z), invincibilityDuration);
+        playerValues.playerMovementSpeed *= 1.2f;
+        yield return scaleDown.WaitForCompletion();
+        dodging = false;
+
+        playerValues.playerMovementSpeed /= 1.2f;
+        transform.DOScale(initialScale, invincibilityDuration);
     }
 
     void UpdateHand() {
@@ -113,7 +139,7 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     public void TakeDamage(float damage) {
-        if(godModeEnabled || playerValues.currentHealth <= 0 || flashing) {
+        if(godModeEnabled || playerValues.currentHealth <= 0 || flashing || dodging) {
             return;
         }
         StartCoroutine(Flash());

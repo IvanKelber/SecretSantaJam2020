@@ -66,4 +66,8 @@ public class PlayerMovement : Controller2D
         return !StaticUserControls.paused && Input.GetMouseButton(0);
     }
 
+    public bool GetDodgeKeyDown() {
+        return !StaticUserControls.paused && Input.GetMouseButtonDown(1);
+    }
+
 }

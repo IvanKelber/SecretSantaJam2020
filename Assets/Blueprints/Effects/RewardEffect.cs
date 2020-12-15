@@ -49,5 +49,6 @@ public class RewardEffect : PlayerValues
         values.knockbackOnHit += knockbackOnHit * scalar;
         values.projectileBounces += projectileBounces * scalar;  
         values.knockbackResistance += knockbackResistance * scalar;
+        values.dodgeCooldown += dodgeCooldown * scalar;
     }
 }

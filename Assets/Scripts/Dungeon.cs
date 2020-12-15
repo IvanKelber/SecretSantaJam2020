@@ -78,6 +78,7 @@ public class Dungeon : MonoBehaviour
         grid[2,1] = new Room(roomManifest.Get("BossRoomLowerLeft"), new Vector2(2,1));
         grid[2,2] = new Room(roomManifest.Get("BossRoomUpperLeft"), new Vector2(2,2));
         grid[3,1] = new Room(roomManifest.Get("BossRoomLowerRight"), new Vector2(3,1));
+        grid[3,1].SetDifficulty(difficulty);
         grid[3,2] = new Room(roomManifest.Get("BossRoomUpperRight"), new Vector2(3,2));
         grid[4,2] = new Room(roomManifest.Get("EndRoom"), new Vector2(4,2));
         FillRooms();

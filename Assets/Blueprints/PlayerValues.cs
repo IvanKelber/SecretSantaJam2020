@@ -28,7 +28,7 @@ public class PlayerValues : ScriptableObject
     public float projectileSpread = 0;
     public int numberOfProjectilesPerShot = 0;
 
-    public float projectileSpreadNoise = 10;
+    public float projectileSpreadNoise = 0;
 
     public float projectileRange = 0;
 
@@ -50,6 +50,8 @@ public class PlayerValues : ScriptableObject
     public float knockbackResistance = 0;
 
     public int projectileBounces = 0;
+
+    public float dodgeCooldown = 0;
 
     public void Reset(PlayerValues other) {
 
@@ -94,6 +96,8 @@ public class PlayerValues : ScriptableObject
 
         knockbackResistance = Mathf.Max(0, knockbackResistance);
 
-        projectileBounces = Mathf.Max(0, projectileBounces); 
+        projectileBounces = Mathf.Max(0, projectileBounces);
+
+        dodgeCooldown = Mathf.Max(2, dodgeCooldown);
     }
 }

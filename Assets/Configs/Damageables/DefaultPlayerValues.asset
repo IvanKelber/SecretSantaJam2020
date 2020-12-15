@@ -59,4 +59,6 @@ MonoBehaviour:
     m_PropagationSpeed: 343
   projectile: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
   onFireKnockback: 0
-  knockbackOnHit: 0
+  knockbackOnHit: 0.1
+  knockbackResistance: 0
+  projectileBounces: 0
