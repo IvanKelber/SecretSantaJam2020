@@ -21,7 +21,7 @@ MonoBehaviour:
   projectileSpeed: 0
   projectileSpread: 0
   numberOfProjectilesPerShot: 0
-  projectileSpreadNoise: -10
+  projectileSpreadNoise: -18
   projectileRange: 0
   subsequentProjectileDelay: 0
   shotsPerSecond: 0
@@ -66,5 +66,5 @@ MonoBehaviour:
   effectText: Increase accuracy by {0}
   adjective: Blind
   descriptor: Eagle
-  value: 10
+  value: 5
   name: Blind Eagle

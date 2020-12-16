@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1088908848698597034}
   - component: {fileID: 1088908848698597035}
   - component: {fileID: 594168678}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,10 +60,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   healthBar: {fileID: 5652475811707432557}
-  nextWaypointDst: 1
-  gun: {fileID: 6775972986662305767}
   renderer: {fileID: 1682925947677709311}
   flashFrames: 5
+  nextWaypointDst: 1
+  gun: {fileID: 6775972986662305767}
+  mouth: {fileID: 6283904747276454140}
+  body: {fileID: 2967626881303502949}
   configs:
   - {fileID: 11400000, guid: 0adff894057424a2783a1631891f2660, type: 2}
   - {fileID: 11400000, guid: 2f2869717bb2642069c1cc886a81e889, type: 2}
@@ -83,7 +85,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2}
+  m_Offset: {x: 0, y: 0.151084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -94,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1.5, y: 1.2856243}
   m_EdgeRadius: 0
 --- !u!114 &594168678
 MonoBehaviour:
@@ -128,6 +130,8 @@ GameObject:
   - component: {fileID: 6250439104296226951}
   - component: {fileID: 8558482543033948356}
   - component: {fileID: 1682925947677709311}
+  - component: {fileID: 2367341885747522626}
+  - component: {fileID: 2604004405756943030}
   m_Layer: 11
   m_Name: BossHead
   m_TagString: Untagged
@@ -198,6 +202,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2367341885747522626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924481079266556338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559eb470557204c0da1599d001cd25fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 1088908848698597034}
+  radius: 5
+  angularSpeed: 15
+--- !u!61 &2604004405756943030
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924481079266556338}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2967626881303502949
 GameObject:
   m_ObjectHideFlags: 0

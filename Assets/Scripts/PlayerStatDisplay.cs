@@ -72,7 +72,7 @@ public class PlayerStatDisplay : MonoBehaviour
         projectileSpeedText.text = "Projectile Speed: " + playerValues.projectileSpeed;
     }
     void UpdateAccuracy() {
-        accuracyText.text = "Accuracy: " + Mathf.Clamp((100 - playerValues.projectileSpreadNoise),0,100);
+        accuracyText.text = "Accuracy: " + (int)Mathf.Clamp((100 - 100 * playerValues.projectileSpreadNoise/360),0,100);
     }
     void UpdateRange() {
         rangeText.text = "Range: " + playerValues.projectileRange;

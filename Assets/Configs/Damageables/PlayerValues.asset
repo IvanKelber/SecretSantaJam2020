@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5102c35563674d8790ef29c40cb77a8, type: 3}
   m_Name: PlayerValues
   m_EditorClassIdentifier: 
-  maxHealth: 89.77
-  currentHealth: 240.9
-  maxArmor: 0
-  currentArmor: 0
-  goldCount: 0
-  projectileDamage: 4
-  projectileSpeed: 10
+  maxHealth: 100
+  currentHealth: 21
+  maxArmor: 6
+  currentArmor: 6
+  goldCount: 636
+  projectileDamage: 5
+  projectileSpeed: 9
   projectileSpread: 0
-  numberOfProjectilesPerShot: 1
-  projectileSpreadNoise: 10
-  projectileRange: 5
+  numberOfProjectilesPerShot: 2
+  projectileSpreadNoise: 280
+  projectileRange: 7
   subsequentProjectileDelay: 0
-  shotsPerSecond: 1
-  playerMovementSpeed: 10
+  shotsPerSecond: 6
+  playerMovementSpeed: 12
   gunSprite: {fileID: 576788955910145305, guid: 2262f408278271248889a3ea3c7e75bf, type: 3}
   fireImpulse:
     m_ImpulseChannel: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   projectile: {fileID: 11400000, guid: 41eecd9c6775344318efdc449007d865, type: 2}
-  onFireKnockback: 0
+  onFireKnockback: 5
   knockbackOnHit: 0.1
   knockbackResistance: 0
   projectileBounces: 0

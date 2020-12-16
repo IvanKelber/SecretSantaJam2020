@@ -11,6 +11,12 @@ public class Imp : AIEntity
     [SerializeField]
     protected Gun gun;
 
+    [SerializeField]
+    GameObject mouth;
+
+    [SerializeField]
+    GameObject body;
+
     protected Player nearbyPlayer;
     protected float timeSinceLastAttack = 0;
  
@@ -135,18 +141,19 @@ public class Imp : AIEntity
 
     IEnumerator DoAttack() {
         attackLoop = true;
-        Vector3 finalScale = initialScale * .7f;
-        Tween attackTween = transform.DOScale(finalScale, gun.config.fireRate);
+        float mouthScale = .5f;
+        Tween attackTween = mouth.transform.DOScale(mouthScale, gun.config.fireRate);
         yield return attackTween.WaitForCompletion();
-        transform.DOScale(initialScale, .1f);
-        gun.Shoot(nearbyPlayer.transform.position);    
+        Tween scaleDown = mouth.transform.DOScale(0, .1f);
+        gun.Shoot(nearbyPlayer.transform.position);
+        yield return scaleDown.WaitForCompletion();
         attackLoop = false;
     }
 
 
     public override void TakeDamage(float damage, Vector3 knockback) {
         movement.Force(knockback);
-        transform.DOShakeScale(.3f,knockback.normalized,40,60);
+        body.transform.DOShakeScale(.3f,knockback.normalized,40,60);
         base.TakeDamage(damage, knockback);
     }
 

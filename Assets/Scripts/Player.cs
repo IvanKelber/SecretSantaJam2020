@@ -109,14 +109,13 @@ public class Player : MonoBehaviour, IDamageable
         dodging = true;
         timeSinceLastDodge = 0;
         float direction = playerMovement.flipped ? -180 : 180;
-        Tween scaleDown = body.transform.DORotate(new Vector3(0, 0, direction), invincibilityDuration, RotateMode.LocalAxisAdd)
+        Tween rotation = body.transform.DORotate(new Vector3(0, 0, direction), invincibilityDuration, RotateMode.LocalAxisAdd)
                                    .SetEase(Ease.OutBack);
-        playerValues.playerMovementSpeed *= 1.2f;
-        yield return scaleDown.WaitForCompletion();
-        dodging = false;
+        playerValues.playerMovementSpeed *= 1.5f;
+        yield return rotation.WaitForCompletion();
 
-        playerValues.playerMovementSpeed /= 1.2f;
-        // transform.DOScale(initialScale, invincibilityDuration);
+        playerValues.playerMovementSpeed /= 1.5f;
+        dodging = false;
     }
 
     void UpdateHand() {
@@ -150,6 +149,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage) {
         if(godModeEnabled || playerValues.currentHealth <= 0 || flashing || dodging) {
+            Debug.Log("Godmode: " + godModeEnabled + ", Flashing: " + flashing + ", dodging: " + dodging);
             return;
         }
         StartCoroutine(Flash());
