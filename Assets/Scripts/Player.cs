@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, IDamageable
     bool waitingToRespawn = true;
     bool flashing = false;
     bool dodging = false;
-    Vector3 initialScale;
+    Color initialColor;
 
     [SerializeField, Range(.01f,1)]
     float invincibilityDuration = .5f;
@@ -70,10 +70,10 @@ public class Player : MonoBehaviour, IDamageable
         if(audioSource == null) {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
-        initialScale = transform.localScale;
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.SetPlayerValues(playerValues);
         timeSinceLastDodge = playerValues.dodgeCooldown;
+        initialColor = renderer.material.color;
 
         Reset();
     }
@@ -109,8 +109,9 @@ public class Player : MonoBehaviour, IDamageable
         Tween rotation = body.transform.DORotate(new Vector3(0, 0, direction), invincibilityDuration, RotateMode.LocalAxisAdd)
                                    .SetEase(Ease.OutBack);
         playerValues.playerMovementSpeed *= 1.5f;
+        renderer.material.color = new Color(initialColor.r, initialColor.g, initialColor.b, .5f);
         yield return rotation.WaitForCompletion();
-
+        renderer.material.color = initialColor;
         playerValues.playerMovementSpeed /= 1.5f;
         dodging = false;
     }
@@ -194,7 +195,6 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator Flash() {
         flashing = true;
-        Color initialColor = renderer.material.color;
         renderer.material.color = Color.white;
         Time.timeScale = 0;
         for(int i = 0; i < freezeFrames; i++) {
