@@ -62,8 +62,9 @@ MonoBehaviour:
   knockbackOnHit: 0
   knockbackResistance: 0
   projectileBounces: 0
+  dodgeCooldown: 0
   effectText: Increase projectile speed by {0}
-  adjective: Toothless
+  adjective: Dry
   descriptor: Llama
   value: 1
-  name: Toothless Llama
+  name: Dry Llama

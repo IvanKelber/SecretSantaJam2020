@@ -63,8 +63,8 @@ MonoBehaviour:
   knockbackResistance: 0
   projectileBounces: 0
   dodgeCooldown: -1
-  effectText: 
-  adjective: 
-  descriptor: 
-  value: 0
-  name: ' '
+  effectText: Reduce dodge cooldown by {0} seconds
+  adjective: Conspicuous
+  descriptor: Mosquito
+  value: 1
+  name: Conspicuous Mosquito

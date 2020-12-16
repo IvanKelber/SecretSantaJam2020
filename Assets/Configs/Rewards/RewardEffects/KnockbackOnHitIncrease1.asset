@@ -62,6 +62,7 @@ MonoBehaviour:
   knockbackOnHit: 5
   knockbackResistance: 0
   projectileBounces: 0
+  dodgeCooldown: 0
   effectText: Increase enemy knockback by {0}
   adjective: Weak
   descriptor: Beetle

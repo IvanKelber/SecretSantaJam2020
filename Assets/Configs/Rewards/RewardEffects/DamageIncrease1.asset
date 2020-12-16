@@ -62,8 +62,9 @@ MonoBehaviour:
   knockbackOnHit: 0
   knockbackResistance: 0
   projectileBounces: 0
+  dodgeCooldown: 0
   effectText: Increase damage by {0}
-  adjective: Pacifist
+  adjective: Friendly
   descriptor: Bear
   value: 1
-  name: Pacifist Bear
+  name: Friendly Bear

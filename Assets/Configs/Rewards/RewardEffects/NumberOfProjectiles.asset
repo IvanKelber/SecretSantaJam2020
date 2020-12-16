@@ -62,8 +62,9 @@ MonoBehaviour:
   knockbackOnHit: 0
   knockbackResistance: 0
   projectileBounces: 0
+  dodgeCooldown: 0
   effectText: Increase number of projectiles by {0}
-  adjective: Empty-Handed
+  adjective: Poor
   descriptor: Gorilla
   value: 1
-  name: Empty-Handed Gorilla
+  name: Poor Gorilla

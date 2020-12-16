@@ -62,8 +62,9 @@ MonoBehaviour:
   knockbackOnHit: 0
   knockbackResistance: 0
   projectileBounces: 0
+  dodgeCooldown: 0
   effectText: Increase range by {0}
-  adjective: Fingerless
+  adjective: In Need of Glasses
   descriptor: Monkey
   value: 1
-  name: Fingerless Monkey
+  name: In Need of Glasses Monkey

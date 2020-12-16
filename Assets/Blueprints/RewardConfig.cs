@@ -43,7 +43,11 @@ public class RewardConfig
         if(rarity != Rarity.Common) {
             sb.Append("\n");
             string negativeText = negativeEffect.effectText;
-            negativeText = negativeText.Replace("Increase", "Reduce");
+            if(negativeText.Contains("Reduce")) {
+                negativeText = negativeText.Replace("Reduce", "Increase");
+            } else {
+                negativeText = negativeText.Replace("Increase", "Reduce");
+            }
             sb.AppendFormat(negativeText, negativeValue);
         }
         return sb.ToString();

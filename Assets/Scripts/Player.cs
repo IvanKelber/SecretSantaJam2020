@@ -56,9 +56,13 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     PlayerValues defaultPlayerValues;
 
+    [SerializeField]
+    DodgeTimer dodgeTimer;
+
     bool dying;
 
     void Start() {
+        Cursor.visible = false;
         audioSource = GetComponent<AudioSource>();
         if(audioSource == null) {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -95,18 +99,19 @@ public class Player : MonoBehaviour, IDamageable
 
         timeSinceLastShot += Time.deltaTime;
         timeSinceLastDodge += Time.deltaTime;
+        dodgeTimer.UpdateTimer(timeSinceLastDodge);
     }
 
     IEnumerator Dodge() {
         dodging = true;
         timeSinceLastDodge = 0;
-        Tween scaleDown = transform.DOScale(new Vector3(.2f, transform.localScale.y, transform.localScale.z), invincibilityDuration);
+        Tween scaleDown = transform.DORotate(new Vector3(0, 0, 360), invincibilityDuration, RotateMode.LocalAxisAdd);
         playerValues.playerMovementSpeed *= 1.2f;
         yield return scaleDown.WaitForCompletion();
         dodging = false;
 
         playerValues.playerMovementSpeed /= 1.2f;
-        transform.DOScale(initialScale, invincibilityDuration);
+        // transform.DOScale(initialScale, invincibilityDuration);
     }
 
     void UpdateHand() {

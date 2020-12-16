@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: EffectsManifest
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: 7a2163585c3fd451b80ce2f630405d4c, type: 2}
   - {fileID: 11400000, guid: 249235b0990ac4c22a788289c52a179b, type: 2}
+  - {fileID: 11400000, guid: 26a1b3d76345246e48467505de105d53, type: 2}
+  - {fileID: 11400000, guid: 95b70e9b7f6e94690a8175bb2941db83, type: 2}
+  - {fileID: 11400000, guid: 8ce7aa18b36a840e3ac0aac368ae1d4e, type: 2}
   - {fileID: 11400000, guid: f3883d46a03364ee88595afdcf644fb2, type: 2}
   - {fileID: 11400000, guid: f8790d66ca71643caa3be49c56c7a7b3, type: 2}
   - {fileID: 11400000, guid: 26c3e6602ba804628a545c69086413ce, type: 2}
-  - {fileID: 11400000, guid: ae49e563a9ea74fa1bbc870ee69a144b, type: 2}
+  - {fileID: 11400000, guid: 96fdafacbc10c4c7ab361aa8d629ae5d, type: 2}
   - {fileID: 11400000, guid: ee4b29225f2ad45e2952e6d226057006, type: 2}
   - {fileID: 11400000, guid: 5f4563d0df3e94f9aac2bb50c268f76e, type: 2}
-  - {fileID: 11400000, guid: 96fdafacbc10c4c7ab361aa8d629ae5d, type: 2}
-  - {fileID: 11400000, guid: 8ce7aa18b36a840e3ac0aac368ae1d4e, type: 2}
-  - {fileID: 11400000, guid: 26a1b3d76345246e48467505de105d53, type: 2}
-  - {fileID: 11400000, guid: 95b70e9b7f6e94690a8175bb2941db83, type: 2}
-  rareEffectChance: 0.2
-  epicEffectChance: 0.05
+  - {fileID: 11400000, guid: ae49e563a9ea74fa1bbc870ee69a144b, type: 2}
+  - {fileID: 11400000, guid: e7f4e8f2181ef48a59c27b9771c4fa50, type: 2}
+  - {fileID: 11400000, guid: 7a2163585c3fd451b80ce2f630405d4c, type: 2}
+  rareEffectChance: 0.25
+  epicEffectChance: 0.1
