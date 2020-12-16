@@ -59,6 +59,9 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     DodgeTimer dodgeTimer;
 
+    [SerializeField]
+    GameObject body;
+
     bool dying;
 
     void Start() {
@@ -105,7 +108,9 @@ public class Player : MonoBehaviour, IDamageable
     IEnumerator Dodge() {
         dodging = true;
         timeSinceLastDodge = 0;
-        Tween scaleDown = transform.DORotate(new Vector3(0, 0, 360), invincibilityDuration, RotateMode.LocalAxisAdd);
+        float direction = playerMovement.flipped ? -180 : 180;
+        Tween scaleDown = body.transform.DORotate(new Vector3(0, 0, direction), invincibilityDuration, RotateMode.LocalAxisAdd)
+                                   .SetEase(Ease.OutBack);
         playerValues.playerMovementSpeed *= 1.2f;
         yield return scaleDown.WaitForCompletion();
         dodging = false;
