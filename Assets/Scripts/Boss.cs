@@ -36,8 +36,8 @@ public class Boss : Imp
         timeSinceLastAttackChange += Time.deltaTime;
     }
 
-    public override void TakeDamage(float damage, Vector3 knockback) {
-        base.TakeDamage(damage);
+    public override bool TakeDamage(float damage, Vector3 knockback) {
+        return base.TakeDamage(damage);
     }
 
     public void ChangeGun() {

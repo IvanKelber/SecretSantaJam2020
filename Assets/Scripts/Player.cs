@@ -80,9 +80,6 @@ public class Player : MonoBehaviour, IDamageable
 
     void Update()
     {
-        if(playerValues.currentHealth <= 0) {
-            Die();
-        }
         if(dying) {
             return;
         }
@@ -92,7 +89,7 @@ public class Player : MonoBehaviour, IDamageable
         playerValues.Validate();
         UpdateHand();
         
-        if(playerMovement.GetDodgeKeyDown() && timeSinceLastDodge > playerValues.dodgeCooldown) {
+        if(playerMovement.GetDodgeKeyDown() && timeSinceLastDodge > playerValues.dodgeCooldown && !dodging) {
             StartCoroutine(Dodge());
         }
         if(!dodging && playerMovement.GetShootKey() && timeSinceLastShot > 1/playerValues.shotsPerSecond) {
@@ -147,18 +144,14 @@ public class Player : MonoBehaviour, IDamageable
         timeSinceLastShot = 0;
     }
 
-    public void TakeDamage(float damage) {
-        if(godModeEnabled || playerValues.currentHealth <= 0 || flashing || dodging) {
-            Debug.Log("Godmode: " + godModeEnabled + ", Flashing: " + flashing + ", dodging: " + dodging);
-            return;
-        }
+    public bool TakeDamage(float damage) {
         StartCoroutine(Flash());
         audioManager.Play("PlayerGrunt", audioSource);
         if(playerValues.currentArmor > 0) {
             float actualDamage = damage - playerValues.currentArmor;
             if(actualDamage < 0) {
                 playerValues.currentArmor -= (int) damage;
-                return;
+                return true;
             } else {
                 playerValues.currentArmor = 0;
                 damage = actualDamage;
@@ -169,6 +162,7 @@ public class Player : MonoBehaviour, IDamageable
         if(playerValues.currentHealth == 0) {
             Die();
         }
+        return true;
     }
 
     public void ResetArmor() {
@@ -176,20 +170,26 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     protected void Die() {
+        Debug.Log("Dying");
         dying = true;
         playerMovement.playerDead = true;
         StartCoroutine(audioManager.PlayAndWait("PlayerDeath", audioSource));
         playerDeath.Raise();
         waitingToRespawn = true;
+        Reset();
         dying = false;
     }
 
-    public void TakeDamage(float damage, Vector3 knockback) {
+    public bool TakeDamage(float damage, Vector3 knockback) {
+        if(godModeEnabled || playerValues.currentHealth <= 0 || flashing || dodging) {
+            Debug.Log("No Damage Taken");
+            return false;
+        }
         float magnitude = knockback.magnitude;
         magnitude -= playerValues.knockbackResistance;
         magnitude = Mathf.Clamp(magnitude, 0, knockback.magnitude);
         playerMovement.Force(knockback.normalized * magnitude);
-        TakeDamage(damage);
+        return TakeDamage(damage);
     }
 
     IEnumerator Flash() {
@@ -211,6 +211,10 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnRewardChosen(GameObject reward) {
         RewardConfig rewardConfig = reward.GetComponent<Reward>().config;
+        if(playerValues.currentHealth <= 0) {
+            Die();
+            return;
+        }
         ResetArmor();
     }
 

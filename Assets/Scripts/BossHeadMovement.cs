@@ -23,11 +23,11 @@ public class BossHeadMovement : MonoBehaviour, IDamageable
         angle += angularSpeed * Time.deltaTime;
     }
 
-    public void TakeDamage(float damage) {
-        boss.TakeDamage(damage);
+    public bool TakeDamage(float damage) {
+        return boss.TakeDamage(damage);
     }
 
-    public void TakeDamage(float damage, Vector3 knockback) {
-        boss.TakeDamage(damage, knockback);
+    public bool TakeDamage(float damage, Vector3 knockback) {
+        return boss.TakeDamage(damage, knockback);
     }
 }

@@ -80,7 +80,7 @@ public class AIEntity : MonoBehaviour, IDamageable
 
     }
 
-    public virtual void TakeDamage(float damage) {
+    public virtual bool TakeDamage(float damage) {
         if(!flashing) {
             StartCoroutine(Flash());
         }
@@ -90,10 +90,11 @@ public class AIEntity : MonoBehaviour, IDamageable
         if(currentHealth == 0) {
             Die();
         }
+        return true;
     }
 
-    public virtual void TakeDamage(float damage, Vector3 knockback) {
-        TakeDamage(damage);
+    public virtual bool TakeDamage(float damage, Vector3 knockback) {
+        return TakeDamage(damage);
     }
 
     protected IEnumerator Flash() {

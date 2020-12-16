@@ -151,10 +151,10 @@ public class Imp : AIEntity
     }
 
 
-    public override void TakeDamage(float damage, Vector3 knockback) {
+    public override bool TakeDamage(float damage, Vector3 knockback) {
         movement.Force(knockback);
         body.transform.DOShakeScale(.3f,knockback.normalized,40,60);
-        base.TakeDamage(damage, knockback);
+        return base.TakeDamage(damage, knockback);
     }
 
     void OnDrawGizmos() {

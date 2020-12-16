@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour
     Vector2 gravity;
     int bounces = 0;
     bool justBounced = false;
+    bool enemyHit = false;
 
     void Start() {
         birthPosition = transform.position;
@@ -58,6 +59,7 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
         justBounced = false;
+        enemyHit = false;
     }
 
     public void SetDirection(Vector3 direction) {
@@ -86,8 +88,10 @@ public class Bullet : MonoBehaviour
     IEnumerator Collision(Collider2D[] collisions) {
         Collider2D collider = collisions[0]; // Get only the first collision unless piercing
         if(DamageObject(collider)) {
-            destroying = true;
-            Destroy(this.gameObject);
+            if(enemyHit) {
+                destroying = true;
+                Destroy(this.gameObject);
+            }
         } else if (bounces > 0) {
             // Projectile hit a wall but has bounces left
             Bounce(collider);
@@ -106,7 +110,7 @@ public class Bullet : MonoBehaviour
         IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
         if(damageable != null) {
             Vector3 knockback = (collider.transform.position - this.transform.position).normalized * config.knockbackOnHit;
-            damageable.TakeDamage(config.bulletDamage, knockback);
+            enemyHit = damageable.TakeDamage(config.bulletDamage, knockback);
             return true;
         }
         // Hit something that we can't damage (i.e. a wall)

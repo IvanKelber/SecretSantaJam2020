@@ -98,6 +98,6 @@ public class PlayerValues : ScriptableObject
 
         projectileBounces = Mathf.Max(0, projectileBounces);
 
-        dodgeCooldown = Mathf.Max(1, dodgeCooldown);
+        dodgeCooldown = Mathf.Max(0, dodgeCooldown);
     }
 }

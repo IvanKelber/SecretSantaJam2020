@@ -15,10 +15,10 @@ public class StaticUserControls : MonoBehaviour
         }
     }
 
-    public void Pause(bool toPause) {
+    public static void Pause(bool toPause) {
         paused = toPause;
         Time.timeScale = paused ? 0 : 1;
-        AudioListener.pause = paused; 
+        // AudioListener.pause = paused; 
     }
 
     void OpenMenu() {

@@ -21,7 +21,7 @@ MonoBehaviour:
   projectileSpeed: 0
   projectileSpread: 0
   numberOfProjectilesPerShot: 1
-  projectileSpreadNoise: 15
+  projectileSpreadNoise: 36
   projectileRange: 0
   subsequentProjectileDelay: 0
   shotsPerSecond: 0
