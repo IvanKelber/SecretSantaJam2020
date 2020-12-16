@@ -23,7 +23,12 @@ public class PlayerStatDisplay : MonoBehaviour
     public TMP_Text bouncesText;
     public TMP_Text dodgeCooldownText;
 
-    // Update is called once per frame
+    CanvasGroup cg;
+
+    public void Start() {
+        cg = GetComponent<CanvasGroup>();
+    }
+
     void Update()
     {
         UpdateHealth();
@@ -40,7 +45,16 @@ public class PlayerStatDisplay : MonoBehaviour
         UpdateKnockbackResistance();
         UpdateBounces();
         UpdateDodgeCooldown();
+
+        if(!StaticUserControls.paused && Input.GetKeyDown(KeyCode.Tab)) {
+            ToggleVisibility();
+        }
     }
+
+    void ToggleVisibility() {
+        cg.alpha = (cg.alpha + 1) % 2;
+    }
+
 
     void UpdateHealth() {
         healthText.text = "Health: " + playerValues.currentHealth + "/" + playerValues.maxHealth;
@@ -70,13 +84,13 @@ public class PlayerStatDisplay : MonoBehaviour
         movementSpeedText.text = "Movement Speed: " + playerValues.playerMovementSpeed;
     }
     void UpdateEnemyKnockback() {
-        enemyKnockbackText.text = "Enemy Knockback: " + playerValues.knockbackOnHit;
+        enemyKnockbackText.text = "Enemy Knockback: " + (int) playerValues.knockbackOnHit;
     }    
     void UpdateRecoil() {
         recoilText.text = "Recoil: " + playerValues.onFireKnockback;
     }    
     void UpdateKnockbackResistance() {
-        knockbackResistanceText.text = "Knockback Resistance: " + playerValues.knockbackResistance;
+        knockbackResistanceText.text = "Knockback Resistance: " + (int) playerValues.knockbackResistance;
     }
     void UpdateBounces() {
         bouncesText.text = "Bounces: " + playerValues.projectileBounces;
