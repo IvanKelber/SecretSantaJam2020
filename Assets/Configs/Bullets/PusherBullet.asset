@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PusherBullet
   m_EditorClassIdentifier: 
   bulletRange: 30
-  bulletDamage: 1
+  bulletDamage: 3
   collisionImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
@@ -45,14 +45,13 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   collisionSound: 
-  bulletSpeed: 7
+  bulletSpeed: 4
   damagingLayer:
     serializedVersion: 2
     m_Bits: 1280
   sprite: {fileID: 21300000, guid: ad03de1f1d30149d9bffc9b17ce2392e, type: 3}
   gravityDirection: -90
   gravityMagnitude: 0
-  independentOfAim: 0
-  knockbackOnHit: 20
+  knockbackOnHit: 30
   bulletBounces: 0
   bulletScale: {x: 3, y: 3, z: 3}

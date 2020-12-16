@@ -69,7 +69,7 @@ MonoBehaviour:
   configs:
   - {fileID: 11400000, guid: 0adff894057424a2783a1631891f2660, type: 2}
   - {fileID: 11400000, guid: 2f2869717bb2642069c1cc886a81e889, type: 2}
-  attackChangeTimer: 4
+  attackChangeTimer: 8
   radius: 5
   angleChangeRate: 15
 --- !u!61 &1088908848698597035

@@ -44,11 +44,25 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   fireSound: 
-  knockback: 0
-  spreadNoise: 2
+  knockback: 10
+  spreadNoise: 20
   angleBetweenBullets: 0
   centerAngle: 0
-  numberOfBullets: 1
+  numberOfBullets: 2
   bullet: {fileID: 11400000, guid: 44f101f60332e4fe5898e518da9a1347, type: 2}
   timeBetweenShots: 0
+  independentOfAim: 0
+  changeDirectionOverTime: 0
+  xDirectionalChange:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yDirectionalChange:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   gunSprite: {fileID: 0}

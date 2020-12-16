@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tear
   m_EditorClassIdentifier: 
   bulletRange: 20
-  bulletDamage: 3
+  bulletDamage: 7.5
   collisionImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
@@ -45,14 +45,13 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   collisionSound: 
-  bulletSpeed: 6
+  bulletSpeed: 4
   damagingLayer:
     serializedVersion: 2
     m_Bits: 1280
   sprite: {fileID: 21300000, guid: 3702f3356fc4e4e8f812356b1065575e, type: 3}
   gravityDirection: -90
-  gravityMagnitude: 4
-  independentOfAim: 1
+  gravityMagnitude: 2
   knockbackOnHit: 5
   bulletBounces: 0
-  bulletScale: {x: 2, y: 2, z: 2}
+  bulletScale: {x: 3, y: 3, z: 3}

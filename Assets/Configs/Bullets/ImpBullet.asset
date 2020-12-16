@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ImpBullet
   m_EditorClassIdentifier: 
   bulletRange: 20
-  bulletDamage: 7
+  bulletDamage: 10
   collisionImpulse:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 0}
@@ -45,14 +45,13 @@ MonoBehaviour:
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   collisionSound: BulletCollision
-  bulletSpeed: 10
+  bulletSpeed: 8
   damagingLayer:
     serializedVersion: 2
     m_Bits: 1280
   sprite: {fileID: 21300000, guid: b18a4d269c3564d6db7d8d214434fd81, type: 3}
   gravityDirection: -90
   gravityMagnitude: 0
-  independentOfAim: 0
-  knockbackOnHit: 1
+  knockbackOnHit: 10
   bulletBounces: 0
   bulletScale: {x: 1, y: 1, z: 1}

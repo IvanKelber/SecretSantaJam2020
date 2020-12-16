@@ -36,7 +36,7 @@ public class Dungeon : MonoBehaviour
 
     public void Start() {
         difficulties.Add(1);
-        difficulties.Add(1);
+        difficulties.Add(2);
         if(testDungeon)
             GenerateLevel(0);
     }

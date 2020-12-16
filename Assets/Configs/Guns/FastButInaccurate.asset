@@ -50,5 +50,19 @@ MonoBehaviour:
   centerAngle: 0
   numberOfBullets: 2
   bullet: {fileID: 11400000, guid: 75736479531904bf790407a58b321d7e, type: 2}
-  timeBetweenShots: 0.3
+  timeBetweenShots: 0.05
+  independentOfAim: 0
+  changeDirectionOverTime: 0
+  xDirectionalChange:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yDirectionalChange:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   gunSprite: {fileID: 0}
