@@ -171,7 +171,6 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     protected void Die() {
-        Debug.Log("Dying");
         dying = true;
         playerMovement.playerDead = true;
         StartCoroutine(audioManager.PlayAndWait("PlayerDeath", audioSource));
@@ -183,7 +182,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public bool TakeDamage(float damage, Vector3 knockback) {
         if(godModeEnabled || playerValues.currentHealth <= 0 || flashing || dodging) {
-            Debug.Log("No Damage Taken");
             return false;
         }
         float magnitude = knockback.magnitude;
