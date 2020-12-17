@@ -62,4 +62,4 @@ MonoBehaviour:
   knockbackOnHit: 0.1
   knockbackResistance: 0
   projectileBounces: 0
-  dodgeCooldown: 0
+  dodgeCooldown: 6

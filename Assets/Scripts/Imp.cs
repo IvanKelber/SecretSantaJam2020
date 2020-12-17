@@ -29,6 +29,7 @@ public class Imp : AIEntity
 
     bool playerInLOS = false;
     bool attackLoop = false;
+    bool shaking = false;
 
     public override void Start() {
         base.Start();
@@ -153,8 +154,17 @@ public class Imp : AIEntity
 
     public override bool TakeDamage(float damage, Vector3 knockback) {
         movement.Force(knockback);
-        body.transform.DOShakeScale(.3f,knockback.normalized,40,60);
+        if(!shaking) {
+            StartCoroutine(Shake(knockback.normalized));
+        }
         return base.TakeDamage(damage, knockback);
+    }
+
+    IEnumerator Shake(Vector3 direction) {
+        shaking = true;
+        yield return body.transform.DOShakeScale(.3f,direction,40,60).WaitForCompletion();
+        shaking = false;
+
     }
 
     void OnDrawGizmos() {
