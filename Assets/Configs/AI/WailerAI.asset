@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26c65610c0f94d7b86fc874f3e19590, type: 3}
   m_Name: WailerAI
   m_EditorClassIdentifier: 
-  baseMaxHealth: 10
-  maxHealth: 10
+  baseMaxHealth: 9
+  maxHealth: 20
   movementSpeed: 5
   detectionRadius: 30
   maxAttackDistance: 10

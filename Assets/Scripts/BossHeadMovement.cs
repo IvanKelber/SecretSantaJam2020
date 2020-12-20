@@ -18,7 +18,7 @@ public class BossHeadMovement : MonoBehaviour, IDamageable
     {
         Vector3 center = boss.transform.position;
         float distance = radius + Mathf.Sin(Mathf.Deg2Rad * angle * 2) * 2;
-        Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), -1);
+        Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), center.z - .5f);
         transform.position = center + direction * radius;
         angle += angularSpeed * Time.deltaTime;
     }

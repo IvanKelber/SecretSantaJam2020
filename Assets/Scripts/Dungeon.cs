@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using ScriptableObjectArchitecture;
 
 public class Dungeon : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Dungeon : MonoBehaviour
     public RoomManifest roomManifest;
     public Tilemap tileMap;
     public Tileset tileSet;
+    public GameEvent bossLevelStarted;
     Vector2 startRoom;
     Vector2 endRoom;
 
@@ -54,6 +56,7 @@ public class Dungeon : MonoBehaviour
         }
         difficulty = difficulties[level];
         if(level % 3 == 0) {
+            bossLevelStarted.Raise();
             GenerateBossLevel();
         } else {
             GenerateGrid();

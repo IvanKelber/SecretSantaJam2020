@@ -37,7 +37,7 @@ public class Imp : AIEntity
         seeker = GetComponent<Seeker>();
         movement = GetComponent<AIMovement>();
         gun.config = AIconfig.gunConfig;
-        InvokeRepeating("UpdatePath", 0,.5f);
+        InvokeRepeating("UpdatePath", 0,.05f);
     }
 
     public override void Update() {
@@ -94,6 +94,7 @@ public class Imp : AIEntity
             return;
         }
         if(currentWaypoint >= path.vectorPath.Count - 1) {
+            Debug.Log("Returning prematurely");
             return;
         }
         Vector3 direction = (path.vectorPath[currentWaypoint + 1] - transform.position).normalized;

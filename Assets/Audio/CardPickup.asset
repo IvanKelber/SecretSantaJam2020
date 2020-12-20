@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77d88835918f4d2eba1f4e80e3223ac, type: 3}
+  m_Name: CardPickup
+  m_EditorClassIdentifier: 
+  Name: CardPickup
+  clips:
+  - {fileID: 8300000, guid: 1534fc1c46699bd43ac431c838acf6eb, type: 3}
+  minVolume: 1
+  maxVolume: 1
+  minPitch: -0.1
+  maxPitch: 0.1

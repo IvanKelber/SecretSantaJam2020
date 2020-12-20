@@ -43,7 +43,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
-  fireSound: 
+  fireSound: SpiralGun
   knockback: 0
   spreadNoise: 0
   angleBetweenBullets: 22.5

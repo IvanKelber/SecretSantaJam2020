@@ -46,7 +46,7 @@ public class Player : MonoBehaviour, IDamageable
     bool dodging = false;
     Color initialColor;
 
-    [SerializeField, Range(.01f,1)]
+    [SerializeField, Range(.01f,10)]
     float invincibilityDuration = .5f;
 
     AudioSource audioSource;
@@ -105,6 +105,7 @@ public class Player : MonoBehaviour, IDamageable
     IEnumerator Dodge() {
         dodging = true;
         timeSinceLastDodge = 0;
+        audioManager.Play("Dodge", audioSource);
         float direction = playerMovement.flipped ? -180 : 180;
         Tween rotation = body.transform.DORotate(new Vector3(0, 0, direction), invincibilityDuration, RotateMode.LocalAxisAdd)
                                    .SetEase(Ease.OutBack);
@@ -195,16 +196,15 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator Flash() {
         flashing = true;
-        renderer.material.color = Color.white;
         Time.timeScale = 0;
+        renderer.material.color = Color.white;
         for(int i = 0; i < freezeFrames; i++) {
             yield return null;
         }
-        Time.timeScale = 1;
-        for(int i = 0; i < flashFrames; i++) {
-            yield return null;
-        }
         renderer.material.color = initialColor;
+        Time.timeScale = 1;
+        Tween flash = renderer.material.DOColor(Color.white, invincibilityDuration).SetEase(Ease.Flash, 16, 0);
+        yield return flash.WaitForCompletion();
         flashing = false;
     }
 

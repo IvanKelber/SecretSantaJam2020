@@ -733,6 +733,7 @@ MonoBehaviour:
   interactPrompt: {fileID: 2833497736810558653}
   playerValues: {fileID: 11400000, guid: 10f8680488366469d993f8213020541e, type: 2}
   rewardChosen: {fileID: 11400000, guid: d6c60e0717c2e4455a2c01d00fbd1114, type: 2}
+  audioManager: {fileID: 11400000, guid: 75515b2d780e849468e7176a1be805dd, type: 2}
   cost: 0
   image: {fileID: 1569279417}
   cardTitle: {fileID: 944544640}

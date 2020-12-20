@@ -14,8 +14,13 @@ public class StartLevel : Interactable
     public Camera camera;
     public GameEvent levelComplete;
 
+
     private int currentLevel = 0;
     private bool playerDead = false;
+
+    public void Start() {
+        base.Start();
+    }
 
     public void OnLevelComplete() {
         NextLevel(++currentLevel);

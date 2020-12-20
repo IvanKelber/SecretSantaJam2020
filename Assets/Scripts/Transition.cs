@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using ScriptableObjectArchitecture;
+using Cinemachine;
 
 public class Transition : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class Transition : MonoBehaviour
     public Image left;
     public Image right;
 
+    public AudioManager audioManager;
+    AudioSource audioSource;
+    CinemachineImpulseSource impulseSource;
+
     public GameEvent coveredEvent; //During this event we generate the next level, move the player, adjust the camera, etc.
 
     Vector2 leftAnchor;
@@ -32,6 +37,9 @@ public class Transition : MonoBehaviour
     bool transitioning = false;
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+
         leftAnchor = left.rectTransform.anchoredPosition;
         rightAnchor = right.rectTransform.anchoredPosition;
     }
@@ -57,9 +65,11 @@ public class Transition : MonoBehaviour
         Tween leftSlide = left.rectTransform.DOAnchorPos(Vector2.zero, leftDuration).SetUpdate(true);
         yield return leftSlide.WaitForCompletion();
 
+        audioManager.Play("BulletBirth", audioSource);
+
         Tween rightSlide = right.rectTransform.DOAnchorPos(Vector2.zero, rightDuration).SetUpdate(true);
         yield return rightSlide.WaitForCompletion();
-
+        audioManager.Play("BulletBirth", audioSource);
 
         yield return null; // Wait one frame before calling covered event
         coveredEvent.Raise();
